@@ -27,10 +27,10 @@ connectDatabase(process.env.MONGODB_URI).then(() =>
 
 // Display all users in MongoDB
 app.get("/api/users", async (_request, response) => {
-  const characterCollection = getUserCollection();
-  const characters = characterCollection.find();
-  const allCharacters = await characters.toArray();
-  response.send(allCharacters);
+  const userCollection = getUserCollection();
+  const users = userCollection.find();
+  const allUsers = await users.toArray();
+  response.send(allUsers);
 });
 
 // Handle client routing, return all requests to the app
