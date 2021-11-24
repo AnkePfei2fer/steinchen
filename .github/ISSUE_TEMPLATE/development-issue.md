@@ -1,10 +1,9 @@
 ---
 name: Development Issue
 about: Describe this issue template's purpose here.
-title: ''
-labels: ''
+title: ""
+labels: ""
 assignees: AnkePfei2fer
-
 ---
 
 ## Description
