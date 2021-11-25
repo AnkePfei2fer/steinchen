@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import dotenv from "dotenv";
-import { connectDatabase, getUserCollection } from "../src/utils/database";
+import { connectDatabase, getUserCollection } from "./utils/database";
 dotenv.config();
 
 const port = process.env.PORT || 3001;
