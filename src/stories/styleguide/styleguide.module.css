@@ -6,10 +6,12 @@
 }
 
 .brickColors,
-.backgroundShades {
+.backgroundShades,
+.components,
+.fonts,
+.textHeading {
   display: grid;
   gap: 0.5rem;
-  margin: 0.5rem;
   grid-template-columns: 1fr auto auto auto;
 }
 
@@ -77,4 +79,51 @@
   composes: color-dots;
   background: #0d0d0d;
   color: grey;
+}
+
+.logo {
+  padding: 0 2rem;
+  font-family: ClickyBricks, sans-serif;
+}
+
+.text {
+  padding: 0 2rem;
+  font-family: Atma, sans-serif;
+}
+
+.textHeading {
+  display: grid;
+  gap: 1rem;
+}
+
+.headline1 {
+  grid-row: 1/2;
+  grid-column: 2/3;
+  font-family: Atma, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.headline2 {
+  grid-row: 2/3;
+  grid-column: 2/3;
+  font-family: Atma, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.headline3 {
+  grid-row: 3/4;
+  grid-column: 2/3;
+  font-family: Atma, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.plainText {
+  grid-row: 4/5;
+  grid-column: 2/3;
+  font-family: Atma, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
 }
