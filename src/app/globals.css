@@ -11,6 +11,28 @@
   box-sizing: border-box;
 }
 
+:root {
+  /* BRICK COLORS */
+  --color-brick-red-light: #f21905;
+  --color-brick-green-light: #04bf45;
+  --color-brick-blue-light: #4590bf;
+  --color-brick-red-dark: #8c0327;
+  --color-brick-green-dark: #078c03;
+  --color-brick-blue-dark: #0367a6;
+
+  /* BACKGROUND COLORS */
+  --color-background-light: #ffda21;
+  --color-background: #f2cb07;
+  --color-background-dark: #f2c12e;
+
+  /* BUTTON COLORS */
+  --color-button: #97bf04;
+
+  /* TEXT COLORS */
+  --color-text-primary: #0d0d0d;
+  --color-text-secondary: 595959;
+}
+
 body {
   margin: 0;
 }
