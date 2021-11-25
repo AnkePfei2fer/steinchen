@@ -1,0 +1,43 @@
+.color-dots {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.brickColors {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.redLight {
+  grid-column: 2/3;
+  composes: color-dots;
+  background: #f21905;
+}
+
+.greenLight {
+  composes: color-dots;
+  background: #04bf45;
+}
+
+.blueLight {
+  composes: color-dots;
+  background: #4590bf;
+}
+
+.redDark {
+  grid-column: 2/3;
+  composes: color-dots;
+  background: #8c0327;
+}
+
+.greenDark {
+  composes: color-dots;
+  background: #078c03;
+}
+
+.blueDark {
+  composes: color-dots;
+  background: #0367a6;
+}
