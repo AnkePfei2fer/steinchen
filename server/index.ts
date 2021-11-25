@@ -18,13 +18,6 @@ app.get("/api/hello", (_request, response) => {
 // Serve production bundle
 app.use(express.static("dist"));
 
-// Connect to MongoDB (password is encoded in dotenv)
-connectDatabase(process.env.MONGODB_URI).then(() =>
-  app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-  })
-);
-
 // Display all users in MongoDB
 app.get("/api/users", async (_request, response) => {
   const userCollection = getUserCollection();
@@ -38,7 +31,9 @@ app.get("*", (_request, response) => {
   response.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
-// Opens http server and listens for connections
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});
+// Connect to MongoDB (password is encoded in dotenv)
+connectDatabase(process.env.MONGODB_URI).then(() =>
+  app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`);
+  })
+);
