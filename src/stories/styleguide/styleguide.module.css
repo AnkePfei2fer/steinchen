@@ -19,66 +19,66 @@
 .redLight {
   grid-column: 2/3;
   composes: color-dots;
-  background: #f21905;
+  background: var(--color-brick-red-light);
 }
 
 .greenLight {
   composes: color-dots;
-  background: #04bf45;
+  background: var(--color-brick-green-light);
 }
 
 .blueLight {
   composes: color-dots;
-  background: #4590bf;
+  background: var(--color-brick-blue-light);
 }
 
 .redDark {
   grid-column: 2/3;
   composes: color-dots;
-  background: #8c0327;
+  background: var(--color-brick-red-dark);
 }
 
 .greenDark {
   composes: color-dots;
-  background: #078c03;
+  background: var(--color-brick-green-dark);
 }
 
 .blueDark {
   composes: color-dots;
-  background: #0367a6;
+  background: var(--color-brick-blue-dark);
 }
 
 .backgroundLight {
   grid-column: 2/3;
   composes: color-dots;
-  background: #ffda21;
+  background: var(--color-background-light);
 }
 
 .background {
   composes: color-dots;
-  background: #f2cb07;
+  background: var(--color-background);
 }
 
 .backgroundDark {
   composes: color-dots;
-  background: #f2c12e;
+  background: var(--color-background-dark);
 }
 
 .colorButton {
   grid-column: 2/3;
   composes: color-dots;
-  background: #97bf04;
+  background: var(--color-button);
 }
 
 .colorTextPrimary {
   composes: color-dots;
-  background: #0d0d0d;
+  background: var(--color-text-primary);
   color: grey;
 }
 
 .colorTextSecondary {
   composes: color-dots;
-  background: #595959;
+  background: var(--color-text-secondary);
   color: grey;
 }
 
