@@ -1,0 +1,22 @@
+.button {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  width: 20rem;
+  height: 10rem;
+  margin: 0.5rem;
+  border-radius: 1.5rem;
+  border: none;
+  background: var(--color-background);
+  box-shadow: 0 0 5px 3px rgba(0 0 0 / 50%);
+}
+
+.image {
+  width: 8rem;
+}
+
+.text {
+  font-family: Atma, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
