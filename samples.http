@@ -1,2 +1,5 @@
 ### GET all users
 GET http://localhost:3001/api/users HTTP/1.1
+
+### GET all minifigs from API
+GET http://localhost:3001/api/minifigs HTTP/1.1

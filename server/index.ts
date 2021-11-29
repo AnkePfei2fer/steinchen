@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import { connectDatabase, getUserCollection } from "./utils/database";
+import fetch from "node-fetch";
 dotenv.config();
 
 const port = process.env.PORT || 3001;
@@ -24,6 +25,16 @@ app.get("/api/users", async (_request, response) => {
   const users = userCollection.find();
   const allUsers = await users.toArray();
   response.send(allUsers);
+});
+
+app.get("/api/minifigs", async (_req, res) => {
+  const response = await fetch(
+    `https://rebrickable.com/api/v3/lego/minifigs/?key=${process.env.API_KEY}`
+  );
+  console.log(response);
+  const data = await response.json();
+  console.log(data);
+  res.send(data);
 });
 
 // Handle client routing, return all requests to the app
