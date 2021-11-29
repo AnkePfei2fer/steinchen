@@ -3,10 +3,14 @@ import path from "path";
 import dotenv from "dotenv";
 import { connectDatabase, getUserCollection } from "./utils/database";
 import fetch from "node-fetch";
+import cors from "cors";
 dotenv.config();
 
 const port = process.env.PORT || 3001;
 const app = express();
+
+// Allows access to the server from anywhere
+app.use(cors({ origin: "*" }));
 
 if (!process.env.MONGODB_URI) {
   throw new Error("No MongoDB URI dotenv variable.");
@@ -27,8 +31,10 @@ app.get("/api/users", async (_request, response) => {
   response.send(allUsers);
 });
 
+// Manual setting of the search query
 const set_num = "11001-1";
 
+// Send request to Rebrickable API with set number specified
 app.get("/api/sets/search_by_set_number", async (_req, res) => {
   const response = await fetch(
     `https://rebrickable.com/api/v3/lego/sets/${set_num}/?key=${process.env.API_KEY}`

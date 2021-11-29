@@ -1,9 +1,18 @@
 .textInput {
-    width: 12rem;
-    height: 2rem;
-    margin: 0.5rem;
-    border-radius: 1rem;
-    border: solid var(--color-text-primary) 2px;
-    background: var(--color-background-light);
-  }
-  
+  width: 12rem;
+  height: 2rem;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  border: solid var(--color-text-primary) 2px;
+  background: var(--color-background-light);
+}
+
+.button {
+  width: 10rem;
+  height: 3rem;
+  margin: 0.5rem;
+  border-radius: 1.3rem;
+  background: var(--color-button);
+  border: none;
+  box-shadow: 1px 5px 5px rgba(0 0 0 / 50%);
+}
