@@ -27,9 +27,11 @@ app.get("/api/users", async (_request, response) => {
   response.send(allUsers);
 });
 
-app.get("/api/minifigs", async (_req, res) => {
+const set_num = "11001-1";
+
+app.get("/api/sets", async (_req, res) => {
   const response = await fetch(
-    `https://rebrickable.com/api/v3/lego/minifigs/?key=${process.env.API_KEY}`
+    `https://rebrickable.com/api/v3/lego/sets/${set_num}/?key=${process.env.API_KEY}`
   );
   console.log(response);
   const data = await response.json();
