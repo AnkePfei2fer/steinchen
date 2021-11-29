@@ -2,4 +2,4 @@
 GET http://localhost:3001/api/users HTTP/1.1
 
 ### GET all minifigs from API
-GET http://localhost:3001/api/sets HTTP/1.1
+GET http://localhost:3001/api/sets/search_by_set_number HTTP/1.1
