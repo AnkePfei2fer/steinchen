@@ -2,6 +2,7 @@
 .searchForm {
   display: grid;
   justify-items: center;
+  margin-bottom: 2rem;
 }
 
 .textInput {
@@ -87,4 +88,9 @@
   background: var(--color-background);
   opacity: 0.1;
   z-index: 2;
+}
+
+.message {
+  font-family: Atma, sans-serif;
+  font-size: 1.25rem;
 }

@@ -8,7 +8,6 @@ type searchResultProps = {
   num_parts: number;
   set_img_url: string;
   theme_id: number;
-  detail: string;
 };
 
 export default function Search(): JSX.Element {
@@ -16,6 +15,9 @@ export default function Search(): JSX.Element {
   const [searchResult, setSearchResult] = useState<searchResultProps | null>(
     null
   );
+  const [searchResultDetails, setSearchResultDetails] = useState<
+    string | undefined
+  >(undefined);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -26,12 +28,13 @@ export default function Search(): JSX.Element {
     const result = await response.json();
     setSearchResult(result);
     console.log(searchResult);
-    console.log(searchResult?.detail);
+    setSearchResultDetails(result.detail);
+    console.log(searchResultDetails);
   };
 
   let content;
 
-  if (!searchResult === null) {
+  if (searchResult && searchResultDetails === undefined) {
     content = (
       <div className={styles.card}>
         <span className={styles.text}>{searchResult?.name}</span>
@@ -52,9 +55,9 @@ export default function Search(): JSX.Element {
           ></input>
           <button className={styles.button}>Suche</button>
         </form>
-        {searchResult?.detail === "Not found." &&
+        {searchResultDetails === "Not found." &&
           (content = (
-            <span>
+            <span className={styles.message}>
               Wir haben Dein Set leider nicht gefunden. Versuchs nochmal!
             </span>
           ))}
