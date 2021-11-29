@@ -32,12 +32,12 @@ app.get("/api/users", async (_request, response) => {
 });
 
 // Manual setting of the search query
-const set_num = "11001-1";
+// const set_num = "11001-1";
 
 // Send request to Rebrickable API with set number specified
-app.get("/api/sets/search_by_set_number", async (_req, res) => {
+app.get("/api/sets/search_by_set_number/:set_num", async (req, res) => {
   const response = await fetch(
-    `https://rebrickable.com/api/v3/lego/sets/${set_num}/?key=${process.env.API_KEY}`
+    `https://rebrickable.com/api/v3/lego/sets/${req.params.set_num}/?key=${process.env.API_KEY}`
   );
   console.log(response);
   const data = await response.json();
