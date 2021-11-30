@@ -61,12 +61,11 @@ export default function Search(): JSX.Element {
           ></input>
           <button className={styles.button}>Suche</button>
         </form>
-        {searchResultDetails === "Not found." &&
-          (content = (
-            <span className={styles.message}>
-              Wir haben Dein Set leider nicht gefunden. Versuchs nochmal!
-            </span>
-          ))}
+        {searchResultDetails === "Not found." && (
+          <span className={styles.message}>
+            Wir haben Dein Set leider nicht gefunden. Versuchs nochmal!
+          </span>
+        )}
       </>
     );
   }
