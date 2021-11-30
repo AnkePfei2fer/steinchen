@@ -1,5 +1,8 @@
 ### GET all users
 GET http://localhost:3001/api/users HTTP/1.1
 
-### GET all minifigs from API
-GET http://localhost:3001/api/sets/search_by_set_number HTTP/1.1
+### GET specific set information from API
+GET http://localhost:3001/api/sets/search_by_set_number/11001-1 HTTP/1.1
+
+### GET information about theme from API
+GET http://localhost:3001/api/theme/search_by_theme_id/621 HTTP/1.1

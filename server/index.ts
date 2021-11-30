@@ -31,13 +31,21 @@ app.get("/api/users", async (_request, response) => {
   response.send(allUsers);
 });
 
-// Manual setting of the search query
-// const set_num = "11001-1";
-
-// Send request to Rebrickable API with set number specified
+// Send request to Rebrickable API with set number specified by client
 app.get("/api/sets/search_by_set_number/:set_num", async (req, res) => {
   const response = await fetch(
     `https://rebrickable.com/api/v3/lego/sets/${req.params.set_num}/?key=${process.env.API_KEY}`
+  );
+  console.log(response);
+  const data = await response.json();
+  console.log(data);
+  res.send(data);
+});
+
+// Send request to Rebrickable API with theme id
+app.get("/api/theme/search_by_theme_id/:theme_id", async (req, res) => {
+  const response = await fetch(
+    `https://rebrickable.com/api/v3/lego/themes/${req.params.theme_id}/?key=${process.env.API_KEY}`
   );
   console.log(response);
   const data = await response.json();

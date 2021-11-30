@@ -18,18 +18,29 @@ export default function Search(): JSX.Element {
   const [searchResultDetails, setSearchResultDetails] = useState<
     string | undefined
   >(undefined);
+  const [themeSearchResult, setThemeSearchResult] =
+    useState<searchResultProps | null>(null);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const response = await fetch(
       `http://localhost:3001/api/sets/search_by_set_number/${query}`
     );
-    console.log(response);
+    // console.log(response);
     const result = await response.json();
     setSearchResult(result);
-    console.log(searchResult);
+    // console.log(searchResult);
     setSearchResultDetails(result.detail);
-    console.log(searchResultDetails);
+    // console.log(searchResultDetails);
+
+    // fetch theme from API
+    const themeResponse = await fetch(
+      `http://localhost:3001/api/theme/search_by_theme_id/${result.theme_id}`
+    );
+    // console.log(response);
+    const themeResult = await themeResponse.json();
+    setThemeSearchResult(themeResult);
+    console.log(themeSearchResult);
   };
 
   let content;
@@ -39,7 +50,7 @@ export default function Search(): JSX.Element {
       <div className={styles.card}>
         <span className={styles.text}>{searchResult?.name}</span>
         <img className={styles.image} src={searchResult?.set_img_url} />
-        <p className={styles.theme}>Thema Nummer {searchResult?.theme_id}</p>
+        <p className={styles.theme}>{themeSearchResult?.name}</p>
         <p className={styles.parts}>{searchResult?.num_parts} Teile</p>
         <div className={styles.overlay}></div>
       </div>
