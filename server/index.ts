@@ -2,10 +2,15 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import { connectDatabase, getUserCollection } from "./utils/database";
+import fetch from "node-fetch";
+import cors from "cors";
 dotenv.config();
 
 const port = process.env.PORT || 3001;
 const app = express();
+
+// Allows access to the server from anywhere
+app.use(cors({ origin: "*" }));
 
 if (!process.env.MONGODB_URI) {
   throw new Error("No MongoDB URI dotenv variable.");
@@ -24,6 +29,26 @@ app.get("/api/users", async (_request, response) => {
   const users = userCollection.find();
   const allUsers = await users.toArray();
   response.send(allUsers);
+});
+
+// Send request to Rebrickable API with set number specified by client
+app.get("/api/sets/search_by_set_number/:set_num", async (req, res) => {
+  const { set_num } = req.params;
+  const response = await fetch(
+    `https://rebrickable.com/api/v3/lego/sets/${set_num}/?key=${process.env.API_KEY}`
+  );
+  const data = await response.json();
+  res.send(data);
+});
+
+// Send request to Rebrickable API with theme id
+app.get("/api/theme/search_by_theme_id/:theme_id", async (req, res) => {
+  const { theme_id } = req.params;
+  const response = await fetch(
+    `https://rebrickable.com/api/v3/lego/themes/${theme_id}/?key=${process.env.API_KEY}`
+  );
+  const data = await response.json();
+  res.send(data);
 });
 
 // Handle client routing, return all requests to the app
