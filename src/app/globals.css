@@ -35,5 +35,25 @@
 
 body {
   margin: 0;
+  background: #f2d43d;
   font-family: Atma, sans-serif;
+}
+
+h1 {
+  font-family: Atma, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: Atma, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-family: Atma, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
 }
