@@ -26,21 +26,16 @@ export default function Search(): JSX.Element {
     const response = await fetch(
       `http://localhost:3001/api/sets/search_by_set_number/${query}`
     );
-    // console.log(response);
     const result = await response.json();
     setSearchResult(result);
-    // console.log(searchResult);
     setSearchResultDetails(result.detail);
-    // console.log(searchResultDetails);
 
     // fetch theme from API
     const themeResponse = await fetch(
       `http://localhost:3001/api/theme/search_by_theme_id/${result.theme_id}`
     );
-    // console.log(response);
     const themeResult = await themeResponse.json();
     setThemeSearchResult(themeResult);
-    console.log(themeSearchResult);
   };
 
   let content;
