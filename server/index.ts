@@ -36,22 +36,22 @@ app.get("/api/users", async (_request, response) => {
 
 // POST a new user to MongoDB
 app.post("/api/users", async (request, response) => {
-  const characterCollection = getUserCollection();
-  const newCharacter = request.body;
+  const userCollection = getUserCollection();
+  const newUser = request.body;
 
-  if (typeof newCharacter.name !== "string") {
+  if (typeof newUser.name !== "string") {
     response.status(404).send("Missing properties");
   }
-  const isCharacterKnown = await characterCollection.findOne({
-    name: newCharacter.name,
+  const isUserKnown = await userCollection.findOne({
+    name: newUser.name,
   });
-  if (isCharacterKnown) {
+  if (isUserKnown) {
     response
       .status(409)
-      .send(`There is already someone called ${newCharacter.name}`);
+      .send(`There is already someone called ${newUser.name}`);
   } else {
-    characterCollection.insertOne(newCharacter);
-    response.send(`${newCharacter.name} was added`);
+    userCollection.insertOne(newUser);
+    response.send(`${newUser.name} was added`);
   }
 });
 
