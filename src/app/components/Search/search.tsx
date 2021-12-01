@@ -23,16 +23,14 @@ export default function Search(): JSX.Element {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    const response = await fetch(
-      `http://localhost:3001/api/sets/search_by_set_number/${query}`
-    );
+    const response = await fetch(`/api/sets/search_by_set_number/${query}`);
     const result = await response.json();
     setSearchResult(result);
     setSearchResultDetails(result.detail);
 
     // fetch theme from API
     const themeResponse = await fetch(
-      `http://localhost:3001/api/theme/search_by_theme_id/${result.theme_id}`
+      `/api/theme/search_by_theme_id/${result.theme_id}`
     );
     const themeResult = await themeResponse.json();
     setThemeSearchResult(themeResult);

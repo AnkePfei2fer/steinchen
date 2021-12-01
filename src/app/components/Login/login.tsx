@@ -7,7 +7,7 @@ export default function Login(): JSX.Element {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
-    await fetch("http://localhost:3001/api/users", {
+    await fetch("/api/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

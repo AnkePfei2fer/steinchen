@@ -16,16 +16,11 @@
 }
 
 .button {
-  width: 10rem;
-  height: 3rem;
-  margin: 0.5rem;
-  border-radius: 1.3rem;
-  background: var(--color-button);
-  border: none;
-  box-shadow: 1px 5px 5px rgba(0 0 0 / 50%);
-  font-family: Atma, sans-serif;
-  font-size: 1.5rem;
-  font-weight: 500;
+  composes: button from global;
+}
+
+.button:active {
+  box-shadow: inset 1px 5px 5px rgba(0 0 0 / 25%);
 }
 
 .card {
