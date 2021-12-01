@@ -4,7 +4,7 @@
 }
 
 .textInput {
-  composes: textInput from global;
+  composes: textinput from global;
 }
 
 .button {
