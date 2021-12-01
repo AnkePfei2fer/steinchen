@@ -19,15 +19,15 @@
 }
 
 .T {
- color: var(--color-brick-green-dark);
+  color: var(--color-brick-green-dark);
 }
 
 .E {
-   color: var(--color-brick-blue-dark);
+  color: var(--color-brick-blue-dark);
 }
 
 .I {
-   color: var(--color-brick-green-light);
+  color: var(--color-brick-green-light);
 }
 
 .N {
@@ -35,11 +35,11 @@
 }
 
 .C {
- color: var(--color-brick-blue-light);
+  color: var(--color-brick-blue-light);
 }
 
 .H {
-   color: var(--color-brick-green-light);
+  color: var(--color-brick-green-light);
 }
 
 .minifig {
@@ -76,9 +76,11 @@
 .footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 95vw;
+  width: 100vw;
+  height: 20vh;
   position: absolute;
   bottom: 2px;
+  left: 0;
 }
 
 .bricks {

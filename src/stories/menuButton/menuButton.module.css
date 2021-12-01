@@ -12,7 +12,9 @@
 }
 
 .image {
-  width: 8rem;
+  width: 6rem;
+  height: 8rem;
+  object-fit: contain;
 }
 
 .text {
