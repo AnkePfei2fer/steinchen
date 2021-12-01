@@ -9,49 +9,37 @@
   margin-bottom: 5rem;
   font-family: ClickyBricks, sans-serif;
   font-size: 4rem;
+  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
+    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
   text-align: center;
 }
 
 .S {
-  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
-    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
   color: var(--color-brick-red-light);
 }
 
 .T {
-  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
-    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
-  color: var(--color-brick-green-dark);
+ color: var(--color-brick-green-dark);
 }
 
 .E {
-  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
-    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
-  color: var(--color-brick-blue-dark);
+   color: var(--color-brick-blue-dark);
 }
 
 .I {
-  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
-    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
-  color: var(--color-brick-green-light);
+   color: var(--color-brick-green-light);
 }
 
 .N {
-  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
-    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
   color: var(--color-brick-red-dark);
 }
 
 .C {
-  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
-    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
-  color: var(--color-brick-blue-light);
+ color: var(--color-brick-blue-light);
 }
 
 .H {
-  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
-    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
-  color: var(--color-brick-green-light);
+   color: var(--color-brick-green-light);
 }
 
 .minifig {
