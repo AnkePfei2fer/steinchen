@@ -26,7 +26,7 @@ app.use(express.static("dist"));
 // Middleware for parsing application/json (strings of the json object is converted into JS)
 app.use(express.json());
 
-// Display all users in MongoDB
+// Display all users from MongoDB
 app.get("/api/users", async (_request, response) => {
   const userCollection = getUserCollection();
   const users = userCollection.find();
@@ -34,14 +34,25 @@ app.get("/api/users", async (_request, response) => {
   response.send(allUsers);
 });
 
+// Display one specific user from MongoDB
+app.get("/api/users/:name", async (request, response) => {
+  const userCollection = getUserCollection();
+  const user = request.params.name;
+  const isUserKnown = await userCollection.findOne({
+    name: user,
+  });
+  if (isUserKnown) {
+    response.send(`Hello ${user}`);
+  } else {
+    response.send(`User unknown`);
+  }
+});
+
 // POST a new user to MongoDB
 app.post("/api/users", async (request, response) => {
   const userCollection = getUserCollection();
   const newUser = request.body;
 
-  if (typeof newUser.name !== "string") {
-    response.status(404).send("Missing properties");
-  }
   const isUserKnown = await userCollection.findOne({
     name: newUser.name,
   });
