@@ -1,8 +1,14 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import styles from "./login.module.css";
 
 export default function Login(): JSX.Element {
-  const [name, setName] = useState("");
+  const [name, setName] = useState(
+    sessionStorage.getItem("Current User") || ""
+  );
+
+  useEffect(() => {
+    sessionStorage.setItem("Current User", name);
+  }, [name]);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
