@@ -12,6 +12,48 @@
   text-align: center;
 }
 
+.S {
+  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
+    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
+  color: var(--color-brick-red-light);
+}
+
+.T {
+  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
+    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
+  color: var(--color-brick-green-dark);
+}
+
+.E {
+  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
+    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
+  color: var(--color-brick-blue-dark);
+}
+
+.I {
+  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
+    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
+  color: var(--color-brick-green-light);
+}
+
+.N {
+  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
+    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
+  color: var(--color-brick-red-dark);
+}
+
+.C {
+  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
+    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
+  color: var(--color-brick-blue-light);
+}
+
+.H {
+  text-shadow: -1px 0 var(--color-text-primary), 0 1px var(--color-text-primary),
+    1px 0 var(--color-text-primary), 0 -1px var(--color-text-primary);
+  color: var(--color-brick-green-light);
+}
+
 .minifig {
   grid-row: 2/3;
   grid-column: 2/3;
