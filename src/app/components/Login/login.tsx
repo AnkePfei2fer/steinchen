@@ -12,14 +12,21 @@ export default function Login(): JSX.Element {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-
-    await fetch("/api/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name: name }),
-    });
+    const response = await fetch(`/api/users/${name}`);
+    console.log(response);
+    const isUserKnown = await response.text();
+    console.log(isUserKnown);
+    if (isUserKnown) {
+      console.log(`Hello ${name}`);
+    } else {
+      await fetch("/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: name }),
+      });
+    }
   };
 
   return (
