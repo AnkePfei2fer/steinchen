@@ -23,12 +23,36 @@ app.get("/api/hello", (_request, response) => {
 // Serve production bundle
 app.use(express.static("dist"));
 
+// Middleware for parsing application/json (strings of the json object is converted into JS)
+app.use(express.json());
+
 // Display all users in MongoDB
 app.get("/api/users", async (_request, response) => {
   const userCollection = getUserCollection();
   const users = userCollection.find();
   const allUsers = await users.toArray();
   response.send(allUsers);
+});
+
+// POST a new user to MongoDB
+app.post("/api/users", async (request, response) => {
+  const userCollection = getUserCollection();
+  const newUser = request.body;
+
+  if (typeof newUser.name !== "string") {
+    response.status(404).send("Missing properties");
+  }
+  const isUserKnown = await userCollection.findOne({
+    name: newUser.name,
+  });
+  if (isUserKnown) {
+    response
+      .status(409)
+      .send(`There is already someone called ${newUser.name}`);
+  } else {
+    userCollection.insertOne(newUser);
+    response.send(`${newUser.name} was added`);
+  }
 });
 
 // Send request to Rebrickable API with set number specified by client
