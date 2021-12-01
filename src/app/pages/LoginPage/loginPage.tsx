@@ -1,4 +1,5 @@
 import styles from "./loginPage.module.css";
+import Login from "../../components/Login/login";
 
 export default function LoginPage() {
   return (
@@ -9,10 +10,7 @@ export default function LoginPage() {
         className={styles.minifig}
         src="/../../../src/assets/images/Figur.png"
       />
-      <form className={styles.loginForm}>
-        <input type={"text"} className={styles.textInput}></input>
-        <button className={styles.button}>Los geht&apos;s!</button>
-      </form>
+      <Login />
       <footer className={styles.footer}>
         <img
           className={styles.bricks}

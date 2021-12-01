@@ -1,7 +1,7 @@
 .container {
   display: grid;
   grid-template-columns: 2fr auto;
-  grid-template-rows: 1fr auto 1fr;
+  grid-template-rows: 1fr auto auto;
 }
 
 .title {
@@ -32,12 +32,7 @@
 }
 
 .textInput {
-  width: 12rem;
-  height: 2rem;
-  margin: 0.5rem;
-  border-radius: 1rem;
-  border: solid var(--color-text-primary) 2px;
-  background: var(--color-background-light);
+  composes: textInput from global;
 }
 
 .button {
