@@ -1,6 +1,7 @@
 .container {
   display: grid;
   justify-items: center;
+  gap: 1rem;
 }
 
 .menuButton {
@@ -9,7 +10,7 @@
   place-items: center;
   width: 20rem;
   height: 10rem;
-  margin: 1rem;
+  margin: 0.5rem;
   border-radius: 1.5rem;
   border: none;
   background: var(--color-background);
@@ -35,6 +36,7 @@
   display: grid;
   grid-template-rows: repeat(2, min-content);
   width: 100vw;
+  padding: 1rem 2rem;
   position: absolute;
   bottom: 2px;
   left: 0;
