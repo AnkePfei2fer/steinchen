@@ -2,21 +2,16 @@ import { FormEvent, useEffect, useState } from "react";
 import styles from "./login.module.css";
 
 export default function Login(): JSX.Element {
-  const [name, setName] = useState(
-    sessionStorage.getItem("Current User") || ""
-  );
+  const [name, setName] = useState(localStorage.getItem("Current User") || "");
 
   useEffect(() => {
-    sessionStorage.setItem("Current User", name);
+    localStorage.setItem("Current User", name);
   }, [name]);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const response = await fetch(`/api/users/${name}`);
-    console.log(response);
-    const isUserKnown = await response.text();
-    console.log(isUserKnown);
-    if (isUserKnown) {
+    if (response.ok) {
       console.log(`Hello ${name}`);
     } else {
       await fetch("/api/users", {

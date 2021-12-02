@@ -41,7 +41,11 @@ app.get("/api/users/:name", async (request, response) => {
   const isUserKnown = await userCollection.findOne({
     name: user,
   });
-  response.send(isUserKnown);
+  if (isUserKnown) {
+    response.send(isUserKnown);
+  } else {
+    response.status(404).send("user unknown");
+  }
 });
 
 // POST a new user to MongoDB
