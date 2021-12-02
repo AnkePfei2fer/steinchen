@@ -42,7 +42,7 @@ app.get("/api/users/:name", async (request, response) => {
     name: user,
   });
   if (isUserKnown) {
-    response.send(isUserKnown);
+    response.status(200).send(isUserKnown);
   } else {
     response.status(404).send("user unknown");
   }
