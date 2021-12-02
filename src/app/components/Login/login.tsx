@@ -1,19 +1,27 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import styles from "./login.module.css";
 
 export default function Login(): JSX.Element {
-  const [name, setName] = useState("");
+  const [name, setName] = useState(localStorage.getItem("Current User") || "");
+
+  useEffect(() => {
+    localStorage.setItem("Current User", name);
+  }, [name]);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-
-    await fetch("/api/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name: name }),
-    });
+    const response = await fetch(`/api/users/${name}`);
+    if (response.ok) {
+      console.log(`Hello ${name}`);
+    } else {
+      await fetch("/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: name }),
+      });
+    }
   };
 
   return (
