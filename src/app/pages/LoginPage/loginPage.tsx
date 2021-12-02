@@ -1,5 +1,7 @@
 import styles from "./loginPage.module.css";
 import Login from "../../components/Login/login";
+import FigurSrc from "../../../assets/images/Figur.png";
+import BricksSrc from "../../../assets/icons/Bricks.svg";
 
 export default function LoginPage() {
   return (
@@ -16,16 +18,10 @@ export default function LoginPage() {
         <span className={styles.N}>N</span>
       </div>
       <h3 className={styles.enterName}>Gib Deinen Namen ein</h3>
-      <img
-        className={styles.minifig}
-        src="/../../../src/assets/images/Figur.png"
-      />
+      <img className={styles.minifig} src={FigurSrc} alt="" />
       <Login />
       <footer className={styles.footer}>
-        <img
-          className={styles.bricks}
-          src="/../../../src/assets/icons/Bricks-from-Figma.svg"
-        />
+        <img className={styles.bricks} src={BricksSrc} />
         <span className={styles.disclaimer}>Haftungsausschluss...</span>
       </footer>
     </div>

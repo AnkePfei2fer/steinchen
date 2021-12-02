@@ -1,0 +1,57 @@
+.container {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+}
+
+.menuButton {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  width: 20rem;
+  height: 10rem;
+  margin: 0.5rem;
+  border-radius: 1.5rem;
+  border: none;
+  background: var(--color-background);
+  box-shadow: 0 0 5px 3px rgba(0 0 0 / 50%);
+}
+
+.sets,
+.ideas {
+  height: 7rem;
+  object-fit: contain;
+}
+
+.bricks {
+  width: 8rem;
+  object-fit: contain;
+}
+
+.menuButton:hover {
+  background: var(--color-background-light);
+}
+
+.footer {
+  display: grid;
+  grid-template-rows: repeat(2, min-content);
+  width: 100vw;
+  padding: 1rem 2rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.text {
+  display: grid;
+  grid-template-columns: max-content auto;
+  gap: 1rem;
+  margin: 0.5rem;
+  align-items: center;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.icon {
+  fill: var(--color-brick-red-dark);
+}
