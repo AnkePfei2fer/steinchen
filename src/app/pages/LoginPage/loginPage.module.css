@@ -79,19 +79,19 @@
   width: 100vw;
   height: 20vh;
   position: absolute;
-  bottom: 2px;
+  bottom: 0.1em;
   left: 0;
 }
 
 .bricks {
   position: absolute;
   width: 12rem;
-  bottom: 5px;
-  left: 10px;
+  bottom: 0.25em;
+  left: 0.5em;
 }
 
 .disclaimer {
   position: absolute;
-  bottom: 2px;
-  right: 5px;
+  bottom: 0.1em;
+  right: 0.25em;
 }

@@ -18,7 +18,7 @@ export default function LoginPage() {
         <span className={styles.N}>N</span>
       </div>
       <h3 className={styles.enterName}>Gib Deinen Namen ein</h3>
-      <img className={styles.minifig} src={FigurSrc} />
+      <img className={styles.minifig} src={FigurSrc} alt="" />
       <Login />
       <footer className={styles.footer}>
         <img className={styles.bricks} src={BricksSrc} />
