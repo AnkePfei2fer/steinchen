@@ -40,17 +40,22 @@ export default function Search(): JSX.Element {
 
   if (searchResult && searchResultDetails === undefined) {
     content = (
-      <div className={styles.card}>
-        <span className={styles.text}>{searchResult?.name}</span>
-        <img className={styles.image} src={searchResult?.set_img_url} />
-        <p className={styles.theme}>{themeSearchResult?.name}</p>
-        <p className={styles.parts}>{searchResult?.num_parts} Teile</p>
-        <div className={styles.overlay}></div>
-      </div>
+      <>
+        <h1>Gefunden</h1>
+        <div className={styles.card}>
+          <span className={styles.text}>{searchResult?.name}</span>
+          <img className={styles.image} src={searchResult?.set_img_url} />
+          <p className={styles.theme}>{themeSearchResult?.name}</p>
+          <p className={styles.parts}>{searchResult?.num_parts} Teile</p>
+          <div className={styles.overlay}></div>
+        </div>
+      </>
     );
   } else {
     content = (
       <>
+        <h1>Was suchst Du?</h1>
+        <h3>Hast du eine Nummer von Deinem Set?</h3>
         <form className={styles.searchForm} onSubmit={handleSubmit}>
           <input
             type="text"

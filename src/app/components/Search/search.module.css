@@ -1,8 +1,14 @@
-.container,
+.container {
+  display: grid;
+  grid-template-rows: 1fr 1fr auto;
+  justify-items: center;
+  text-align: center;
+}
+
 .searchForm {
   display: grid;
   justify-items: center;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
 }
 
 .textInput {
