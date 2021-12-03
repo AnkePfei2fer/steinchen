@@ -41,7 +41,7 @@ export default function Search(): JSX.Element {
   if (searchResult && searchResultDetails === undefined) {
     content = (
       <>
-        <h1>Gefunden</h1>
+        <h1 className={styles.heading}>Gefunden</h1>
         <div className={styles.card}>
           <span className={styles.text}>{searchResult?.name}</span>
           <img className={styles.image} src={searchResult?.set_img_url} />
@@ -54,7 +54,7 @@ export default function Search(): JSX.Element {
   } else {
     content = (
       <>
-        <h1>Was suchst Du?</h1>
+        <h1 className={styles.heading}>Was suchst Du?</h1>
         <h3>Hast du eine Nummer von Deinem Set?</h3>
         <form className={styles.searchForm} onSubmit={handleSubmit}>
           <input

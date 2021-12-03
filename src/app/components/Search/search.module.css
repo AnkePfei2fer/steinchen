@@ -1,8 +1,12 @@
 .container {
   display: grid;
-  grid-template-rows: 1fr 1fr auto;
+  grid-template-rows: auto 1fr auto;
   justify-items: center;
   text-align: center;
+}
+
+.heading {
+  margin-bottom: 5rem;
 }
 
 .searchForm {
