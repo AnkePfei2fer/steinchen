@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import styles from "./login.module.css";
+import { Link } from "react-router-dom";
 
 export default function Login(): JSX.Element {
   const [name, setName] = useState(localStorage.getItem("Current User") || "");
@@ -25,17 +26,23 @@ export default function Login(): JSX.Element {
   };
 
   return (
-    <form className={styles.loginForm} onSubmit={handleSubmit}>
-      <input
-        type="text"
-        required
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-        className={styles.textInput}
-      ></input>
-      <button type="submit" className={styles.button}>
-        Los geht&apos;s!
-      </button>
-    </form>
+    <>
+      <form className={styles.loginForm} onSubmit={handleSubmit}>
+        <input
+          type="text"
+          required
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          className={styles.textInput}
+        ></input>
+        <nav>
+          <Link to="/WelcomePage">
+            <button type="submit" className={styles.button}>
+              Los geht&apos;s!
+            </button>
+          </Link>
+        </nav>
+      </form>
+    </>
   );
 }

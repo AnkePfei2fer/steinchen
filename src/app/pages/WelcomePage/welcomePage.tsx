@@ -1,6 +1,7 @@
 import styles from "./welcomePage.module.css";
 import SetsSrc from "../../../assets/images/Haus.png";
 import BricksSrc from "../../../assets/images/Haufen.png";
+import { Link } from "react-router-dom";
 
 export default function WelcomePage() {
   const name = localStorage.getItem("Current User");
@@ -50,7 +51,11 @@ export default function WelcomePage() {
               fill="#8C0327"
             />
           </svg>
-          Logout
+          <nav>
+            <Link className={styles.link} to="/">
+              Logout
+            </Link>
+          </nav>
         </label>
       </footer>
     </div>

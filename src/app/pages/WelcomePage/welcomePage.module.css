@@ -55,3 +55,8 @@
 .icon {
   fill: var(--color-brick-red-dark);
 }
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
