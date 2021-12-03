@@ -1,9 +1,12 @@
 import styles from "./welcomePage.module.css";
 import SetsSrc from "../../../assets/images/Haus.png";
 import BricksSrc from "../../../assets/images/Haufen.png";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function WelcomePage() {
-  const name = localStorage.getItem("Current User");
+  const [name, setName] = useState(localStorage.getItem("Current User") || "");
+
   return (
     <div className={styles.container}>
       <h1>Hallo {name}</h1>
@@ -50,7 +53,15 @@ export default function WelcomePage() {
               fill="#8C0327"
             />
           </svg>
-          Logout
+          <nav>
+            <Link
+              className={styles.link}
+              onClick={() => localStorage.removeItem("Current User")}
+              to="/"
+            >
+              Logout
+            </Link>
+          </nav>
         </label>
       </footer>
     </div>
