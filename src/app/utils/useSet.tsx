@@ -6,33 +6,48 @@ export type SearchResultProps = {
   num_parts: number;
   set_img_url: string;
   theme_id: number;
-  detail: string;
-  // searchResult: object | null;
+  detail: string | undefined;
 };
 
-export default function useSet(search: string): SearchResultProps | null {
-  const [searchResult, setSearchResult] = useState<null | SearchResultProps>(
+export type SearchProps = {
+  searchResult: object | null;
+  themeSearchResult: object | null;
+  searchResultDetail: string | undefined;
+};
+
+export default function useSet(query: string): SearchProps | null {
+  const [searchResult, setSearchResult] = useState<SearchResultProps | null>(
     null
   );
-  // const [searchResultDetails, setSearchResultDetails] = useState<
-  //   string | undefined
-  // >(undefined);
-  // const [themeSearchResult, setThemeSearchResult] =
-  //   useState<SearchResultProps | null>(null);
+  const [searchResultDetail, setSearchResultDetail] = useState<
+    string | undefined
+  >(undefined);
+  const [themeSearchResult, setThemeSearchResult] =
+    useState<SearchResultProps | null>(null);
 
-  // fetch set from API
-  useEffect(() => {
-    fetch(`/api/sets/search_by_set_number/${search}`)
-      .then((response) => response.json())
-      .then(setSearchResult);
-
-    // setSearchResultDetails(searchResult?.detail);
+  const fetchAPI = async function () {
+    // fetch set from API
+    const response = await fetch(`/api/sets/search_by_set_number/${query}`);
+    const result = await response.json();
+    setSearchResult(result);
+    setSearchResultDetail(result.detail);
 
     // fetch theme from API
-    // fetch(`/api/theme/search_by_theme_id/${searchResult?.theme_id}`)
-    //   .then((themeResponse) => themeResponse.json())
-    //   .then(setThemeSearchResult);
-  }, [search]);
+    const themeResponse = await fetch(
+      `/api/theme/search_by_theme_id/${result.theme_id}`
+    );
+    const themeResult = await themeResponse.json();
+    setThemeSearchResult(themeResult);
+  };
 
-  return searchResult;
+  useEffect(() => {
+    fetchAPI();
+  }, [query]);
+
+  console.log({ query });
+  console.log({ searchResult });
+  console.log({ themeSearchResult });
+  console.log({ searchResultDetail });
+
+  return { searchResult, themeSearchResult, searchResultDetail };
 }

@@ -5,7 +5,7 @@ import styles from "./search.module.css";
 type SearchInputProps = { onSearch: (search: string) => void };
 
 export function Search({ onSearch }: SearchInputProps): JSX.Element {
-  const [search, setSearch] = useState("");
+  const [query, setQuery] = useState("");
 
   return (
     <div className={styles.container}>
@@ -15,13 +15,13 @@ export function Search({ onSearch }: SearchInputProps): JSX.Element {
         className={styles.searchForm}
         onSubmit={(event) => {
           event.preventDefault();
-          onSearch(search);
+          onSearch(query);
         }}
       >
         <input
           type="text"
           className={styles.textInput}
-          onChange={(event) => setSearch(event.target.value)}
+          onChange={(event) => setQuery(event.target.value)}
         ></input>
         <button className={styles.button}>Suche</button>
       </form>
