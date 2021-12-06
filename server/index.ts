@@ -3,14 +3,10 @@ import path from "path";
 import dotenv from "dotenv";
 import { connectDatabase, getUserCollection } from "./utils/database";
 import fetch from "node-fetch";
-import cors from "cors";
 dotenv.config();
 
 const port = process.env.PORT || 3001;
 const app = express();
-
-// Allows access to the server from anywhere
-app.use(cors({ origin: "*" }));
 
 if (!process.env.MONGODB_URI) {
   throw new Error("No MongoDB URI dotenv variable.");
