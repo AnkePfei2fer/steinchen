@@ -1,8 +1,18 @@
-.container,
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  text-align: center;
+}
+
+.heading {
+  margin-bottom: 5rem;
+}
+
 .searchForm {
   display: grid;
   justify-items: center;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
 }
 
 .textInput {
