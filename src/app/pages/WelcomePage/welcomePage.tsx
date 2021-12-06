@@ -1,6 +1,7 @@
 import styles from "./welcomePage.module.css";
 import SetsSrc from "../../../assets/images/Haus.png";
 import BricksSrc from "../../../assets/images/Haufen.png";
+import ParrotSrc from "../../../assets/images/Papagei.png";
 
 export default function WelcomePage() {
   const name = localStorage.getItem("Current User");
@@ -16,7 +17,7 @@ export default function WelcomePage() {
         <h2>Deine Steine</h2>
       </button>
       <button className={styles.menuButton}>
-        <img className={styles.ideas} src={SetsSrc} alt="Papagei" />
+        <img className={styles.ideas} src={ParrotSrc} alt="Papagei" />
         <h2>Neue Ideen</h2>
       </button>
       <footer className={styles.footer}>
