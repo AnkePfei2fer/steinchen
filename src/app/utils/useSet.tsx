@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export type SearchResultProps = {
+type SearchResultProps = {
   set_num: string;
   name: string;
   num_parts: number;
@@ -9,13 +9,7 @@ export type SearchResultProps = {
   detail: string | undefined;
 };
 
-export type SearchProps = {
-  searchResult: object | null;
-  themeSearchResult: object | null;
-  searchResultDetail: string | undefined;
-};
-
-export default function useSet(query: string): SearchProps | null {
+export default function useSet(query: string) {
   const [searchResult, setSearchResult] = useState<SearchResultProps | null>(
     null
   );
