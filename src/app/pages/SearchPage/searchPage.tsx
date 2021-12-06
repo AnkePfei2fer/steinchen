@@ -1,13 +1,58 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Search from "../../components/Search/search";
+import { Search } from "../../components/Search/search";
 import styles from "./searchPage.module.css";
+import useSet from "../../utils/useSet";
 
-export default function SearchPage() {
+export default function SearchPage(): JSX.Element {
+  const [search, setSearch] = useState("");
+  const searchResult = useSet(search);
+
   const navigate = useNavigate();
+  console.log(search);
+  console.log(searchResult);
+
+  // const content;
+
+  // // if (searchResult && searchResultDetails === undefined) {
+  // content = (
+  //   <>
+  //     <h1 className={styles.heading}>Gefunden</h1>
+  //     <div className={styles.card}>
+  //       <span className={styles.text}>{searchResult?.name}</span>
+  //       <img className={styles.image} src={searchResult?.set_img_url} />
+  //       {/* <p className={styles.theme}>{themeSearchResult?.name}</p> */}
+  //       <p className={styles.parts}>{searchResult?.num_parts} Teile</p>
+  //       <div className={styles.overlay}></div>
+  //     </div>
+  //   </>
+  //   );
+  // } else {
+  //   content = (
+  //     <>
+  //       <Search onSearch={setSearch} />
+  //       {searchResultDetails === "Not found." && (
+  //         <span className={styles.message}>
+  //           Wir haben Dein Set leider nicht gefunden. Versuchs nochmal!
+  //         </span>
+  //       )}
+  //     </>
+  // );
+  // }
 
   return (
     <div className={styles.container}>
-      <Search />
+      <Search onSearch={setSearch} />
+
+      <h1 className={styles.heading}>Gefunden</h1>
+      <div className={styles.card}>
+        <span className={styles.text}>{searchResult?.name}</span>
+        <img className={styles.image} src={searchResult?.set_img_url} />
+        {/* <p className={styles.theme}>{themeSearchResult?.name}</p> */}
+        <p className={styles.parts}>{searchResult?.num_parts} Teile</p>
+        <div className={styles.overlay}></div>
+      </div>
+
       <footer className={styles.footer}>
         <div className={styles.backButton} onClick={() => navigate(-1)}>
           <svg
