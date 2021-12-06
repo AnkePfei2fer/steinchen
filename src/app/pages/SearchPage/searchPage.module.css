@@ -18,3 +18,7 @@
 .icon {
   fill: var(--color-brick-red-dark);
 }
+
+.backButton {
+  cursor: pointer;
+}

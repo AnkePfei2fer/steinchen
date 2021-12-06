@@ -6,7 +6,7 @@ export default function Login(): JSX.Element {
   const [name, setName] = useState(localStorage.getItem("Current User") || "");
 
   useEffect(() => {
-    localStorage.setItem("Current User", name);
+    localStorage.removeItem("Current User");
   }, [name]);
 
   const navigate = useNavigate();
