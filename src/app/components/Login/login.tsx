@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import styles from "./login.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Login(): JSX.Element {
   const [name, setName] = useState(localStorage.getItem("Current User") || "");
@@ -7,6 +8,8 @@ export default function Login(): JSX.Element {
   useEffect(() => {
     localStorage.setItem("Current User", name);
   }, [name]);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -22,20 +25,25 @@ export default function Login(): JSX.Element {
         body: JSON.stringify({ name: name }),
       });
     }
+    localStorage.setItem("Current User", name);
+    navigate("/WelcomePage");
   };
 
   return (
-    <form className={styles.loginForm} onSubmit={handleSubmit}>
-      <input
-        type="text"
-        required
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-        className={styles.textInput}
-      ></input>
-      <button type="submit" className={styles.button}>
-        Los geht&apos;s!
-      </button>
-    </form>
+    <>
+      <form className={styles.loginForm} onSubmit={handleSubmit}>
+        <input
+          type="text"
+          required
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          className={styles.textInput}
+        ></input>
+
+        <button type="submit" className={styles.button}>
+          Los geht&apos;s!
+        </button>
+      </form>
+    </>
   );
 }
