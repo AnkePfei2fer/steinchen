@@ -3,10 +3,9 @@ import SetsSrc from "../../../assets/images/Haus.png";
 import BricksSrc from "../../../assets/images/Haufen.png";
 import ParrotSrc from "../../../assets/images/Papagei.png";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 export default function WelcomePage() {
-  const [name, setName] = useState(localStorage.getItem("Current User") || "");
+  const name = localStorage.getItem("Current User");
 
   return (
     <div className={styles.container}>
