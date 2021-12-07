@@ -26,7 +26,7 @@ export default function Login(): JSX.Element {
       });
     }
     localStorage.setItem("Current User", name);
-    navigate("/WelcomePage");
+    navigate("/Welcome");
   };
 
   return (

@@ -22,7 +22,7 @@ export default function Search({ onSearch }: SearchInputProps): JSX.Element {
           type="text"
           className={styles.textInput}
           onChange={(event) => setQuery(event.target.value)}
-        ></input>
+        />
         <button className={styles.button}>Suche</button>
       </form>
     </div>

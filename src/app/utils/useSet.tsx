@@ -19,21 +19,25 @@ export default function useSet(query: string) {
   const [themeSearchResult, setThemeSearchResult] =
     useState<SearchResultProps | null>(null);
 
-  const fetchAPI = async function () {
-    // fetch set from API
-    const response = await fetch(`/api/sets/search_by_set_number/${query}`, {
-      headers: { Authorization: `key ${process.env.API_KEY}` },
-    });
+  // fetch set from API
+  const fetchSet = async function () {
+    const response = await fetch(
+      `/api/sets/search_by_set_number/${query}`
+      // {
+      //   headers: { Authorization: `key${process.env.API_KEY}` },
+      // }
+    );
     const result = await response.json();
     setSearchResult(result);
     setSearchResultDetail(result.detail);
-
-    // fetch theme from API
+  };
+  // fetch theme from API
+  const fetchTheme = async function () {
     const themeResponse = await fetch(
-      `/api/theme/search_by_theme_id/${result.theme_id}`,
-      {
-        headers: { Authorization: `key ${process.env.API_KEY}` },
-      }
+      `/api/theme/search_by_theme_id/${searchResult?.theme_id}`
+      // {
+      //   headers: { Authorization: `key${process.env.API_KEY}` },
+      // }
     );
     const themeResult = await themeResponse.json();
     setThemeSearchResult(themeResult);
@@ -41,7 +45,8 @@ export default function useSet(query: string) {
 
   useEffect(() => {
     if (query) {
-      fetchAPI();
+      fetchSet();
+      fetchTheme();
     }
   }, [query]);
 

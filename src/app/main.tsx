@@ -9,8 +9,8 @@ ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<LoginPage />} />
-      <Route path="/WelcomePage" element={<WelcomePage />} />
-      <Route path="/SearchPage" element={<SearchPage />} />
+      <Route path="/Welcome" element={<WelcomePage />} />
+      <Route path="/Search" element={<SearchPage />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById("root")
