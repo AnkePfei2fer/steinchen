@@ -13,6 +13,7 @@ export default function useSet(query: string) {
   const [searchResult, setSearchResult] = useState<SearchResultProps | null>(
     null
   );
+  const [themeQuery, setThemeQuery] = useState<number | null>(null);
   const [searchResultDetail, setSearchResultDetail] = useState<
     string | undefined
   >(undefined);
@@ -21,23 +22,17 @@ export default function useSet(query: string) {
 
   // fetch set from API
   const fetchSet = async function () {
-    const response = await fetch(
-      `/api/sets/search_by_set_number/${query}`
-      // {
-      //   headers: { Authorization: `key${process.env.API_KEY}` },
-      // }
-    );
+    const response = await fetch(`/api/sets/search_by_set_number/${query}`);
     const result = await response.json();
     setSearchResult(result);
+    setThemeQuery(result.theme_id);
     setSearchResultDetail(result.detail);
   };
+
   // fetch theme from API
   const fetchTheme = async function () {
     const themeResponse = await fetch(
-      `/api/theme/search_by_theme_id/${searchResult?.theme_id}`
-      // {
-      //   headers: { Authorization: `key${process.env.API_KEY}` },
-      // }
+      `/api/theme/search_by_theme_id/${themeQuery}`
     );
     const themeResult = await themeResponse.json();
     setThemeSearchResult(themeResult);
@@ -45,15 +40,17 @@ export default function useSet(query: string) {
 
   useEffect(() => {
     if (query) {
+      localStorage.setItem("Search Query", query);
       fetchSet();
       fetchTheme();
     }
-  }, [query]);
+  }, [query, themeQuery]);
 
   console.log({ query });
   console.log({ searchResult });
+  console.log({ themeQuery });
   console.log({ themeSearchResult });
   console.log({ searchResultDetail });
 
-  return { searchResult, themeSearchResult, searchResultDetail };
+  return { query, searchResult, themeSearchResult, searchResultDetail };
 }

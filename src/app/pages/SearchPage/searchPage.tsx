@@ -5,30 +5,18 @@ import styles from "./searchPage.module.css";
 import useSet from "../../utils/useSet";
 
 export default function SearchPage(): JSX.Element {
-  const [query, setSearch] = useState("");
-  const { searchResult, themeSearchResult, searchResultDetail } = useSet(query);
-
+  const [query, setQuery] = useState("");
+  const { searchResult, searchResultDetail } = useSet(query);
   const navigate = useNavigate();
 
   let content;
 
   if (searchResult && searchResultDetail === undefined) {
-    content = (
-      <>
-        <h1 className={styles.heading}>Gefunden</h1>
-        <div className={styles.card}>
-          <span className={styles.text}>{searchResult?.name}</span>
-          <img className={styles.image} src={searchResult?.set_img_url} />
-          <p className={styles.theme}>{themeSearchResult?.name}</p>
-          <p className={styles.parts}>{searchResult?.num_parts} Teile</p>
-          <div className={styles.overlay}></div>
-        </div>
-      </>
-    );
+    window.location.href = "/Result";
   } else {
     content = (
       <>
-        <Search onSearch={setSearch} />
+        <Search onSearch={setQuery} />
         {searchResultDetail === "Not found." && (
           <span className={styles.message}>
             Wir haben Dein Set leider nicht gefunden. Versuchs nochmal!

@@ -1,16 +1,21 @@
 import styles from "./searchResultPage.module.css";
+import useSet from "../../utils/useSet";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchResultPage() {
+  const query = localStorage.getItem("Search Query");
+  const { searchResult, themeSearchResult } = useSet(query);
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Gefunden</h1>
       <div className={styles.card}>
-        <span className={styles.text}>Belle&apos;s Storybook Adventures</span>
-        <img className={styles.image} src="../src/assets/images/Biest.png" />
-        <p className={styles.theme}>Disney Princess</p>
-        <p className={styles.parts}>111 Teile</p>
+        <span className={styles.text}>{searchResult?.name}</span>
+        <img className={styles.image} src={searchResult?.set_img_url} />
+        <p className={styles.theme}>{themeSearchResult?.name}</p>
+        <p className={styles.parts}>{searchResult?.num_parts} Teile</p>
         <div className={styles.overlay}></div>
-
         <button className={styles.addButton}>
           <svg
             width="29"
@@ -29,18 +34,20 @@ export default function SearchResultPage() {
         </button>
       </div>
       <footer className={styles.footer}>
-        <svg
-          width="27"
-          height="26"
-          viewBox="0 0 27 26"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            className={styles.icon}
-            d="M25 14.75C25.9665 14.75 26.75 13.9665 26.75 13C26.75 12.0335 25.9665 11.25 25 11.25V14.75ZM0.762564 11.7626C0.0791461 12.446 0.0791461 13.554 0.762564 14.2374L11.8995 25.3744C12.5829 26.0578 13.691 26.0578 14.3744 25.3744C15.0578 24.691 15.0578 23.5829 14.3744 22.8995L4.47487 13L14.3744 3.10051C15.0578 2.41709 15.0578 1.30905 14.3744 0.625631C13.691 -0.0577862 12.5829 -0.0577862 11.8995 0.625631L0.762564 11.7626ZM25 11.25L2 11.25V14.75L25 14.75V11.25Z"
-          />
-        </svg>
+        <div className={styles.backButton} onClick={() => navigate(-1)}>
+          <svg
+            width="27"
+            height="26"
+            viewBox="0 0 27 26"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              className={styles.icon}
+              d="M25 14.75C25.9665 14.75 26.75 13.9665 26.75 13C26.75 12.0335 25.9665 11.25 25 11.25V14.75ZM0.762564 11.7626C0.0791461 12.446 0.0791461 13.554 0.762564 14.2374L11.8995 25.3744C12.5829 26.0578 13.691 26.0578 14.3744 25.3744C15.0578 24.691 15.0578 23.5829 14.3744 22.8995L4.47487 13L14.3744 3.10051C15.0578 2.41709 15.0578 1.30905 14.3744 0.625631C13.691 -0.0577862 12.5829 -0.0577862 11.8995 0.625631L0.762564 11.7626ZM25 11.25L2 11.25V14.75L25 14.75V11.25Z"
+            />
+          </svg>
+        </div>
         <svg
           width="40"
           height="40"
