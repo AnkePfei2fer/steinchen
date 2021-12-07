@@ -62,6 +62,22 @@ app.post("/api/users", async (request, response) => {
   }
 });
 
+// PATCH a new set to a user
+app.patch("/api/users/:username", async (request, response) => {
+  const userCollection = getUserCollection();
+  const username = request.params.username;
+  const newSet = request.body;
+  const updated = await userCollection.updateOne(
+    { name: username },
+    { $set: newSet }
+  );
+  if (updated.matchedCount === 0) {
+    response.status(404).send("Character not found");
+    return;
+  }
+  response.send("Updated");
+});
+
 // Send request to Rebrickable API with set number specified by client
 app.get("/api/sets/search_by_set_number/:set_num", async (req, res) => {
   const { set_num } = req.params;
