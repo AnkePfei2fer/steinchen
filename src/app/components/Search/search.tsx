@@ -4,7 +4,7 @@ import styles from "./search.module.css";
 
 type SearchInputProps = { onSearch: (search: string) => void };
 
-export function Search({ onSearch }: SearchInputProps): JSX.Element {
+export default function Search({ onSearch }: SearchInputProps): JSX.Element {
   const [query, setQuery] = useState("");
 
   return (

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Search } from "../../components/Search/search";
+import  Search from "../../components/Search/search";
 import styles from "./searchPage.module.css";
 import useSet from "../../utils/useSet";
 

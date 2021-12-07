@@ -35,7 +35,9 @@ export default function useSet(query: string) {
   };
 
   useEffect(() => {
-    fetchAPI();
+    if (query) {
+      fetchAPI();
+    }
   }, [query]);
 
   console.log({ query });
