@@ -30,7 +30,10 @@ export default function useSet(query: string) {
 
     // fetch theme from API
     const themeResponse = await fetch(
-      `/api/theme/search_by_theme_id/${result.theme_id}`
+      `/api/theme/search_by_theme_id/${result.theme_id}`,
+      {
+        headers: { Authorization: `key ${process.env.API_KEY}` },
+      }
     );
     const themeResult = await themeResponse.json();
     setThemeSearchResult(themeResult);
