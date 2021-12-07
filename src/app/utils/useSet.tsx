@@ -21,7 +21,9 @@ export default function useSet(query: string) {
 
   const fetchAPI = async function () {
     // fetch set from API
-    const response = await fetch(`/api/sets/search_by_set_number/${query}`);
+    const response = await fetch(`/api/sets/search_by_set_number/${query}`, {
+      headers: { Authorization: `key ${process.env.API_KEY}` },
+    });
     const result = await response.json();
     setSearchResult(result);
     setSearchResultDetail(result.detail);
