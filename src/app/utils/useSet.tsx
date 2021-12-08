@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
 type SearchResultProps = {
-  set_num: string;
-  name: string;
-  num_parts: number;
-  set_img_url: string;
-  theme_id: number;
+  set_num: string | null;
+  name: string | null;
+  num_parts: number | null;
+  set_img_url: string | null;
+  theme_id: number | null;
   detail: string | undefined;
 };
 

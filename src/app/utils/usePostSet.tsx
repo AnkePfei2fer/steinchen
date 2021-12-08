@@ -1,11 +1,15 @@
-export default function usePostSet(set: {
-  setNum: string;
-  setName: string;
-  setNumberParts: number;
-  setImgUrl: string;
-  setTheme: string;
-}) {
+type SetProps = {
+  setNum: string | null;
+  setName: string | null;
+  setNumberParts: number | null;
+  setImgUrl: string | null;
+  setTheme: string | null;
+};
+
+export default function usePostSet(set: SetProps) {
   const name = localStorage.getItem("Current User");
+
+  console.log({ set });
 
   const postSet = async function () {
     const response = await fetch(`/api/users/${name}`);

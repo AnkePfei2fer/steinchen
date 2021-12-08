@@ -3,15 +3,6 @@ import useSet from "../../utils/useSet";
 import { useNavigate } from "react-router-dom";
 import usePostSet from "../../utils/usePostSet";
 import { FormEvent } from "react";
-import { useState } from "react";
-
-type SetProps = {
-  setNum: string;
-  setName: string;
-  num_parts: number;
-  set_img_url: string;
-  theme: string;
-};
 
 export default function SearchResultPage(): JSX.Element {
   const query = localStorage.getItem("Search Query");
@@ -24,7 +15,10 @@ export default function SearchResultPage(): JSX.Element {
   const setImgUrl = searchResult?.set_img_url;
   const setTheme = themeSearchResult?.name;
 
-  const set = { setNum, setName, setNumberParts, setImgUrl, setTheme };
+  const set = [
+    { Num: 12, setNum, setName, setNumberParts, setImgUrl, setTheme },
+    { Num: 11, setNum, setName, setNumberParts, setImgUrl, setTheme },
+  ];
   console.log({ set });
   const postSet = usePostSet(set);
 
