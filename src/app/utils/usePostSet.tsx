@@ -1,21 +1,16 @@
-export default function usePostSet(
-  set: string
-  //    {
-  //   setNum: string;
-  //   setName: string;
-  //   setNumberParts: number;
-  //   setImgUrl: string;
-  //   setTheme: string;
-  // }
-) {
+export default function usePostSet(set: {
+  setNum: string;
+  setName: string;
+  setNumberParts: number;
+  setImgUrl: string;
+  setTheme: string;
+}) {
   const name = localStorage.getItem("Current User");
-  console.log({ name });
-  console.log({ set });
 
   const postSet = async function () {
     const response = await fetch(`/api/users/${name}`);
     if (response.ok) {
-      // console.log(`Hello ${name}`);
+      console.log(`Hello ${name}`);
       await fetch(`/api/users/${name}`, {
         method: "PATCH",
         headers: {
@@ -23,8 +18,8 @@ export default function usePostSet(
         },
         body: JSON.stringify(set),
       });
+      console.log(`${JSON.stringify(set)} was added to ${name}'s collection`);
     }
-    console.log(response);
   };
 
   return postSet;

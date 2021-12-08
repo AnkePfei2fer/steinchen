@@ -3,39 +3,30 @@ import useSet from "../../utils/useSet";
 import { useNavigate } from "react-router-dom";
 import usePostSet from "../../utils/usePostSet";
 import { FormEvent } from "react";
-// import { useState } from "react";
+import { useState } from "react";
 
-// type SetProps = {
-//   setNum: string;
-//   setName: string;
-//   num_parts: number;
-//   set_img_url: string;
-//   theme: string;
-// };
+type SetProps = {
+  setNum: string;
+  setName: string;
+  num_parts: number;
+  set_img_url: string;
+  theme: string;
+};
 
 export default function SearchResultPage(): JSX.Element {
   const query = localStorage.getItem("Search Query");
-  const { searchResult, themeSearchResult } = useSet(query);
-  // const [setNum, setSetNum] = useState<string | null>(null);
-  // const [setName, setSetName] = useState<string | null>(null);
-  // const [setNumberParts, setSetNumberParts] = useState<number | null>(null);
-  // const [setImgUrl, setSetImgUrl] = useState<string | null>(null);
-  // const [setTheme, setSetTheme] = useState<string | null>(null);
-
-  const set = {
-    set4: {},
-  };
-  console.log({ set });
   const navigate = useNavigate();
+  const { searchResult, themeSearchResult } = useSet(query);
+
+  const setNum = query;
+  const setName = searchResult?.name;
+  const setNumberParts = searchResult?.num_parts;
+  const setImgUrl = searchResult?.set_img_url;
+  const setTheme = themeSearchResult?.name;
+
+  const set = { setNum, setName, setNumberParts, setImgUrl, setTheme };
+  console.log({ set });
   const postSet = usePostSet(set);
-
-  // setSetNum(query);
-  // setSetName(searchResult?.name);
-  // setSetNumberParts(searchResult?.num_parts);
-  // setSetImgUrl(searchResult?.set_img_url);
-  // setSetTheme(themeSearchResult?.name);
-
-  // const set = { setNum, setName, setNumberParts, setImgUrl, setTheme };
 
   const handleClick = async function (event: FormEvent) {
     event.preventDefault();

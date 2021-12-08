@@ -5,7 +5,7 @@ import styles from "./searchPage.module.css";
 import useSet from "../../utils/useSet";
 
 export default function SearchPage(): JSX.Element {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState<string | null>(null);
   const { searchResult, searchResultDetail } = useSet(query);
   const navigate = useNavigate();
 

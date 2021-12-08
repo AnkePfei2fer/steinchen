@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import styles from "./search.module.css";
 
-type SearchInputProps = { onSearch: (search: string) => void };
+type SearchInputProps = { onSearch: (query: string) => void };
 
 export default function Search({ onSearch }: SearchInputProps): JSX.Element {
   const [query, setQuery] = useState("");
