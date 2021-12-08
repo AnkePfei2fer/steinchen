@@ -1,9 +1,9 @@
-type SetProps = {
-  articleNumber: string | null;
-  articleName: string | null;
-  numberParts: number | null;
+export type SetProps = {
+  articleNumber: string;
+  articleName: string;
+  numberParts: number;
   imageUrl?: string;
-  theme: string | null;
+  theme: string;
 };
 
 export default function usePostSet(set: SetProps[] | null) {

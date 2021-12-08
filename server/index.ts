@@ -62,7 +62,7 @@ app.post("/api/users", async (request, response) => {
   }
 });
 
-// PATCH a new set to a user
+// PATCH a new set to a user set collection
 app.patch("/api/users/:username", async (request, response) => {
   const userCollection = getUserCollection();
   const username = request.params.username;
