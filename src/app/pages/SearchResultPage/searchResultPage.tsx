@@ -15,10 +15,7 @@ export default function SearchResultPage(): JSX.Element {
   const setImgUrl = searchResult?.set_img_url;
   const setTheme = themeSearchResult?.name;
 
-  const set = [
-    { Num: 12, setNum, setName, setNumberParts, setImgUrl, setTheme },
-    { Num: 11, setNum, setName, setNumberParts, setImgUrl, setTheme },
-  ];
+  const set = [{ setNum, setName, setNumberParts, setImgUrl, setTheme }];
   console.log({ set });
   const postSet = usePostSet(set);
 
@@ -27,14 +24,18 @@ export default function SearchResultPage(): JSX.Element {
     await postSet();
   };
 
+  if (!searchResult || !themeSearchResult) {
+    return <div>wir suchen...</div>;
+  }
+
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Gefunden</h1>
       <div className={styles.card}>
-        <span className={styles.text}>{searchResult?.name}</span>
-        <img className={styles.image} src={searchResult?.set_img_url} />
-        <p className={styles.theme}>{themeSearchResult?.name}</p>
-        <p className={styles.parts}>{searchResult?.num_parts} Teile</p>
+        <span className={styles.text}>{searchResult.name}</span>
+        <img className={styles.image} src={searchResult.set_img_url} />
+        <p className={styles.theme}>{themeSearchResult.name}</p>
+        <p className={styles.parts}>{searchResult.num_parts} Teile</p>
         <div className={styles.overlay}></div>
         <button className={styles.addButton} onClick={handleClick}>
           <svg

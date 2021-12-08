@@ -4,12 +4,12 @@ type SearchResultProps = {
   set_num: string | null;
   name: string | null;
   num_parts: number | null;
-  set_img_url: string | null;
+  set_img_url?: string;
   theme_id: number | null;
   detail: string | undefined;
 };
 
-export default function useSet(query: string) {
+export default function useSet(query: string | null) {
   const [searchResult, setSearchResult] = useState<SearchResultProps | null>(
     null
   );

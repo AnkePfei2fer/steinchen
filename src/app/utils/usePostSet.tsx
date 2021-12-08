@@ -2,11 +2,11 @@ type SetProps = {
   setNum: string | null;
   setName: string | null;
   setNumberParts: number | null;
-  setImgUrl: string | null;
+  setImgUrl?: string;
   setTheme: string | null;
 };
 
-export default function usePostSet(set: SetProps) {
+export default function usePostSet(set: SetProps[] | null) {
   const name = localStorage.getItem("Current User");
 
   console.log({ set });
