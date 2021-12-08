@@ -12,7 +12,7 @@ export default function SearchPage(): JSX.Element {
   let content;
 
   if (searchResult && searchResultDetail === undefined) {
-    window.location.href = "/Result";
+    navigate("/Result");
   } else {
     content = (
       <>

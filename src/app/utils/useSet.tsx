@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 type SearchResultProps = {
   set_num: string | null;
@@ -28,6 +29,8 @@ export default function useSet(query: string | null) {
     setThemeQuery(result.theme_id);
     setSearchResultDetail(result.detail);
   };
+
+  const navigate = useNavigate();
 
   // fetch theme from API
   const fetchTheme = async function () {
