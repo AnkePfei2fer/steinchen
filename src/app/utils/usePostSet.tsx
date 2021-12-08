@@ -1,29 +1,22 @@
 type SetProps = {
-  setNum: string | null;
-  setName: string | null;
-  setNumberParts: number | null;
-  setImgUrl?: string;
-  setTheme: string | null;
+  articleNumber: string | null;
+  articleName: string | null;
+  numberParts: number | null;
+  imageUrl?: string;
+  theme: string | null;
 };
 
 export default function usePostSet(set: SetProps[] | null) {
-  const name = localStorage.getItem("Current User");
-
-  console.log({ set });
+  const username = localStorage.getItem("Current User");
 
   const postSet = async function () {
-    const response = await fetch(`/api/users/${name}`);
-    if (response.ok) {
-      console.log(`Hello ${name}`);
-      await fetch(`/api/users/${name}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(set),
-      });
-      console.log(`${JSON.stringify(set)} was added to ${name}'s collection`);
-    }
+    await fetch(`/api/users/${username}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(set),
+    });
   };
 
   return postSet;

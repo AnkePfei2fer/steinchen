@@ -9,14 +9,13 @@ export default function SearchResultPage(): JSX.Element {
   const navigate = useNavigate();
   const { searchResult, themeSearchResult } = useSet(query);
 
-  const setNum = query;
-  const setName = searchResult?.name;
-  const setNumberParts = searchResult?.num_parts;
-  const setImgUrl = searchResult?.set_img_url;
-  const setTheme = themeSearchResult?.name;
+  const articleNumber = query;
+  const articleName = searchResult?.name;
+  const numberParts = searchResult?.num_parts;
+  const imageUrl = searchResult?.set_img_url;
+  const theme = themeSearchResult?.name;
 
-  const set = [{ setNum, setName, setNumberParts, setImgUrl, setTheme }];
-  console.log({ set });
+  const set = { articleNumber, articleName, numberParts, imageUrl, theme };
   const postSet = usePostSet(set);
 
   const handleClick = async function (event: FormEvent) {

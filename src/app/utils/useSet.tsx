@@ -46,11 +46,5 @@ export default function useSet(query: string | null) {
     }
   }, [query, themeQuery]);
 
-  console.log({ query });
-  console.log({ searchResult });
-  console.log({ themeQuery });
-  console.log({ themeSearchResult });
-  console.log({ searchResultDetail });
-
   return { query, searchResult, themeSearchResult, searchResultDetail };
 }

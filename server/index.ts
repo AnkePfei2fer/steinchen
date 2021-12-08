@@ -69,7 +69,7 @@ app.patch("/api/users/:username", async (request, response) => {
   const newSet = request.body;
   await userCollection.updateOne(
     { name: username },
-    { $addToSet: { sets: { $each: newSet } } }
+    { $addToSet: { sets: newSet } }
   ),
     response.send("Updated");
 });
