@@ -4,6 +4,10 @@
   justify-items: center;
 }
 
+.waiting {
+  text-align: center;
+}
+
 .heading {
   margin-bottom: 5rem;
 }
