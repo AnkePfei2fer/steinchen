@@ -72,7 +72,7 @@ app.patch("/api/users/:username", async (request, response) => {
     { $set: newSet }
   );
   if (updated.matchedCount === 0) {
-    response.status(404).send("Character not found");
+    response.status(404).send("User not found");
     return;
   }
   response.send("Updated");

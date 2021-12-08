@@ -1,11 +1,46 @@
 import styles from "./searchResultPage.module.css";
 import useSet from "../../utils/useSet";
 import { useNavigate } from "react-router-dom";
+import usePostSet from "../../utils/usePostSet";
+import { FormEvent } from "react";
+// import { useState } from "react";
 
-export default function SearchResultPage() {
+// type SetProps = {
+//   setNum: string;
+//   setName: string;
+//   num_parts: number;
+//   set_img_url: string;
+//   theme: string;
+// };
+
+export default function SearchResultPage(): JSX.Element {
   const query = localStorage.getItem("Search Query");
   const { searchResult, themeSearchResult } = useSet(query);
+  // const [setNum, setSetNum] = useState<string | null>(null);
+  // const [setName, setSetName] = useState<string | null>(null);
+  // const [setNumberParts, setSetNumberParts] = useState<number | null>(null);
+  // const [setImgUrl, setSetImgUrl] = useState<string | null>(null);
+  // const [setTheme, setSetTheme] = useState<string | null>(null);
+
+  const set = {
+    set4: {},
+  };
+  console.log({ set });
   const navigate = useNavigate();
+  const postSet = usePostSet(set);
+
+  // setSetNum(query);
+  // setSetName(searchResult?.name);
+  // setSetNumberParts(searchResult?.num_parts);
+  // setSetImgUrl(searchResult?.set_img_url);
+  // setSetTheme(themeSearchResult?.name);
+
+  // const set = { setNum, setName, setNumberParts, setImgUrl, setTheme };
+
+  const handleClick = async function (event: FormEvent) {
+    event.preventDefault();
+    await postSet();
+  };
 
   return (
     <div className={styles.container}>
@@ -16,7 +51,7 @@ export default function SearchResultPage() {
         <p className={styles.theme}>{themeSearchResult?.name}</p>
         <p className={styles.parts}>{searchResult?.num_parts} Teile</p>
         <div className={styles.overlay}></div>
-        <button className={styles.addButton}>
+        <button className={styles.addButton} onClick={handleClick}>
           <svg
             width="29"
             height="29"

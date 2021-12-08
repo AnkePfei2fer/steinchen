@@ -19,9 +19,9 @@ Content-Type: application/json
 }
 
 ### PATCH a new set to a user
-PATCH http://localhost:3001/api/users/Marie HTTP/1.1
+PATCH http://localhost:3001/api/users/Maria HTTP/1.1
 Content-Type: application/json
 
 {
-    "set3": {"setname" : "Brico", "setNum": 123}  
+    "set4": {}  
 }
