@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-type SearchResultProps = {
+export type SetProps = {
   numberSet: string | null;
   nameSet: string | null;
   year: number | null;
@@ -10,9 +10,7 @@ type SearchResultProps = {
 };
 
 export default function useSet(query: string | null) {
-  const [searchResult, setSearchResult] = useState<SearchResultProps | null>(
-    null
-  );
+  const [searchResult, setSearchResult] = useState<SetProps | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   // fetch set from API

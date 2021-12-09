@@ -1,12 +1,6 @@
-export type SetProps = {
-  articleNumber: string;
-  articleName: string;
-  numberParts: number;
-  imageUrl?: string;
-  theme: string;
-};
+import { SetProps } from "./useSet";
 
-export default function usePostSet(set: SetProps[] | null) {
+export default function usePostSet(set: SetProps | null) {
   const username = localStorage.getItem("Current User");
 
   const postSet = async function () {
