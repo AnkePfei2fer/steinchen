@@ -58,6 +58,11 @@ h3 {
   margin: 0;
 }
 
+.plaintext {
+  font-family: Atma, sans-serif;
+  font-size: 1.25rem;
+}
+
 .button {
   width: 10rem;
   height: 3rem;
