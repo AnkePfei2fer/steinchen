@@ -1,6 +1,6 @@
 import styles from "./setsPage.module.css";
 
-export default function SetstPage() {
+export default function SetsPage() {
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Deine Sets</h1>
