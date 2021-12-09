@@ -3,7 +3,7 @@ import styles from "./login.module.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Login(): JSX.Element {
-  const [username, setName] = useState(
+  const [username, setUsername] = useState(
     localStorage.getItem("Current User") || ""
   );
 
@@ -17,7 +17,6 @@ export default function Login(): JSX.Element {
     event.preventDefault();
     const response = await fetch(`/api/users/${username}`);
     if (response.ok) {
-      console.log(`Hello ${username}`);
     } else {
       await fetch("/api/users", {
         method: "POST",
@@ -28,7 +27,7 @@ export default function Login(): JSX.Element {
       });
     }
     localStorage.setItem("Current User", username);
-    navigate("/Welcome");
+    navigate("/welcome");
   };
 
   return (
@@ -38,7 +37,7 @@ export default function Login(): JSX.Element {
           type="text"
           required
           value={username}
-          onChange={(event) => setName(event.target.value)}
+          onChange={(event) => setUsername(event.target.value)}
           className={styles.textInput}
         ></input>
 

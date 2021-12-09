@@ -1,13 +1,5 @@
 import { useEffect, useState } from "react";
-
-export type SetProps = {
-  numberSet: string | undefined;
-  nameSet: string | undefined;
-  year: number | undefined;
-  numberParts: number | undefined;
-  imageUrl?: string;
-  nameTheme: string | undefined;
-};
+import { SetProps } from "../types";
 
 export default function useSet(query: string | null) {
   const [searchResult, setSearchResult] = useState<SetProps | null>(null);

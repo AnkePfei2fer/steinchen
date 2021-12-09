@@ -31,7 +31,7 @@ export default function WelcomePage() {
             />
           </svg>
           <nav>
-            <Link className={styles.link} to="/Search">
+            <Link className={styles.link} to="/search">
               Katalog durchsuchen
             </Link>
           </nav>

@@ -67,11 +67,15 @@ app.patch("/api/users/:username", async (request, response) => {
   const userCollection = getUserCollection();
   const username = request.params.username;
   const newSet = request.body;
-  await userCollection.updateOne(
+  const added = await userCollection.updateOne(
     { name: username },
     { $addToSet: { sets: newSet } }
-  ),
-    response.send("Updated");
+  );
+  if (added.matchedCount === 0) {
+    response.status(404).send("User not found");
+    return;
+  }
+  response.send("Updated");
 });
 
 // Send request to Rebrickable API with set number specified by client

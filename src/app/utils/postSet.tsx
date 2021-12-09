@@ -1,9 +1,9 @@
-import { SetProps } from "./useSet";
+import { SetProps } from "../types";
 
-export default function usePostSet(set: SetProps | null) {
+export default function postSet(set: SetProps | null) {
   const username = localStorage.getItem("Current User");
 
-  const postSet = async function () {
+  const postNewSet = async function () {
     await fetch(`/api/users/${username}`, {
       method: "PATCH",
       headers: {
@@ -13,5 +13,5 @@ export default function usePostSet(set: SetProps | null) {
     });
   };
 
-  return postSet;
+  return postNewSet;
 }

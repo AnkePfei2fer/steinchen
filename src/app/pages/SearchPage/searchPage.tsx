@@ -11,9 +11,8 @@ export default function SearchPage(): JSX.Element {
 
   let content;
 
-  console.log({ isLoading });
   if (searchResult) {
-    navigate("/Result");
+    navigate("/result");
   } else {
     content = (
       <>
@@ -40,7 +39,7 @@ export default function SearchPage(): JSX.Element {
           </svg>
         </div>
         <nav>
-          <Link to="/Welcome">
+          <Link to="/welcome">
             <div>
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
                 <path
