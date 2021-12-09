@@ -16,7 +16,14 @@ export default function SearchResultPage(): JSX.Element {
   const imageUrl = searchResult?.imageUrl;
   const nameTheme = searchResult?.nameTheme;
 
-  const set = { numberSet, nameSet, numberParts, year, imageUrl, nameTheme };
+  const set = {
+    numberSet,
+    nameSet,
+    numberParts,
+    year,
+    imageUrl,
+    nameTheme,
+  };
   const postSet = usePostSet(set);
 
   const handleClick = async function (event: FormEvent) {

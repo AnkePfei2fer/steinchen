@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 export type SetProps = {
-  numberSet: string | null;
-  nameSet: string | null;
-  year: number | null;
-  numberParts: number | null;
+  numberSet: string | undefined;
+  nameSet: string | undefined;
+  year: number | undefined;
+  numberParts: number | undefined;
   imageUrl?: string;
-  nameTheme: string | null;
+  nameTheme: string | undefined;
 };
 
 export default function useSet(query: string | null) {
