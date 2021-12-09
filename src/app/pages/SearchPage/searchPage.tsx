@@ -6,18 +6,19 @@ import useSet from "../../utils/useSet";
 
 export default function SearchPage(): JSX.Element {
   const [query, setQuery] = useState<string | null>(null);
-  const { searchResult, searchResultDetail } = useSet(query);
+  const { searchResult, isLoading } = useSet(query);
   const navigate = useNavigate();
 
   let content;
 
-  if (searchResult && searchResultDetail === undefined) {
+  console.log({ isLoading });
+  if (searchResult) {
     navigate("/Result");
   } else {
     content = (
       <>
         <Search onSearch={setQuery} />
-        {searchResultDetail === "Not found." && (
+        {!isLoading && (
           <span className={styles.message}>
             Wir haben Dein Set leider nicht gefunden. Versuchs nochmal!
           </span>

@@ -75,23 +75,34 @@ app.patch("/api/users/:username", async (request, response) => {
 });
 
 // Send request to Rebrickable API with set number specified by client
-app.get("/api/sets/search_by_set_number/:set_num", async (req, res) => {
+app.get("/api/sets/:set_num", async (req, res) => {
   const { set_num } = req.params;
-  const response = await fetch(
+  const setResponse = await fetch(
     `https://rebrickable.com/api/v3/lego/sets/${set_num}/?key=${process.env.API_KEY}`
   );
-  const data = await response.json();
-  res.send(data);
-});
-
-// Send request to Rebrickable API with theme id
-app.get("/api/theme/search_by_theme_id/:theme_id", async (req, res) => {
-  const { theme_id } = req.params;
-  const response = await fetch(
-    `https://rebrickable.com/api/v3/lego/themes/${theme_id}/?key=${process.env.API_KEY}`
+  if (!setResponse.ok) {
+    res.status(setResponse.status).send();
+    return;
+  }
+  const set = await setResponse.json();
+  const themeId = set.theme_id;
+  const themeResponse = await fetch(
+    `https://rebrickable.com/api/v3/lego/themes/${themeId}/?key=${process.env.API_KEY}`
   );
-  const data = await response.json();
-  res.send(data);
+  if (!themeResponse.ok) {
+    res.status(themeResponse.status).send();
+    return;
+  }
+  const theme = await themeResponse.json();
+  const combinedSet = {
+    numberSet: set.set_num,
+    nameSet: set.name,
+    year: set.year,
+    numberParts: set.num_parts,
+    imageUrl: set.set_img_url,
+    nameTheme: theme.name,
+  };
+  res.send(combinedSet);
 });
 
 // Handle client routing, return all requests to the app

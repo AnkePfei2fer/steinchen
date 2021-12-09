@@ -7,15 +7,15 @@ import { FormEvent } from "react";
 export default function SearchResultPage(): JSX.Element {
   const query = localStorage.getItem("Search Query");
   const navigate = useNavigate();
-  const { searchResult, themeSearchResult } = useSet(query);
+  const { searchResult } = useSet(query);
 
-  const articleNumber = query;
-  const articleName = searchResult?.name;
-  const numberParts = searchResult?.num_parts;
-  const imageUrl = searchResult?.set_img_url;
-  const theme = themeSearchResult?.name;
+  const numberSet = searchResult?.numberSet;
+  const nameSet = searchResult?.nameSet;
+  const numberParts = searchResult?.numberParts;
+  const imageUrl = searchResult?.imageUrl;
+  const nameTheme = searchResult?.nameTheme;
 
-  const set = { articleNumber, articleName, numberParts, imageUrl, theme };
+  const set = { numberSet, nameSet, numberParts, imageUrl, nameTheme };
   const postSet = usePostSet(set);
 
   const handleClick = async function (event: FormEvent) {
@@ -23,18 +23,18 @@ export default function SearchResultPage(): JSX.Element {
     await postSet();
   };
 
-  if (!searchResult || !themeSearchResult) {
-    return <span className={styles.waiting}>Wir suchen...</span>;
+  if (!searchResult) {
+    return <span className={styles.waiting}>Wir suchen Dein Set...</span>;
   }
 
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Gefunden</h1>
       <div className={styles.card}>
-        <span className={styles.text}>{searchResult.name}</span>
-        <img className={styles.image} src={searchResult.set_img_url} />
-        <p className={styles.theme}>{themeSearchResult.name}</p>
-        <p className={styles.parts}>{searchResult.num_parts} Teile</p>
+        <span className={styles.text}>{searchResult.nameSet}</span>
+        <img className={styles.image} src={searchResult.imageUrl} />
+        <p className={styles.theme}>{searchResult.nameTheme}</p>
+        <p className={styles.parts}>{searchResult.numberParts} Teile</p>
         <div className={styles.overlay}></div>
         <button className={styles.addButton} onClick={handleClick}>
           <svg
