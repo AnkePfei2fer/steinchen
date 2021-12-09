@@ -5,31 +5,19 @@ import styles from "./searchPage.module.css";
 import useSet from "../../utils/useSet";
 
 export default function SearchPage(): JSX.Element {
-  const [query, setSearch] = useState("");
-  const { searchResult, themeSearchResult, searchResultDetail } = useSet(query);
-
+  const [query, setQuery] = useState<string | null>(null);
+  const { searchResult, isLoading } = useSet(query);
   const navigate = useNavigate();
 
   let content;
 
-  if (searchResult && searchResultDetail === undefined) {
-    content = (
-      <>
-        <h1 className={styles.heading}>Gefunden</h1>
-        <div className={styles.card}>
-          <span className={styles.text}>{searchResult?.name}</span>
-          <img className={styles.image} src={searchResult?.set_img_url} />
-          <p className={styles.theme}>{themeSearchResult?.name}</p>
-          <p className={styles.parts}>{searchResult?.num_parts} Teile</p>
-          <div className={styles.overlay}></div>
-        </div>
-      </>
-    );
+  if (searchResult) {
+    navigate("/result");
   } else {
     content = (
       <>
-        <Search onSearch={setSearch} />
-        {searchResultDetail === "Not found." && (
+        <Search onSearch={setQuery} />
+        {!isLoading && (
           <span className={styles.message}>
             Wir haben Dein Set leider nicht gefunden. Versuchs nochmal!
           </span>
@@ -51,7 +39,7 @@ export default function SearchPage(): JSX.Element {
           </svg>
         </div>
         <nav>
-          <Link to="/Welcome">
+          <Link to="/welcome">
             <div>
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
                 <path

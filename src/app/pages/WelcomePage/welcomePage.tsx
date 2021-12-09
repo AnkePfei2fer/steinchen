@@ -5,11 +5,11 @@ import ParrotSrc from "../../../assets/images/Papagei.png";
 import { Link } from "react-router-dom";
 
 export default function WelcomePage() {
-  const name = localStorage.getItem("Current User");
+  const username = localStorage.getItem("Current User");
 
   return (
     <div className={styles.container}>
-      <h1>Hallo {name}</h1>
+      <h1>Hallo {username}</h1>
       <button className={styles.menuButton}>
         <img className={styles.sets} src={SetsSrc} alt="Häuschen" />
         <h2>Deine Sets</h2>
@@ -31,7 +31,7 @@ export default function WelcomePage() {
             />
           </svg>
           <nav>
-            <Link className={styles.link} to="/Search">
+            <Link className={styles.link} to="/search">
               Katalog durchsuchen
             </Link>
           </nav>
