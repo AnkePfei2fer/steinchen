@@ -1,8 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./setsPage.module.css";
+import useCollection from "../../utils/useCollection.ts";
 
 export default function SetsPage() {
   const navigate = useNavigate();
+  const collection = useCollection();
+  console.log(collection);
 
   return (
     <div className={styles.container}>
