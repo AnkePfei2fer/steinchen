@@ -6,7 +6,18 @@ import { Set } from "../../types";
 export default function SetsPage() {
   const navigate = useNavigate();
   const sets = useCollection();
-  const collection = sets.collection;
+  const collection: Set[] = sets.collection;
+
+  // Sort by set name in alphabetical order
+  collection?.sort(function (a, b) {
+    if (a.nameSet < b.nameSet) {
+      return -1;
+    }
+    if (a.nameSet > b.nameSet) {
+      return 1;
+    }
+    return 0;
+  });
 
   return (
     <div className={styles.container}>
