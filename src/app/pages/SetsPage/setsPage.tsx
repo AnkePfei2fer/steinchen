@@ -10,31 +10,10 @@ export default function SetsPage() {
       <div className={styles.card}>
         <span className={styles.text}>Belle&apos;s Storybook Adventures</span>
         <img className={styles.image} src="../src/assets/images/Biest.png" />
-        <p className={styles.theme}>Disney Princess</p>
-        <p className={styles.parts}>111 Teile</p>
+
         <div className={styles.overlay}></div>
       </div>
-      <div className={styles.card}>
-        <span className={styles.text}>Belle&apos;s Storybook Adventures</span>
-        <img className={styles.image} src="../src/assets/images/Biest.png" />
-        <p className={styles.theme}>Disney Princess</p>
-        <p className={styles.parts}>111 Teile</p>
-        <div className={styles.overlay}></div>
-      </div>
-      <div className={styles.card}>
-        <span className={styles.text}>Belle&apos;s Storybook Adventures</span>
-        <img className={styles.image} src="../src/assets/images/Biest.png" />
-        <p className={styles.theme}>Disney Princess</p>
-        <p className={styles.parts}>111 Teile</p>
-        <div className={styles.overlay}></div>
-      </div>
-      <div className={styles.card}>
-        <span className={styles.text}>Belle&apos;s Storybook Adventures</span>
-        <img className={styles.image} src="../src/assets/images/Biest.png" />
-        <p className={styles.theme}>Disney Princess</p>
-        <p className={styles.parts}>111 Teile</p>
-        <div className={styles.overlay}></div>
-      </div>
+
       <footer className={styles.footer}>
         <div className={styles.backButton} onClick={() => navigate(-1)}>
           <svg
