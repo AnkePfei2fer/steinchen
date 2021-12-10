@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { CollectionProps } from "../types";
 
 export default function useCollection() {
-  const [collection, setCollection] = useState<CollectionProps | null>(null);
+  const [collection, setCollection] = useState([]);
+
   const username = localStorage.getItem("Current User");
 
   // fetch set collection from MongoDB

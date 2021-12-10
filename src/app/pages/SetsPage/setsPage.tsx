@@ -1,22 +1,23 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./setsPage.module.css";
-import useCollection from "../../utils/useCollection.ts";
+import useCollection from "../../utils/useCollection";
+import { Set } from "../../types";
 
 export default function SetsPage() {
   const navigate = useNavigate();
-  const collection = useCollection();
-  console.log(collection);
+  const sets = useCollection();
+  const collection = sets.collection;
 
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Deine Sets</h1>
-      <div className={styles.card}>
-        <span className={styles.text}>Belle&apos;s Storybook Adventures</span>
-        <img className={styles.image} src="../src/assets/images/Biest.png" />
-
-        <div className={styles.overlay}></div>
-      </div>
-
+      {collection.map((set: Set) => (
+        <div className={styles.card} key={set.numberSet}>
+          <span className={styles.text}>{set.nameSet}</span>
+          <img className={styles.image} src={set.imageUrl} />
+          <div className={styles.overlay}></div>
+        </div>
+      ))}
       <footer className={styles.footer}>
         <div className={styles.backButton} onClick={() => navigate(-1)}>
           <svg
