@@ -20,15 +20,17 @@ export default function SetsPage() {
   });
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.heading}>Deine Sets</h1>
-      {collection.map((set: Set) => (
-        <div className={styles.card} key={set.numberSet}>
-          <span className={styles.text}>{set.nameSet}</span>
-          <img className={styles.image} src={set.imageUrl} />
-          <div className={styles.overlay}></div>
-        </div>
-      ))}
+    <>
+      <div className={styles.container}>
+        <h1 className={styles.heading}>Deine Sets</h1>
+        {collection.map((set: Set) => (
+          <div className={styles.card} key={set.numberSet}>
+            <span className={styles.text}>{set.nameSet}</span>
+            <img className={styles.image} src={set.imageUrl} />
+            <div className={styles.overlay}></div>
+          </div>
+        ))}
+      </div>
       <footer className={styles.footer}>
         <div className={styles.backButton} onClick={() => navigate(-1)}>
           <svg
@@ -82,6 +84,6 @@ export default function SetsPage() {
           </svg>
         </button>
       </footer>
-    </div>
+    </>
   );
 }
