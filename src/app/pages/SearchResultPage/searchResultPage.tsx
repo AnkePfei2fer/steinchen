@@ -30,6 +30,7 @@ export default function SearchResultPage(): JSX.Element {
   const handleClick = async function (event: FormEvent) {
     event.preventDefault();
     await postNewSet();
+    navigate("/sets");
   };
 
   if (!searchResult) {

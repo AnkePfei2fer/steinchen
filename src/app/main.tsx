@@ -4,6 +4,7 @@ import WelcomePage from "./pages/WelcomePage/welcomePage";
 import LoginPage from "./pages/LoginPage/loginPage";
 import SearchPage from "./pages/SearchPage/searchPage";
 import SearchResultPage from "./pages/SearchResultPage/searchResultPage";
+import SetsPage from "./pages/SetsPage/setsPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 ReactDOM.render(
@@ -13,6 +14,7 @@ ReactDOM.render(
       <Route path="/welcome" element={<WelcomePage />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="/result" element={<SearchResultPage />} />
+      <Route path="/sets" element={<SetsPage />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById("root")
