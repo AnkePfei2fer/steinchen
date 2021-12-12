@@ -79,8 +79,18 @@ app.patch("/api/users/:username", async (request, response) => {
 });
 
 // Send request to Rebrickable API with set number specified by client
-app.get("/api/sets/:set_num", async (req, res) => {
-  const { set_num } = req.params;
+app.get("/api/sets/:query", async (req, res) => {
+  const { query } = req.params;
+  console.log({ query });
+  // If query conatins no "-" add "-1" per default
+  let set_num;
+  if (query.match(/-1/)) {
+    set_num = query;
+  } else {
+    set_num = `${query}-1`;
+  }
+  console.log({ set_num });
+
   const setResponse = await fetch(
     `https://rebrickable.com/api/v3/lego/sets/${set_num}/?key=${process.env.API_KEY}`
   );
