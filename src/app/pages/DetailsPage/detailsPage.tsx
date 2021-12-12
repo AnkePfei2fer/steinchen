@@ -1,3 +1,4 @@
+import { FormEvent } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Set } from "../../types";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
@@ -5,18 +6,23 @@ import BinIcon from "../../../assets/icons/BinIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
 import styles from "./detailsPage.module.css";
 import useCollection from "../../utils/useCollection";
+import deleteSet from "../../utils/deleteSet";
 
 export default function DetailsPage() {
   const navigate = useNavigate();
   const params = useParams();
 
-  console.log({ params });
   const sets = useCollection();
-  console.log({ sets });
   const collection: Set[] = sets.collection;
-  console.log({ collection });
   const set = collection.find((set) => set.numberSet == `${params.numberSet}`);
-  console.log({ set });
+
+  const deleteExistingSet = deleteSet(params);
+
+  const handleClick = async function (event: FormEvent) {
+    event.preventDefault();
+    await deleteExistingSet();
+    navigate("/sets");
+  };
 
   return (
     <div className={styles.container}>
@@ -38,7 +44,9 @@ export default function DetailsPage() {
         <Link to="/welcome">
           <HomeIcon fill="var(--color-brick-red-dark)" />
         </Link>
-        <BinIcon fill="none" />
+        <button className={styles.addButton} onClick={handleClick}>
+          <BinIcon fill="none" />
+        </button>
       </footer>
     </div>
   );

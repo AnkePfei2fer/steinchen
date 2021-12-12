@@ -20,6 +20,13 @@ PATCH http://localhost:3001/api/users/Marie HTTP/1.1
 Content-Type: application/json
 
 { 
-"name":"BRICKS",
-"partsNumber":999
+"numberSet":"11001-1"
+}
+
+### DELETE a set from a user
+DELETE http://localhost:3001/api/users/Marie HTTP/1.1
+Content-Type: application/json
+
+{ 
+"numberSet":"11001-1"
 }
