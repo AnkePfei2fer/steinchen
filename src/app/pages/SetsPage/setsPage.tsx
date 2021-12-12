@@ -27,11 +27,17 @@ export default function SetsPage() {
       <div className={styles.container}>
         <h1 className={styles.heading}>Deine Sets</h1>
         {collection.map((set: Set) => (
-          <div className={styles.card} key={set.numberSet}>
-            <span className={styles.text}>{set.nameSet}</span>
-            <img className={styles.image} src={set.imageUrl} />
-            <div className={styles.overlay}></div>
-          </div>
+          <Link
+            className={styles.link}
+            key={set.numberSet}
+            to={`/details/${set.numberSet}`}
+          >
+            <article className={styles.card} key={set.numberSet}>
+              <span className={styles.text}>{set.nameSet}</span>
+              <img className={styles.image} src={set.imageUrl} />
+              <div className={styles.overlay}></div>
+            </article>
+          </Link>
         ))}
       </div>
       <footer className={styles.footer}>

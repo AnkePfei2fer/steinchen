@@ -1,26 +1,36 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Set } from "../../types";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import BinIcon from "../../../assets/icons/BinIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
 import styles from "./detailsPage.module.css";
+import useCollection from "../../utils/useCollection";
 
 export default function DetailsPage() {
   const navigate = useNavigate();
+  const params = useParams();
+
+  console.log({ params });
+  const sets = useCollection();
+  console.log({ sets });
+  const collection: Set[] = sets.collection;
+  console.log({ collection });
+  const set = collection.find((set) => set.numberSet == `${params.numberSet}`);
+  console.log({ set });
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.heading}>Belle&apos;s Storybook Adventures</h2>
-      <img className={styles.image} src="../src/assets/images/Biest.png" />
+      <h2 className={styles.heading}>{set?.nameSet}</h2>
+      <img className={styles.image} src={set?.imageUrl} />
       <h3 className={styles.leftColumn}>Set Nummer:</h3>
-      <span className={styles.rightColumn}>43177-1</span>
+      <span className={styles.rightColumn}>{set?.numberSet}</span>
       <h3 className={styles.leftColumn}>Thema:</h3>
-      <span className={styles.rightColumn}>Disney Princess</span>
+      <span className={styles.rightColumn}>{set?.nameTheme}</span>
       <h3 className={styles.leftColumn}>Anzahl Teile:</h3>
-      <span className={styles.rightColumn}>111</span>
+      <span className={styles.rightColumn}>{set?.numberParts}</span>
       <h3 className={styles.leftColumn}>Erscheinungsjahr:</h3>
-      <span className={styles.rightColumn}>2020</span>
+      <span className={styles.rightColumn}>{set?.year}</span>
       <div className={styles.overlay}></div>
-
       <footer className={styles.footer}>
         <div className={styles.arrowBack} onClick={() => navigate(-1)}>
           <ArrowIcon fill="var(--color-brick-red-dark)" />
