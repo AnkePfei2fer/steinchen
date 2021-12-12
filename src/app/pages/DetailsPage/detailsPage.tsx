@@ -44,9 +44,9 @@ export default function DetailsPage() {
         <Link to="/welcome">
           <HomeIcon fill="var(--color-brick-red-dark)" />
         </Link>
-        <button className={styles.addButton} onClick={handleClick}>
+        <div className={styles.binIcon} onClick={handleClick}>
           <BinIcon fill="none" />
-        </button>
+        </div>
       </footer>
     </div>
   );
