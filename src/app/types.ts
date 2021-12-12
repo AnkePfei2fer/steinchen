@@ -16,13 +16,8 @@ export type Set = {
   nameTheme: string;
 };
 
-// export type CollectionProps = {
-//   username: string;
-//   sets: [];
-//   numberSet: string | undefined;
-//   nameSet: string | undefined;
-//   year: number | undefined;
-//   numberParts: number | undefined;
-//   imageUrl?: string;
-//   nameTheme: string | undefined;
-// };
+export type SvgProps = {
+  fill?: string;
+  width?: string;
+  height?: string;
+};

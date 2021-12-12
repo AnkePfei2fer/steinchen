@@ -40,13 +40,6 @@
   left: 0;
 }
 
-.icon {
-  fill: var(--color-brick-red-dark);
-}
-
-.binIcon {
-  stroke: var(--color-brick-red-dark);
-  stroke-width: 3.25;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.arrowBack {
+  cursor: pointer;
 }

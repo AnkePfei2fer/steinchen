@@ -31,6 +31,17 @@
   /* TEXT COLORS */
   --color-text-primary: #0d0d0d;
   --color-text-secondary: #595959;
+
+  /* LINEAR GRADIENT */
+  --gradient-footer: linear-gradient(
+    rgba(255 255 255 / 0%) 0%,
+    var(--color-background) 50%,
+    var(--color-background) 1000%
+  );
+
+  /* SHADOWS */
+  --shadow-outside: 1px 5px 5px rgba(0 0 0 / 50%);
+  --shadow-inside: inset 1px 5px 5px rgba(0 0 0 / 25%);
 }
 
 body {
