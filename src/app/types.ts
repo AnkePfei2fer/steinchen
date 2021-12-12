@@ -6,3 +6,18 @@ export type SetProps = {
   imageUrl?: string;
   nameTheme: string | undefined;
 };
+
+export type Set = {
+  numberSet: string;
+  nameSet: string;
+  year: number;
+  numberParts: number;
+  imageUrl: string;
+  nameTheme: string;
+};
+
+export type SvgProps = {
+  fill?: string;
+  width?: string;
+  height?: string;
+};

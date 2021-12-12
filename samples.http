@@ -5,7 +5,7 @@ GET http://localhost:3001/api/sets/11001-1 HTTP/1.1
 GET http://localhost:3001/api/users HTTP/1.1
 
 ### GET one specific user
-GET http://localhost:3001/api/users/Anke HTTP/1.1
+GET http://localhost:3001/api/users/Marie HTTP/1.1
 
 ### POST a new user
 POST http://localhost:3001/api/users HTTP/1.1

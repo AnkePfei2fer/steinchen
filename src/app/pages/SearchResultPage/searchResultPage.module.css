@@ -4,10 +4,6 @@
   justify-items: center;
 }
 
-.waiting {
-  text-align: center;
-}
-
 .heading {
   margin-bottom: 5rem;
 }
@@ -106,6 +102,6 @@
   left: 0;
 }
 
-.icon {
-  fill: var(--color-brick-red-dark);
+.arrowBack {
+  cursor: pointer;
 }
