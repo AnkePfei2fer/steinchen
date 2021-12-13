@@ -24,21 +24,21 @@ export default function SetsPage() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div>
         <h1 className={styles.heading}>Deine Sets</h1>
-        {collection.map((set: Set) => (
-          <Link
-            className={styles.link}
-            key={set.numberSet}
-            to={`/details/${set.numberSet}`}
-          >
-            <article className={styles.card} key={set.numberSet}>
+        <nav className={styles.container}>
+          {collection.map((set: Set) => (
+            <Link
+              className={styles.card}
+              key={set.numberSet}
+              to={`/details/${set.numberSet}`}
+            >
               <span className={styles.text}>{set.nameSet}</span>
               <img className={styles.image} src={set.imageUrl} />
               <div className={styles.overlay}></div>
-            </article>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </nav>
       </div>
       <footer className={styles.footer}>
         <div className={styles.arrowBack} onClick={() => navigate(-1)}>

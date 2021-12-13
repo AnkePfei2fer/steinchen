@@ -10,24 +10,22 @@ export default function WelcomePage() {
   const username = localStorage.getItem("Current User");
 
   return (
-    <div className={styles.container}>
+    <div>
       <h1>Hallo {username}</h1>
-      <nav>
-        <Link className={styles.link} to="/sets">
-          <button className={styles.menuButton}>
-            <img className={styles.sets} src={SetsSrc} alt="Häuschen" />
-            <h2>Deine Sets</h2>
-          </button>
+      <nav className={styles.container}>
+        <Link className={styles.menuButton} to="/sets">
+          <img className={styles.sets} src={SetsSrc} alt="Häuschen" />
+          <h2>Deine Sets</h2>
+        </Link>
+        <Link className={styles.menuButton} to="">
+          <img className={styles.bricks} src={BricksSrc} alt="Steine" />
+          <h2>Deine Steine</h2>
+        </Link>
+        <Link className={styles.menuButton} to="">
+          <img className={styles.ideas} src={ParrotSrc} alt="Papagei" />
+          <h2>Neue Ideen</h2>
         </Link>
       </nav>
-      <button className={styles.menuButton}>
-        <img className={styles.bricks} src={BricksSrc} alt="Steine" />
-        <h2>Deine Steine</h2>
-      </button>
-      <button className={styles.menuButton}>
-        <img className={styles.ideas} src={ParrotSrc} alt="Papagei" />
-        <h2>Neue Ideen</h2>
-      </button>
       <footer className={styles.footer}>
         <nav>
           <Link className={styles.link} to="/search">
