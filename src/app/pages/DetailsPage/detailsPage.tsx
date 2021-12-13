@@ -6,7 +6,7 @@ import BinIcon from "../../../assets/icons/BinIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
 import styles from "./detailsPage.module.css";
 import useCollection from "../../utils/useCollection";
-import deleteSet from "../../utils/deleteSet";
+import deleteSetFunction from "../../utils/deleteSet";
 
 export default function DetailsPage() {
   const navigate = useNavigate();
@@ -14,13 +14,13 @@ export default function DetailsPage() {
 
   const sets = useCollection();
   const collection: Set[] = sets.collection;
-  const set = collection.find((set) => set.numberSet == `${params.numberSet}`);
+  const set = collection.find((set) => set.numberSet === params.id);
 
-  const deleteExistingSet = deleteSet(params);
+  const deleteSet = deleteSetFunction(params);
 
   const handleClick = async function (event: FormEvent) {
     event.preventDefault();
-    await deleteExistingSet();
+    await deleteSet();
     navigate("/sets");
   };
 

@@ -31,7 +31,7 @@ export default function SetsPage() {
             <Link
               className={styles.card}
               key={set.numberSet}
-              to={`/details/${set.numberSet}`}
+              to={`/sets/${set.numberSet}`}
             >
               <span className={styles.text}>{set.nameSet}</span>
               <img className={styles.image} src={set.imageUrl} />

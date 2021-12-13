@@ -16,7 +16,7 @@ ReactDOM.render(
       <Route path="/search" element={<SearchPage />} />
       <Route path="/result" element={<SearchResultPage />} />
       <Route path="/sets" element={<SetsPage />} />
-      <Route path="/details/:numberSet" element={<DetailsPage />} />
+      <Route path="/sets/:id" element={<DetailsPage />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById("root")
