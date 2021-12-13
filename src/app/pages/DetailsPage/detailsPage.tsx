@@ -16,11 +16,16 @@ export default function DetailsPage() {
   const collection: Set[] = sets.collection;
   const set = collection.find((set) => set.numberSet === params.id);
 
-  const deleteSet = deleteSetFunction(params);
+  const deleteSet = deleteSetFunction(params.id);
+  console.log({ params });
 
   const handleClick = async function (event: FormEvent) {
     event.preventDefault();
-    await deleteSet();
+    try {
+      await deleteSet();
+    } catch (error) {
+      console.error(error);
+    }
     navigate("/sets");
   };
 
