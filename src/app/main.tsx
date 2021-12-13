@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage/loginPage";
 import SearchPage from "./pages/SearchPage/searchPage";
 import SearchResultPage from "./pages/SearchResultPage/searchResultPage";
 import SetsPage from "./pages/SetsPage/setsPage";
+import DetailsPage from "./pages/DetailsPage/detailsPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 ReactDOM.render(
@@ -15,6 +16,7 @@ ReactDOM.render(
       <Route path="/search" element={<SearchPage />} />
       <Route path="/result" element={<SearchResultPage />} />
       <Route path="/sets" element={<SetsPage />} />
+      <Route path="/details/:numberSet" element={<DetailsPage />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById("root")

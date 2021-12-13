@@ -62,22 +62,6 @@ app.post("/api/users", async (request, response) => {
   }
 });
 
-// PATCH a new set to a user set collection
-app.patch("/api/users/:username", async (request, response) => {
-  const userCollection = getUserCollection();
-  const username = request.params.username;
-  const newSet = request.body;
-  const added = await userCollection.updateOne(
-    { name: username },
-    { $addToSet: { sets: newSet } }
-  );
-  if (added.matchedCount === 0) {
-    response.status(404).send("User not found");
-    return;
-  }
-  response.send("Updated");
-});
-
 // Send request to Rebrickable API with set number specified by client
 app.get("/api/sets/:query", async (req, res) => {
   const { query } = req.params;
@@ -117,6 +101,34 @@ app.get("/api/sets/:query", async (req, res) => {
     nameTheme: theme.name,
   };
   res.send(combinedSet);
+});
+
+// PATCH a new set to a user set collection
+app.patch("/api/users/:username", async (request, response) => {
+  const userCollection = getUserCollection();
+  const username = request.params.username;
+  const newSet = request.body;
+  const added = await userCollection.updateOne(
+    { name: username },
+    { $addToSet: { sets: newSet } }
+  );
+  if (added.matchedCount === 0) {
+    response.status(404).send("User not found");
+    return;
+  }
+  response.send("Updated");
+});
+
+// Delete set from user set collection
+app.delete("/api/users/:username", async (request, response) => {
+  const userCollection = getUserCollection();
+  const username = request.params.username;
+  const removeSet = request.body;
+  await userCollection.updateOne(
+    { name: username },
+    { $pull: { sets: removeSet } }
+  );
+  response.send("Updated");
 });
 
 // Handle client routing, return all requests to the app

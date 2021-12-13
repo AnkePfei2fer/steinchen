@@ -45,45 +45,47 @@
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
   background: #f2d43d;
   font-family: Atma, sans-serif;
+  width: 375px;
+  height: 667px;
 }
 
 h1 {
   font-family: Atma, sans-serif;
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 700;
 }
 
 h2 {
   font-family: Atma, sans-serif;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
 h3 {
   font-family: Atma, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 500;
   margin: 0;
 }
 
 .plaintext {
   font-family: Atma, sans-serif;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .button {
-  width: 10rem;
-  height: 3rem;
+  width: 8rem;
+  height: 2.5rem;
   margin: 0.5rem;
   border-radius: 1.3rem;
   background: var(--color-button);
   border: none;
   box-shadow: 1px 5px 5px rgba(0 0 0 / 50%);
   font-family: Atma, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 500;
 }
 
