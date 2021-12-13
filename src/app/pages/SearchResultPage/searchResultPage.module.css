@@ -15,13 +15,13 @@
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
   place-items: center;
-  width: 90vw;
+  width: 90%;
   height: 12rem;
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 1.5rem;
   border: none;
-  box-shadow: 0 0 5px 3px rgba(0 0 0 / 50%);
+  box-shadow: var(--shadow-cards);
 }
 
 .text {
@@ -83,12 +83,12 @@
   border-radius: 50%;
   background: var(--color-button);
   border: none;
-  box-shadow: 1px 5px 5px rgba(0 0 0 / 50%);
+  box-shadow: var(--shadow-outside);
   z-index: 3;
 }
 
 .addButton:active {
-  box-shadow: inset 1px 5px 5px rgba(0 0 0 / 25%);
+  box-shadow: var(--shadow-inside);
 }
 
 .footer {

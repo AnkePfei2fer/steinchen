@@ -20,7 +20,7 @@
   padding: 0.5rem;
   border-radius: 1.5rem;
   border: none;
-  box-shadow: 0 0 5px 3px rgba(0 0 0 / 50%);
+  box-shadow: var(--shadow-cards);
   background-color: white;
   text-align: center;
   color: inherit;

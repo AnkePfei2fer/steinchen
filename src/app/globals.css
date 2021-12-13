@@ -42,6 +42,7 @@
   /* SHADOWS */
   --shadow-outside: 1px 5px 5px rgba(0 0 0 / 50%);
   --shadow-inside: inset 1px 5px 5px rgba(0 0 0 / 25%);
+  --shadow-cards: 0 0 5px 3px rgba(0 0 0 / 50%);
 }
 
 body {
