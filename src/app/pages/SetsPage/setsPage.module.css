@@ -12,16 +12,17 @@
 .card {
   position: relative;
   display: grid;
+  width: 90vw;
   gap: 0.5rem;
   place-items: center;
-  width: 22rem;
-  height: 15rem;
+  height: auto;
   margin: 0.75rem;
   padding: 0.5rem;
   border-radius: 1.5rem;
   border: none;
   box-shadow: 0 0 5px 3px rgba(0 0 0 / 50%);
   background-color: white;
+  text-align: center;
 }
 
 .text {
@@ -32,8 +33,7 @@
 }
 
 .image {
-  height: 12rem;
-  width: 15rem;
+  height: 9rem;
   object-fit: contain;
   padding: 0.5rem;
 }
@@ -45,8 +45,8 @@
 
 .overlay {
   position: absolute;
-  width: 22rem;
-  height: 15rem;
+  width: 90vw;
+  height: auto;
   background: var(--color-background);
   opacity: 0.15;
   z-index: 2;
@@ -62,7 +62,7 @@
   width: 100vw;
   height: auto;
   place-items: center;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   position: fixed;
   bottom: 0;
   background: var(--gradient-footer);
