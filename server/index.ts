@@ -120,15 +120,19 @@ app.patch("/api/users/:username", async (request, response) => {
 });
 
 // Delete set from user set collection
-app.delete("/api/users/:username", async (request, response) => {
+app.delete("/api/users/:username/sets/:id", async (request, response) => {
   const userCollection = getUserCollection();
-  const username = request.params.username;
-  const removeSet = request.body;
-  await userCollection.updateOne(
+  const { username, id } = request.params;
+  const removeSet = await userCollection.updateOne(
     { name: username },
-    { $pull: { sets: removeSet } }
+    { $pull: { sets: { numberSet: id } } }
   );
-  response.send("Updated");
+  if (removeSet.modifiedCount === 1) {
+    response.send("The set was removed from collection.");
+  }
+  {
+    response.status(404).send("Set or user not found");
+  }
 });
 
 // Handle client routing, return all requests to the app
