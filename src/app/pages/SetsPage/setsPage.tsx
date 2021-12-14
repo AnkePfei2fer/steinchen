@@ -1,17 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Set } from "../../types";
 import styles from "./setsPage.module.css";
-import useCollection from "../../utils/useCollection";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
 import PlusIcon from "../../../assets/icons/PlusIcon";
 
-export default function SetsPage() {
-  const navigate = useNavigate();
-  const sets = useCollection();
-  const collection: Set[] = sets.collection;
+type CollectionProps = { collection: Set[] };
 
-  // Sort by set name in alphabetical order
+export default function SetsPage({ collection }: CollectionProps) {
+  const navigate = useNavigate();
+
   collection?.sort(function (a, b) {
     if (a.nameSet < b.nameSet) {
       return -1;

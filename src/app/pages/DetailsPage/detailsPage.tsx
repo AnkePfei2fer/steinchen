@@ -5,15 +5,14 @@ import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import BinIcon from "../../../assets/icons/BinIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
 import styles from "./detailsPage.module.css";
-import useCollection from "../../utils/useCollection";
 import deleteSetFunction from "../../utils/deleteSet";
 
-export default function DetailsPage() {
+type CollectionProps = { collection: Set[] };
+
+export default function DetailsPage({ collection }: CollectionProps) {
   const navigate = useNavigate();
   const params = useParams();
 
-  const sets = useCollection();
-  const collection: Set[] = sets.collection;
   const set = collection.find((set) => set.numberSet === params.id);
 
   const deleteSet = deleteSetFunction(params.id);
