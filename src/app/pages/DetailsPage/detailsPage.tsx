@@ -50,7 +50,11 @@ export default function DetailsPage() {
           <HomeIcon fill="var(--color-brick-red-dark)" />
         </Link>
         <div className={styles.binIcon} onClick={handleClick}>
-          <BinIcon fill="none" />
+          <BinIcon
+            fill="none"
+            className={styles.binIcon}
+            onClick={handleClick}
+          />
         </div>
       </footer>
     </div>

@@ -1,3 +1,5 @@
+import { FormEvent } from "react";
+
 export type SetProps = {
   numberSet: string | undefined;
   nameSet: string | undefined;
@@ -20,4 +22,6 @@ export type SvgProps = {
   fill?: string;
   width?: string;
   height?: string;
+  className?: string;
+  onClick?: (event: FormEvent) => void;
 };
