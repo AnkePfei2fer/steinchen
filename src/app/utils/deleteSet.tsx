@@ -1,15 +1,11 @@
-export default function deleteSet(numberSet: object) {
+export default function deleteSetFunction(id: string | undefined) {
   const username = localStorage.getItem("Current User");
 
-  const deleteExistingSet = async function () {
-    await fetch(`/api/users/${username}`, {
+  const deleteSet = async function () {
+    await fetch(`/api/users/${username}/sets/${id}`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(numberSet),
     });
   };
 
-  return deleteExistingSet;
+  return deleteSet;
 }

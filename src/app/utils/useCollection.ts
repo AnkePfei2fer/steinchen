@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function useCollection() {
-  const [collection, setCollection] = useState([]);
+  const [usersets, setUsersets] = useState([]);
 
   const username = localStorage.getItem("Current User");
 
@@ -12,12 +12,12 @@ export default function useCollection() {
       return;
     }
     const result = await response.json();
-    setCollection(result.sets);
+    setUsersets(result.sets);
   };
 
   useEffect(() => {
     fetchCollection();
   }, []);
 
-  return { collection };
+  return { usersets };
 }
