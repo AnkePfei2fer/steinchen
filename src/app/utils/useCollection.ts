@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
+import { Set } from "../types";
 
 export default function useCollection() {
-  const [usersets, setUsersets] = useState([]);
-
-  const username = localStorage.getItem("Current User");
+  const [collection, setCollection] = useState<Set[]>([]);
 
   // fetch set collection from MongoDB
-  const fetchCollection = async function () {
+  const refresh = async function () {
+    const username = localStorage.getItem("Current User");
     const response = await fetch(`/api/users/${username}`);
     if (!response.ok) {
       return;
     }
     const result = await response.json();
-    setUsersets(result.sets);
+    setCollection(result.sets);
   };
 
   useEffect(() => {
-    fetchCollection();
+    refresh();
   }, []);
 
-  return { usersets };
+  return { collection, refresh };
 }

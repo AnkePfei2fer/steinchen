@@ -7,7 +7,11 @@ import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
 import PlusIcon from "../../../assets/icons/PlusIcon";
 
-export default function SearchResultPage(): JSX.Element {
+type SearchResultPageProps = { onAddSet: () => void };
+
+export default function SearchResultPage({
+  onAddSet,
+}: SearchResultPageProps): JSX.Element {
   const query = localStorage.getItem("Search Query");
   const navigate = useNavigate();
   const { searchResult } = useSet(query);
@@ -33,6 +37,7 @@ export default function SearchResultPage(): JSX.Element {
   const handleClick = async function (event: FormEvent) {
     event.preventDefault();
     await postNewSet();
+    onAddSet();
     navigate("/sets");
   };
 

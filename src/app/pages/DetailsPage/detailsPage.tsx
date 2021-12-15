@@ -7,9 +7,9 @@ import HomeIcon from "../../../assets/icons/HomeIcon";
 import styles from "./detailsPage.module.css";
 import deleteSetFunction from "../../utils/deleteSet";
 
-type CollectionProps = { collection: Set[] };
+type CollectionProps = { collection: Set[]; onAddSet: () => void };
 
-export default function DetailsPage({ collection }: CollectionProps) {
+export default function DetailsPage({ collection, onAddSet }: CollectionProps) {
   const navigate = useNavigate();
   const params = useParams();
 
@@ -25,6 +25,7 @@ export default function DetailsPage({ collection }: CollectionProps) {
     } catch (error) {
       console.error(error);
     }
+    onAddSet();
     navigate("/sets");
   };
 
