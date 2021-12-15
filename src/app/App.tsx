@@ -25,7 +25,7 @@ function App() {
         path="/sets/:id"
         element={<DetailsPage collection={collection} onLoadSet={refresh} />}
       />
-      <Route path="/sets" element={<BricksPage collection={collection} />} />
+      <Route path="/bricks" element={<BricksPage collection={collection} />} />
     </Routes>
   );
 }

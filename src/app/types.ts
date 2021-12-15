@@ -7,6 +7,7 @@ export type SetProps = {
   numberParts: number | undefined;
   imageUrl?: string;
   nameTheme: string | undefined;
+  parts: [] | undefined;
 };
 
 export type Set = {
@@ -16,6 +17,7 @@ export type Set = {
   numberParts: number;
   imageUrl: string;
   nameTheme: string;
+  parts: [];
 };
 
 export type SvgProps = {
@@ -27,3 +29,5 @@ export type SvgProps = {
 };
 
 export type RefreshPageProps = { onLoadSet: () => void };
+
+export type CollectionProps = { collection: Set[] };

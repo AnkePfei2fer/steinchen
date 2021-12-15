@@ -21,6 +21,7 @@ export default function SearchResultPage({
   const year = searchResult?.year;
   const imageUrl = searchResult?.imageUrl;
   const nameTheme = searchResult?.nameTheme;
+  const parts = searchResult?.parts;
 
   const set = {
     numberSet,
@@ -29,6 +30,7 @@ export default function SearchResultPage({
     year,
     imageUrl,
     nameTheme,
+    parts,
   };
 
   const postNewSet = postSet(set);

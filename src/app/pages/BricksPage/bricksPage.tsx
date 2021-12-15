@@ -1,11 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Set } from "../../types";
+import { Set, CollectionProps } from "../../types";
 import styles from "./bricksPage.module.css";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
-import PlusIcon from "../../../assets/icons/PlusIcon";
-
-type CollectionProps = { collection: Set[] };
 
 export default function BricksPage({ collection }: CollectionProps) {
   const navigate = useNavigate();
@@ -13,7 +10,7 @@ export default function BricksPage({ collection }: CollectionProps) {
   return (
     <>
       <div>
-        <h1 className={styles.heading}>Deine Sets</h1>
+        <h1 className={styles.heading}>Deine Steine</h1>
         <nav className={styles.container}>
           {collection.map((set: Set) => (
             <Link
@@ -37,12 +34,6 @@ export default function BricksPage({ collection }: CollectionProps) {
             <HomeIcon fill="var(--color-brick-red-dark)" />
           </Link>
         </nav>
-        <button
-          className={styles.addButton}
-          onClick={() => navigate("/search")}
-        >
-          <PlusIcon fill="var(--color-text-primary)" width="25" height="25" />
-        </button>
       </footer>
     </>
   );
