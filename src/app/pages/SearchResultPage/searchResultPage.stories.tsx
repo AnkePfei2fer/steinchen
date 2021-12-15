@@ -1,8 +1,7 @@
 import SearchResultPage from "./searchResultPage";
-
-type SearchResultPageProps = { onAddSet: () => void };
+import { RefreshPageProps } from "../../types";
 
 export default { component: SearchResultPage, title: "Pages/Search Result" };
-export const Default = ({ onAddSet }: SearchResultPageProps) => (
-  <SearchResultPage onAddSet={onAddSet} />
+export const Default = ({ onLoadSet }: RefreshPageProps) => (
+  <SearchResultPage onLoadSet={onLoadSet} />
 );
