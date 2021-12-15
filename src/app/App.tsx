@@ -6,6 +6,7 @@ import WelcomePage from "./pages/WelcomePage/welcomePage";
 import LoginPage from "./pages/LoginPage/loginPage";
 import SearchPage from "./pages/SearchPage/searchPage";
 import SearchResultPage from "./pages/SearchResultPage/searchResultPage";
+import BricksPage from "./pages/BricksPage/bricksPage";
 
 function App() {
   const { collection, refresh } = useCollection();
@@ -24,6 +25,7 @@ function App() {
         path="/sets/:id"
         element={<DetailsPage collection={collection} onLoadSet={refresh} />}
       />
+      <Route path="/sets" element={<BricksPage collection={collection} />} />
     </Routes>
   );
 }
