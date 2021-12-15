@@ -5,15 +5,22 @@ import ParrotSrc from "../../../assets/images/Papagei.png";
 import HeadIcon from "../../../assets/icons/HeadIcon";
 import LogoutIcon from "../../../assets/icons/LogoutIcon";
 import { Link } from "react-router-dom";
+import { RefreshPageProps } from "../../types";
 
-export default function WelcomePage() {
+export default function WelcomePage({ onLoadSet }: RefreshPageProps) {
   const username = localStorage.getItem("Current User");
 
   return (
     <div>
       <h1>Hallo {username}</h1>
       <nav className={styles.container}>
-        <Link className={styles.menuButton} to="/sets">
+        <Link
+          className={styles.menuButton}
+          to="/sets"
+          onClick={() => {
+            onLoadSet();
+          }}
+        >
           <img className={styles.sets} src={SetsSrc} alt="Häuschen" />
           <h2>Deine Sets</h2>
         </Link>

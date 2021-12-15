@@ -25,3 +25,5 @@ export type SvgProps = {
   className?: string;
   onClick?: (event: FormEvent) => void;
 };
+
+export type RefreshPageProps = { onLoadSet: () => void };

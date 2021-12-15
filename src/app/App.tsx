@@ -13,13 +13,16 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<LoginPage />} />
-      <Route path="/welcome" element={<WelcomePage />} />
+      <Route path="/welcome" element={<WelcomePage onLoadSet={refresh} />} />
       <Route path="/search" element={<SearchPage />} />
-      <Route path="/result" element={<SearchResultPage onAddSet={refresh} />} />
+      <Route
+        path="/result"
+        element={<SearchResultPage onLoadSet={refresh} />}
+      />
       <Route path="/sets" element={<SetsPage collection={collection} />} />
       <Route
         path="/sets/:id"
-        element={<DetailsPage collection={collection} onAddSet={refresh} />}
+        element={<DetailsPage collection={collection} onLoadSet={refresh} />}
       />
     </Routes>
   );

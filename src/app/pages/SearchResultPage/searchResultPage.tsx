@@ -6,12 +6,11 @@ import postSet from "../../utils/postSet";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
 import PlusIcon from "../../../assets/icons/PlusIcon";
-
-type SearchResultPageProps = { onAddSet: () => void };
+import { RefreshPageProps } from "../../types";
 
 export default function SearchResultPage({
-  onAddSet,
-}: SearchResultPageProps): JSX.Element {
+  onLoadSet,
+}: RefreshPageProps): JSX.Element {
   const query = localStorage.getItem("Search Query");
   const navigate = useNavigate();
   const { searchResult } = useSet(query);
@@ -37,7 +36,7 @@ export default function SearchResultPage({
   const handleClick = async function (event: FormEvent) {
     event.preventDefault();
     await postNewSet();
-    onAddSet();
+    onLoadSet();
     navigate("/sets");
   };
 
