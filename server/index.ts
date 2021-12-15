@@ -62,10 +62,16 @@ app.post("/api/users", async (request, response) => {
   }
 });
 
+export type Parts = {
+  quantity: number;
+  part: object;
+};
+
 // Send request to Rebrickable API with set number specified by client
 app.get("/api/sets/:query", async (req, res) => {
   const { query } = req.params;
   console.log({ query });
+
   // If query conatins no "-" add "-1" per default
   let set_num;
   if (query.match(/-1/)) {
@@ -73,8 +79,8 @@ app.get("/api/sets/:query", async (req, res) => {
   } else {
     set_num = `${query}-1`;
   }
-  console.log({ set_num });
 
+  // Fetch set information
   const setResponse = await fetch(
     `https://rebrickable.com/api/v3/lego/sets/${set_num}/?key=${process.env.API_KEY}`
   );
@@ -83,6 +89,8 @@ app.get("/api/sets/:query", async (req, res) => {
     return;
   }
   const set = await setResponse.json();
+
+  // Fetch theme information
   const themeId = set.theme_id;
   const themeResponse = await fetch(
     `https://rebrickable.com/api/v3/lego/themes/${themeId}/?key=${process.env.API_KEY}`
@@ -92,6 +100,24 @@ app.get("/api/sets/:query", async (req, res) => {
     return;
   }
   const theme = await themeResponse.json();
+
+  // Fetch part information
+  const partsResponse = await fetch(
+    `https://rebrickable.com/api/v3/lego/sets/${set_num}/parts/?key=${process.env.API_KEY}`
+  );
+  if (!partsResponse.ok) {
+    res.status(partsResponse.status).send();
+    return;
+  }
+  const parts = await partsResponse.json();
+
+  const partsInventory = parts.results.map(({ quantity, part }: Parts) => ({
+    quantity: quantity,
+    parts: part,
+  }));
+
+  console.log(partsInventory);
+
   const combinedSet = {
     numberSet: set.set_num,
     nameSet: set.name,
@@ -99,6 +125,7 @@ app.get("/api/sets/:query", async (req, res) => {
     numberParts: set.num_parts,
     imageUrl: set.set_img_url,
     nameTheme: theme.name,
+    parts: partsInventory,
   };
   res.send(combinedSet);
 });
