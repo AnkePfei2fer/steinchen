@@ -62,9 +62,11 @@ app.post("/api/users", async (request, response) => {
   }
 });
 
-export type Parts = {
+type Parts = {
   quantity: number;
   part: object;
+  part_num: number;
+  part_img_url: string;
 };
 
 // Send request to Rebrickable API with set number specified by client
@@ -111,21 +113,41 @@ app.get("/api/sets/:query", async (req, res) => {
   }
   const parts = await partsResponse.json();
 
-  const partsInventory = parts.results.map(({ quantity, part }: Parts) => ({
-    quantity: quantity,
-    part: part,
-  }));
+  // Extract part quantity
+  const partsQuantity = parts.results.map((parts: Parts) => {
+    return { quantity: parts.quantity };
+  });
+  console.log({ partsQuantity });
 
-  console.log(partsInventory);
+  // Extract part details
+  const partsInformation = parts.results.map((parts: Parts) => {
+    return parts.part;
+  });
+  console.log({ partsInformation });
+
+  const partsNumberAndImage = partsInformation.map((parts: Parts) => {
+    {
+      return { numberPart: parts.part_num, imageUrlPart: parts.part_img_url };
+    }
+  });
+  console.log({ partsNumberAndImage });
+
+  // const partsDetails = partsQuantity.forEach((partsQuantity: object) =>
+  //   Object.assign(partsQuantity, partsNumberAndImage)
+  // );
+  const partsDetails = partsQuantity.map(function (e: number, i: number) {
+    return [Object.assign(e, partsNumberAndImage[i])];
+  });
+  // const partsDetails = [...Object.assign(partsQuantity, partsNumberAndImage)];
 
   const combinedSet = {
     numberSet: set.set_num,
     nameSet: set.name,
     year: set.year,
     numberParts: set.num_parts,
-    imageUrl: set.set_img_url,
+    ImageUrlSet: set.set_img_url,
     nameTheme: theme.name,
-    parts: partsInventory,
+    partsInventory: partsDetails,
   };
   res.send(combinedSet);
 });
