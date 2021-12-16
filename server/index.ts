@@ -145,7 +145,7 @@ app.get("/api/sets/:query", async (req, res) => {
     nameSet: set.name,
     year: set.year,
     numberParts: set.num_parts,
-    ImageUrlSet: set.set_img_url,
+    imageUrlSet: set.set_img_url,
     nameTheme: theme.name,
     partsInventory: partsDetails,
   };

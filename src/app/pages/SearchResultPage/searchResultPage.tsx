@@ -19,18 +19,18 @@ export default function SearchResultPage({
   const nameSet = searchResult?.nameSet;
   const numberParts = searchResult?.numberParts;
   const year = searchResult?.year;
-  const imageUrl = searchResult?.imageUrl;
+  const imageUrlSet = searchResult?.imageUrlSet;
   const nameTheme = searchResult?.nameTheme;
-  const parts = searchResult?.parts;
+  const partsInventory = searchResult?.partsInventory;
 
   const set = {
     numberSet,
     nameSet,
     numberParts,
     year,
-    imageUrl,
+    imageUrlSet,
     nameTheme,
-    parts,
+    partsInventory,
   };
 
   const postNewSet = postSet(set);
@@ -51,7 +51,7 @@ export default function SearchResultPage({
       <h1 className={styles.heading}>Gefunden</h1>
       <div className={styles.card}>
         <span className={styles.text}>{nameSet}</span>
-        <img className={styles.image} src={imageUrl} />
+        <img className={styles.image} src={imageUrlSet} />
         <p className={styles.theme}>{nameTheme}</p>
         <p className={styles.parts}>{numberParts} Teile</p>
         <div className={styles.overlay}></div>

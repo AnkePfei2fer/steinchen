@@ -1,10 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Set, CollectionProps } from "../../types";
 import styles from "./bricksPage.module.css";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
 
-export type Parts = {
+type Parts = {
   quantity: number;
   part: object;
 };
@@ -30,31 +30,32 @@ export default function BricksPage({ collection }: CollectionProps) {
   const combinedParts = array1.concat(array2);
   console.log({ combinedParts });
 
+  //   const partDetail = combinedParts.map((partDetail) => {
+  //     return partDetail.part_img_url;
+  //   });
+  //   console.log({ partDetail });
+
   return (
     <>
       <div>
         <h1 className={styles.heading}>Deine Steine</h1>
-        <nav className={styles.container}>
-          {collection.map((set: Set) => (
-            <Link
-              className={styles.card}
-              key={set.numberSet}
-              to={`/sets/${set.numberSet}`}
-            >
+        {/* <nav className={styles.container}>
+          {combinedParts.map((part: Parts) => (
+            <article className={styles.card} key={parts.quantity}>
               <span className={styles.text}>{set.nameSet}</span>
               <img className={styles.image} src={set.imageUrl} />
-            </Link>
+            </article>
           ))}
-        </nav>
+        </nav> */}
       </div>
       <footer className={styles.footer}>
         <div className={styles.arrowBack} onClick={() => navigate(-1)}>
           <ArrowIcon fill="var(--color-brick-red-dark)" />
         </div>
         <nav>
-          <Link to="/welcome">
+          <article to="/welcome">
             <HomeIcon fill="var(--color-brick-red-dark)" />
-          </Link>
+          </article>
         </nav>
       </footer>
     </>
