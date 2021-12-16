@@ -113,7 +113,7 @@ app.get("/api/sets/:query", async (req, res) => {
 
   const partsInventory = parts.results.map(({ quantity, part }: Parts) => ({
     quantity: quantity,
-    parts: part,
+    part: part,
   }));
 
   console.log(partsInventory);

@@ -40,18 +40,6 @@
   padding: 0.5rem;
 }
 
-.overlay {
-  position: absolute;
-  width: 90vw;
-  height: auto;
-  background: var(--color-background);
-  opacity: 0.15;
-  z-index: 2;
-}
-
-.overlay:hover {
-  opacity: 0.3;
-}
 
 .footer {
   display: grid;
@@ -71,19 +59,3 @@
   cursor: pointer;
 }
 
-.addButton {
-  display: grid;
-  place-items: center;
-  width: 2.2rem;
-  height: 2.2rem;
-  border-radius: 50%;
-  background: var(--color-button);
-  border: none;
-  box-shadow: var(--shadow-outside);
-  cursor: pointer;
-  padding: 0;
-}
-
-.addButton:active {
-  box-shadow: var(--shadow-inside);
-}
