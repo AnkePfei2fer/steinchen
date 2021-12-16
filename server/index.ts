@@ -132,13 +132,9 @@ app.get("/api/sets/:query", async (req, res) => {
   });
   console.log({ partsNumberAndImage });
 
-  // const partsDetails = partsQuantity.forEach((partsQuantity: object) =>
-  //   Object.assign(partsQuantity, partsNumberAndImage)
-  // );
   const partsDetails = partsQuantity.map(function (e: number, i: number) {
     return Object.assign(e, partsNumberAndImage[i]);
   });
-  // const partsDetails = [...Object.assign(partsQuantity, partsNumberAndImage)];
 
   const combinedSet = {
     numberSet: set.set_num,

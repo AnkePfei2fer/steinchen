@@ -12,8 +12,7 @@
 
 .card {
   display: grid;
-  grid-template-columns: 60% 40%;
-  grid-template-rows: 1fr auto auto;
+  grid-template-columns: 70% 30%;
   place-items: center;
   width: 90%;
   padding: 0.5rem;
@@ -26,25 +25,13 @@
 }
 
 .image {
-  grid-column: 1/3;
-  grid-row: 1/2;
   margin-bottom: 0.5rem;
   height: 5rem;
   object-fit: contain;
 }
 
-.leftColumn {
-  composes: plaintext from global;
-  font-weight: 500;
-  grid-column: 1/2;
-  justify-self: right;
-}
-
-.rightColumn {
-  composes: plaintext from global;
-  grid-column: 2/3;
-  justify-self: left;
-  padding-left: 0.5rem;
+.quantity {
+  text-align: center;
 }
 
 .footer {

@@ -18,28 +18,18 @@ export default function BricksPage({ collection }: CollectionProps) {
   });
   console.log({ partsInventory });
 
-  // Extract individual arrays with parts information --> map instead?
-  const array1 = partsInventory[0];
-  console.log({ array1 });
-
-  const array2 = partsInventory[3];
-  console.log(array2);
-
-  //   combine arrays with parts information (without summing up duplicate entries)
-  // const combinedParts = array1.concat(array2);
-  // console.log({ combinedParts });
+  //Combine all arrays with parts information
+  const arrays = partsInventory.flat();
+  console.log({ arrays });
 
   return (
     <React.Fragment key={uuidv4()}>
       <div className={styles.container}>
         <h1 className={styles.heading}>Deine Steine</h1>
-        {array1?.map((part: Parts) => (
+        {arrays?.map((part: Parts) => (
           <article className={styles.card} key={uuidv4()}>
             <img className={styles.image} src={part.imageUrlPart} />
-            <span className={styles.leftColumn}>Teile Nummer:</span>
-            <span className={styles.rightColumn}>{part.numberPart}</span>
-            <span className={styles.leftColumn}>Anzahl:</span>
-            <span className={styles.rightColumn}>{part.quantity}</span>
+            <h3 className={styles.quantity}>{part.quantity} x</h3>
           </article>
         ))}
       </div>
