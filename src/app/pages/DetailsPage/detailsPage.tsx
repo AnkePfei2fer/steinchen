@@ -35,7 +35,7 @@ export default function DetailsPage({
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>{set?.nameSet}</h2>
-      <img className={styles.image} src={set?.imageUrl} />
+      <img className={styles.image} src={set?.imageUrlSet} />
       <h3 className={styles.leftColumn}>Set Nummer:</h3>
       <span className={styles.rightColumn}>{set?.numberSet}</span>
       <h3 className={styles.leftColumn}>Thema:</h3>
