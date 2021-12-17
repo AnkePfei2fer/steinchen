@@ -1,74 +1,53 @@
-# Full-stack-app-template
+<img width="20%" align="right" alt="bricks" src="src/assets/icons/Bricks.svg" />
 
-> Quickly bootstrap a new project with Vite Boilerplate.
+# Steinchen
 
-This boilerplate contains all the tools you need to build a modern web app with TypeScript, React, Vite, Storybook and Express.  
-You can use it to quickly bootstrap your project.
+> ## Brickies
 
-ESLint, stylelint, prettier, husky and lintstaged are configured to give you a solid development experience.
+An app for kids as well as adults, fans and collectors. Here you can save, view, and manage your bricks collection. A detailed set view gives you information about the associated theme, the number of parts and the year of release. In the brick overview you can view all the bricks of your sets.
 
-## Installing / Developing
+### Here you can view and test the app:
 
-First, [create a repository from this template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/creating-a-repository-from-a-template).
+https://steinchen.herokuapp.com/
 
-Now you are ready to go:
+## Installing / Getting started
 
-```shell
-npm install
-```
+`npm install` : Installs the required dependencies.
 
-This will install the dependencies required to run the boilerplate.
+In the project directory, you can then run:
 
-```shell
-npm run dev
-```
+`npm run client:dev` : Runs the app in development mode to view it in the browser. The page will automatically reload if you make changes to the code. You will see the build errors and lint warnings in the console.
 
-Boom! These scripts run your server, client and storybook in development mode.
+`npm run server:dev` : Runs the server in development mode.
 
-The default PORTS are:
+`npm run storybook` : Runs storybook in development mode.
+
+`npm run dev` : These scripts run your server, client and storybook all at once in development mode.
+
+### The default PORTS are:
 
 - `3001` for the server
 - `3000` for the client
 - `6006` for the storybook
 
-If you don't like to call all scripts at once, you can also run:
+### 📜 .env
 
-```shell
-npm run dev-server
-npm run dev-client
-npm run storybook
-```
+You shall use `dotenv` to securely connect with MongoDB and Rebrickable API.
 
-You can configure the server port by setting the `PORT` environment variable. Creating a `.env` file is supported. You can copy `.env.example` to `.env`.
-
-| KEY  | VALUE                                                         |
-| ---- | ------------------------------------------------------------- |
-| PORT | (Optional) Port for the server environment (defaults to 3001) |
+You can request an own API key here: https://rebrickable.com/api/
 
 ## Building
 
-To build the project, run:
+`npm run build` : This will build the client, server and storybook for production to the dist folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes.
 
-```shell
-npm run build
-```
-
-This will build the client, server and storybook.
-
-```shell
-npm start
-```
+`npm start` : Runs the server in production mode and serve production bundle from npm run build
 
 In production, you have a single server serving everything.
 
 `/api/*` is the API endpoint.  
-`/storybook` is the Storybook.  
+`/storybook` is the storybook.  
 `/*` is the client.
 
 ## Tests
 
 A test runner is not installed (right now). But TypeScript, linter and prettier are checked on commit and push thanks to husky and lintstaged.
-
-## Licensing
-
-MIT
