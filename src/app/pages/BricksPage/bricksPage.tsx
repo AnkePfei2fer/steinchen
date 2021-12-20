@@ -26,7 +26,7 @@ export default function BricksPage({ collection }: CollectionProps) {
         <h1 className={styles.heading}>Deine Steine</h1>
         {arrays?.map((part: Parts) => (
           <article className={styles.card} key={uuidv4()}>
-            <img className={styles.image} src={part.imageUrlPart} />
+            <img className={styles.image} src={part.imageUrlPart} alt="" />
             <h3 className={styles.quantity}>{part.quantity} x</h3>
           </article>
         ))}

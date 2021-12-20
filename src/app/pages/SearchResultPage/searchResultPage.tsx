@@ -51,7 +51,7 @@ export default function SearchResultPage({
       <h1 className={styles.heading}>Gefunden</h1>
       <div className={styles.card}>
         <span className={styles.text}>{nameSet}</span>
-        <img className={styles.image} src={imageUrlSet} />
+        <img className={styles.image} src={imageUrlSet} alt="" />
         <p className={styles.theme}>{nameTheme}</p>
         <p className={styles.parts}>{numberParts} Teile</p>
         <div className={styles.overlay}></div>

@@ -24,7 +24,7 @@ export default function SetsPage({ collection }: CollectionProps) {
               to={`/sets/${set.numberSet}`}
             >
               <span className={styles.text}>{set.nameSet}</span>
-              <img className={styles.image} src={set.imageUrlSet} />
+              <img className={styles.image} src={set.imageUrlSet} alt="" />
               <div className={styles.overlay}></div>
             </Link>
           ))}
