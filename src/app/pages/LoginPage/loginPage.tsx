@@ -1,6 +1,6 @@
 import styles from "./loginPage.module.css";
 import Login from "../../components/Login/login";
-import FigurSrc from "../../../assets/images/Figur.png";
+import FigurSrc from "../../../assets/images/Minifig-small.png";
 import BricksSrc from "../../../assets/icons/Bricks.svg";
 
 export default function LoginPage() {
