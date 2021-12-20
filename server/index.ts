@@ -12,10 +12,6 @@ if (!process.env.MONGODB_URI) {
   throw new Error("No MongoDB URI dotenv variable.");
 }
 
-app.get("/api/hello", (_request, response) => {
-  response.json({ message: "Hello from server" });
-});
-
 // Serve production bundle
 app.use(express.static("dist"));
 
@@ -62,17 +58,18 @@ app.post("/api/users", async (request, response) => {
   }
 });
 
-export type Parts = {
+type Parts = {
   quantity: number;
   part: object;
+  part_num: number;
+  part_img_url: string;
 };
 
 // Send request to Rebrickable API with set number specified by client
 app.get("/api/sets/:query", async (req, res) => {
   const { query } = req.params;
-  console.log({ query });
 
-  // If query conatins no "-" add "-1" per default
+  // If query conatins no "-1" add "-1" per default
   let set_num;
   if (query.match(/-1/)) {
     set_num = query;
@@ -111,21 +108,34 @@ app.get("/api/sets/:query", async (req, res) => {
   }
   const parts = await partsResponse.json();
 
-  const partsInventory = parts.results.map(({ quantity, part }: Parts) => ({
-    quantity: quantity,
-    parts: part,
-  }));
+  // Extract part quantity
+  const partsQuantity = parts.results.map((parts: Parts) => {
+    return { quantity: parts.quantity };
+  });
 
-  console.log(partsInventory);
+  // Extract part details
+  const partsInformation = parts.results.map((parts: Parts) => {
+    return parts.part;
+  });
+
+  const partsNumberAndImage = partsInformation.map((parts: Parts) => {
+    {
+      return { numberPart: parts.part_num, imageUrlPart: parts.part_img_url };
+    }
+  });
+
+  const partsDetails = partsQuantity.map(function (e: number, i: number) {
+    return Object.assign(e, partsNumberAndImage[i]);
+  });
 
   const combinedSet = {
     numberSet: set.set_num,
     nameSet: set.name,
     year: set.year,
     numberParts: set.num_parts,
-    imageUrl: set.set_img_url,
+    imageUrlSet: set.set_img_url,
     nameTheme: theme.name,
-    parts: partsInventory,
+    partsInventory: partsDetails,
   };
   res.send(combinedSet);
 });
@@ -143,7 +153,7 @@ app.patch("/api/users/:username", async (request, response) => {
     response.status(404).send("User not found");
     return;
   }
-  response.send("Updated");
+  response.send("User collection was updated.");
 });
 
 // Delete set from user set collection
