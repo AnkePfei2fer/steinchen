@@ -19,7 +19,6 @@ export default function DetailsPage({
   const set = collection.find((set) => set.numberSet === params.id);
 
   const deleteSet = deleteSetFunction(params.id);
-  console.log({ params });
 
   const handleClick = async function (event: FormEvent) {
     event.preventDefault();
@@ -47,17 +46,13 @@ export default function DetailsPage({
       <div className={styles.overlay}></div>
       <footer className={styles.footer}>
         <div className={styles.arrowBack} onClick={() => navigate(-1)}>
-          <ArrowIcon fill="var(--color-brick-red-dark)" />
+          <ArrowIcon />
         </div>
         <Link to="/welcome">
-          <HomeIcon fill="var(--color-brick-red-dark)" />
+          <HomeIcon className={styles.homeIcon} />
         </Link>
         <div className={styles.binIcon} onClick={handleClick}>
-          <BinIcon
-            fill="none"
-            className={styles.binIcon}
-            onClick={handleClick}
-          />
+          <BinIcon className={styles.binIcon} onClick={handleClick} />
         </div>
       </footer>
     </div>

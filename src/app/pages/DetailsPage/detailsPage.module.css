@@ -38,7 +38,16 @@
   bottom: 0;
 }
 
-.arrowBack,
+.arrowBack {
+  cursor: pointer;
+  fill: var(--color-brick-red-dark);
+}
+
+.homeIcon {
+  fill: var(--color-brick-red-dark);
+}
+
 .binIcon {
   cursor: pointer;
+  fill: none;
 }

@@ -33,13 +33,11 @@ export default function BricksPage({ collection }: CollectionProps) {
       </div>
       <footer className={styles.footer}>
         <div className={styles.arrowBack} onClick={() => navigate(-1)}>
-          <ArrowIcon fill="var(--color-brick-red-dark)" />
+          <ArrowIcon />
         </div>
-        <nav>
-          <Link to="/welcome">
-            <HomeIcon fill="var(--color-brick-red-dark)" />
-          </Link>
-        </nav>
+        <Link to="/welcome">
+          <HomeIcon className={styles.homeIcon} />
+        </Link>
       </footer>
     </React.Fragment>
   );

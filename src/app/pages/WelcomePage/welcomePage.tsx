@@ -34,26 +34,22 @@ export default function WelcomePage({ onLoadSet }: RefreshPageProps) {
         </Link>
       </nav>
       <footer className={styles.footer}>
-        <nav>
-          <Link className={styles.link} to="/search">
-            <label className={styles.text}>
-              <HeadIcon fill="var(--color-brick-red-dark)" />
-              Katalog durchsuchen
-            </label>
-          </Link>
-        </nav>
-        <nav>
-          <Link
-            className={styles.link}
-            onClick={() => localStorage.removeItem("Current User")}
-            to="/"
-          >
-            <label className={styles.text}>
-              <LogoutIcon fill="var(--color-brick-red-dark)" />
-              Logout
-            </label>
-          </Link>
-        </nav>
+        <Link className={styles.link} to="/search">
+          <label className={styles.text}>
+            <HeadIcon className={styles.headIcon} />
+            Katalog durchsuchen
+          </label>
+        </Link>
+        <Link
+          className={styles.link}
+          onClick={() => localStorage.removeItem("Current User")}
+          to="/"
+        >
+          <label className={styles.text}>
+            <LogoutIcon className={styles.logoutIcon} />
+            Logout
+          </label>
+        </Link>
       </footer>
     </div>
   );

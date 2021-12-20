@@ -5,21 +5,6 @@
   text-align: center;
 }
 
-.footer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 100vw;
-  place-items: center;
-  padding-bottom: 1rem;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.arrowBack {
-  cursor: pointer;
-}
-
 .heading {
   margin-bottom: 5rem;
 }
@@ -43,6 +28,26 @@
 }
 
 .message {
-  font-family: Atma, sans-serif;
-  font-size: 1.25rem;
+  composes: plaintext from global;
+  margin-top: 1rem;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100vw;
+  place-items: center;
+  padding-bottom: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.arrowBack {
+  cursor: pointer;
+  fill: var(--color-brick-red-dark);
+}
+
+.homeIcon {
+  fill: var(--color-brick-red-dark);
 }
