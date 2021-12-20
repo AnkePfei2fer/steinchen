@@ -10,15 +10,7 @@ type CollectionProps = { collection: Set[] };
 export default function SetsPage({ collection }: CollectionProps) {
   const navigate = useNavigate();
 
-  collection?.sort(function (a, b) {
-    if (a.nameSet < b.nameSet) {
-      return -1;
-    }
-    if (a.nameSet > b.nameSet) {
-      return 1;
-    }
-    return 0;
-  });
+  collection?.sort((a, b) => a.nameSet.localeCompare(b.nameSet));
 
   return (
     <>
