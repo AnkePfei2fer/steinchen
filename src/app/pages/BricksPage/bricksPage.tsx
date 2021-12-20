@@ -16,11 +16,9 @@ export default function BricksPage({ collection }: CollectionProps) {
   const partsInventory = collection.map((parts) => {
     return [...parts.partsInventory];
   });
-  console.log({ partsInventory });
 
   //Combine all arrays with parts information
   const arrays = partsInventory.flat();
-  console.log({ arrays });
 
   return (
     <React.Fragment key={uuidv4()}>

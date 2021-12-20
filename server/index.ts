@@ -68,7 +68,6 @@ type Parts = {
 // Send request to Rebrickable API with set number specified by client
 app.get("/api/sets/:query", async (req, res) => {
   const { query } = req.params;
-  console.log({ query });
 
   // If query conatins no "-1" add "-1" per default
   let set_num;
@@ -113,20 +112,17 @@ app.get("/api/sets/:query", async (req, res) => {
   const partsQuantity = parts.results.map((parts: Parts) => {
     return { quantity: parts.quantity };
   });
-  console.log({ partsQuantity });
 
   // Extract part details
   const partsInformation = parts.results.map((parts: Parts) => {
     return parts.part;
   });
-  console.log({ partsInformation });
 
   const partsNumberAndImage = partsInformation.map((parts: Parts) => {
     {
       return { numberPart: parts.part_num, imageUrlPart: parts.part_img_url };
     }
   });
-  console.log({ partsNumberAndImage });
 
   const partsDetails = partsQuantity.map(function (e: number, i: number) {
     return Object.assign(e, partsNumberAndImage[i]);
@@ -157,7 +153,7 @@ app.patch("/api/users/:username", async (request, response) => {
     response.status(404).send("User not found");
     return;
   }
-  response.send("Updated");
+  response.send("User collection was updated.");
 });
 
 // Delete set from user set collection
