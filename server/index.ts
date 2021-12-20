@@ -12,10 +12,6 @@ if (!process.env.MONGODB_URI) {
   throw new Error("No MongoDB URI dotenv variable.");
 }
 
-app.get("/api/hello", (_request, response) => {
-  response.json({ message: "Hello from server" });
-});
-
 // Serve production bundle
 app.use(express.static("dist"));
 
@@ -74,7 +70,7 @@ app.get("/api/sets/:query", async (req, res) => {
   const { query } = req.params;
   console.log({ query });
 
-  // If query conatins no "-" add "-1" per default
+  // If query conatins no "-1" add "-1" per default
   let set_num;
   if (query.match(/-1/)) {
     set_num = query;
