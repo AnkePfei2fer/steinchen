@@ -166,8 +166,7 @@ app.delete("/api/users/:username/sets/:id", async (request, response) => {
   );
   if (removeSet.modifiedCount === 1) {
     response.send("The set was removed from collection.");
-  }
-  {
+  } else {
     response.status(404).send("Set or user not found");
   }
 });

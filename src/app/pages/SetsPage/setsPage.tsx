@@ -24,7 +24,7 @@ export default function SetsPage({ collection }: CollectionProps) {
               to={`/sets/${set.numberSet}`}
             >
               <span className={styles.text}>{set.nameSet}</span>
-              <img className={styles.image} src={set.imageUrlSet} />
+              <img className={styles.image} src={set.imageUrlSet} alt="" />
               <div className={styles.overlay}></div>
             </Link>
           ))}
@@ -32,13 +32,11 @@ export default function SetsPage({ collection }: CollectionProps) {
       </div>
       <footer className={styles.footer}>
         <div className={styles.arrowBack} onClick={() => navigate(-1)}>
-          <ArrowIcon fill="var(--color-brick-red-dark)" />
+          <ArrowIcon />
         </div>
-        <nav>
-          <Link to="/welcome">
-            <HomeIcon fill="var(--color-brick-red-dark)" />
-          </Link>
-        </nav>
+        <Link to="/welcome">
+          <HomeIcon className={styles.homeIcon} />
+        </Link>
         <button
           className={styles.addButton}
           onClick={() => navigate("/search")}

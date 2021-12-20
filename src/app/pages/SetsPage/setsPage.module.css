@@ -69,6 +69,7 @@
 
 .arrowBack {
   cursor: pointer;
+  fill: var(--color-brick-red-dark);
 }
 
 .addButton {
@@ -86,4 +87,8 @@
 
 .addButton:active {
   box-shadow: var(--shadow-inside);
+}
+
+.homeIcon {
+  fill: var(--color-brick-red-dark);
 }

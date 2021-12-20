@@ -50,4 +50,9 @@
 
 .arrowBack {
   cursor: pointer;
+  fill: var(--color-brick-red-dark);
+}
+
+.homeIcon {
+  fill: var(--color-brick-red-dark);
 }

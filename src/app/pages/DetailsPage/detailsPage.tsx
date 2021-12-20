@@ -19,7 +19,6 @@ export default function DetailsPage({
   const set = collection.find((set) => set.numberSet === params.id);
 
   const deleteSet = deleteSetFunction(params.id);
-  console.log({ params });
 
   const handleClick = async function (event: FormEvent) {
     event.preventDefault();
@@ -35,7 +34,7 @@ export default function DetailsPage({
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>{set?.nameSet}</h2>
-      <img className={styles.image} src={set?.imageUrlSet} />
+      <img className={styles.image} src={set?.imageUrlSet} alt="" />
       <h3 className={styles.leftColumn}>Set Nummer:</h3>
       <span className={styles.rightColumn}>{set?.numberSet}</span>
       <h3 className={styles.leftColumn}>Thema:</h3>
@@ -47,17 +46,13 @@ export default function DetailsPage({
       <div className={styles.overlay}></div>
       <footer className={styles.footer}>
         <div className={styles.arrowBack} onClick={() => navigate(-1)}>
-          <ArrowIcon fill="var(--color-brick-red-dark)" />
+          <ArrowIcon />
         </div>
         <Link to="/welcome">
-          <HomeIcon fill="var(--color-brick-red-dark)" />
+          <HomeIcon className={styles.homeIcon} />
         </Link>
         <div className={styles.binIcon} onClick={handleClick}>
-          <BinIcon
-            fill="none"
-            className={styles.binIcon}
-            onClick={handleClick}
-          />
+          <BinIcon className={styles.binIcon} onClick={handleClick} />
         </div>
       </footer>
     </div>
