@@ -1,7 +1,7 @@
 import styles from "./welcomePage.module.css";
-import SetsSrc from "../../../assets/images/Haus.png";
-import BricksSrc from "../../../assets/images/Haufen.png";
-import ParrotSrc from "../../../assets/images/Papagei.png";
+import SetsSrc from "../../../assets/images/House-small.png";
+import BricksSrc from "../../../assets/images/Bricks-small.png";
+import ParrotSrc from "../../../assets/images/Parrot-small.png";
 import HeadIcon from "../../../assets/icons/HeadIcon";
 import LogoutIcon from "../../../assets/icons/LogoutIcon";
 import { Link } from "react-router-dom";
