@@ -14,7 +14,7 @@ export default function SearchResultPage({
   const query = localStorage.getItem("Search Query");
   const navigate = useNavigate();
   const { searchResult } = useSet(query);
-  console.log({searchResult})
+  console.log({ searchResult });
 
   const numberSet = searchResult?.numberSet;
   const nameSet = searchResult?.nameSet;
@@ -23,7 +23,7 @@ export default function SearchResultPage({
   const imageUrlSet = searchResult?.imageUrlSet;
   const nameTheme = searchResult?.nameTheme;
   const partsInventory = searchResult?.partsInventory;
-  console.log({imageUrlSet})
+  console.log({ imageUrlSet });
 
   const set = {
     numberSet,
@@ -53,7 +53,7 @@ export default function SearchResultPage({
       <h1 className={styles.heading}>Gefunden</h1>
       <div className={styles.card}>
         <span className={styles.text}>{nameSet}</span>
-        <img className={styles.image} src={imageUrlSet} alt=""/>
+        <img className={styles.image} src={imageUrlSet} alt="" />
         <p className={styles.theme}>{nameTheme}</p>
         <p className={styles.parts}>{numberParts} Teile</p>
         <div className={styles.overlay}></div>
