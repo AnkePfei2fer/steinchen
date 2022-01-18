@@ -28,7 +28,7 @@ export default function WelcomePage({ onLoadSet }: RefreshPageProps) {
           <img className={styles.bricks} src={BricksSrc} alt="Steine" />
           <h2>Deine Steine</h2>
         </Link>
-        <Link className={styles.menuButton} to="">
+        <Link className={styles.menuButton} to="/ideas">
           <img className={styles.ideas} src={ParrotSrc} alt="Papagei" />
           <h2>Neue Ideen</h2>
         </Link>

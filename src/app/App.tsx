@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage/loginPage";
 import SearchPage from "./pages/SearchPage/searchPage";
 import SearchResultPage from "./pages/SearchResultPage/searchResultPage";
 import BricksPage from "./pages/BricksPage/bricksPage";
+import IdeasPage from "./pages/IdeasPage/ideasPage";
 
 function App() {
   const { collection, refresh } = useCollection();
@@ -26,6 +27,7 @@ function App() {
         element={<DetailsPage collection={collection} onLoadSet={refresh} />}
       />
       <Route path="/bricks" element={<BricksPage collection={collection} />} />
+      <Route path="/ideas" element={<IdeasPage collection={collection} />} />
     </Routes>
   );
 }
