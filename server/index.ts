@@ -152,7 +152,6 @@ app.get("/api/sets/:query", async (req, res) => {
     return;
   }
   const moc = await mocResponse.json();
-  console.log(moc);
 
   // Extract MOC name, image url and url
   const mocInformation = moc.results.map((moc: Moc) => {

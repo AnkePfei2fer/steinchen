@@ -8,6 +8,7 @@ export type SetProps = {
   imageUrlSet?: string;
   nameTheme: string | undefined;
   partsInventory: [] | undefined;
+  mocInformation: [] | undefined;
 };
 
 export type Set = {
@@ -18,6 +19,7 @@ export type Set = {
   imageUrlSet: string;
   nameTheme: string;
   partsInventory: [];
+  mocInformation: [];
 };
 
 export type SvgProps = {

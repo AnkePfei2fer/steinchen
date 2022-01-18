@@ -23,6 +23,7 @@ export default function SearchResultPage({
   const imageUrlSet = searchResult?.imageUrlSet;
   const nameTheme = searchResult?.nameTheme;
   const partsInventory = searchResult?.partsInventory;
+  const mocInformation = searchResult?.mocInformation;
   console.log({ imageUrlSet });
 
   const set = {
@@ -33,6 +34,7 @@ export default function SearchResultPage({
     imageUrlSet,
     nameTheme,
     partsInventory,
+    mocInformation,
   };
 
   const postNewSet = postSet(set);
