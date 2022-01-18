@@ -67,6 +67,12 @@ type Parts = {
   part_img_url: string;
 };
 
+type Moc = {
+  name: string;
+  moc_img_url: string;
+  moc_url: string;
+};
+
 // Send request to Rebrickable API with set number specified by client
 app.get("/api/sets/:query", async (req, res) => {
   const { query } = req.params;
@@ -137,6 +143,27 @@ app.get("/api/sets/:query", async (req, res) => {
     return Object.assign(e, partsNumberAndImage[i]);
   });
 
+  // Fetch MOC information
+  const mocResponse = await fetch(
+    `https://rebrickable.com/api/v3/lego/sets/${set_num}/alternates/?key=${process.env.API_KEY}`
+  );
+  if (!mocResponse.ok) {
+    res.status(mocResponse.status).send();
+    return;
+  }
+  const moc = await mocResponse.json();
+  console.log(moc);
+
+  // Extract MOC name, image url and url
+  const mocInformation = moc.results.map((moc: Moc) => {
+    return {
+      nameMoc: moc.name,
+      imageUrlMoc: moc.moc_img_url,
+      urlMoc: moc.moc_url,
+    };
+  });
+
+  //  Send all information to frontend
   const combinedSet = {
     numberSet: set.set_num,
     nameSet: set.name,
@@ -145,6 +172,7 @@ app.get("/api/sets/:query", async (req, res) => {
     imageUrlSet: set.set_img_url,
     nameTheme: theme.name,
     partsInventory: partsDetails,
+    mocInformation: mocInformation,
   };
   res.send(combinedSet);
 });
