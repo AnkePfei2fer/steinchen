@@ -68,7 +68,9 @@ type Parts = {
 };
 
 type Moc = {
+  set_num: string;
   name: string;
+  num_parts: number;
   moc_img_url: string;
   moc_url: string;
 };
@@ -153,10 +155,12 @@ app.get("/api/sets/:query", async (req, res) => {
   }
   const moc = await mocResponse.json();
 
-  // Extract MOC name, image url and url
+  // Extract MOC number, name, parts number, image url and url
   const mocInformation = moc.results.map((moc: Moc) => {
     return {
+      numberMoc: moc.set_num,
       nameMoc: moc.name,
+      numberPartsMoc: moc.num_parts,
       imageUrlMoc: moc.moc_img_url,
       urlMoc: moc.moc_url,
     };
@@ -167,7 +171,7 @@ app.get("/api/sets/:query", async (req, res) => {
     numberSet: set.set_num,
     nameSet: set.name,
     year: set.year,
-    numberParts: set.num_parts,
+    numberPartsSet: set.num_parts,
     imageUrlSet: set.set_img_url,
     nameTheme: theme.name,
     partsInventory: partsDetails,

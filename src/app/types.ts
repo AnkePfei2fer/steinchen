@@ -4,7 +4,7 @@ export type SetProps = {
   numberSet: string | undefined;
   nameSet: string | undefined;
   year: number | undefined;
-  numberParts: number | undefined;
+  numberPartsSet: number | undefined;
   imageUrlSet?: string;
   nameTheme: string | undefined;
   partsInventory: [] | undefined;
@@ -15,7 +15,7 @@ export type Set = {
   numberSet: string;
   nameSet: string;
   year: number;
-  numberParts: number;
+  numberPartsSet: number;
   imageUrlSet: string;
   nameTheme: string;
   partsInventory: [];
