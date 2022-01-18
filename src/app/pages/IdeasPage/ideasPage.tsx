@@ -29,11 +29,17 @@ export default function IdeasPage({ collection }: CollectionProps) {
       <div className={styles.container}>
         <h1 className={styles.heading}>Neue Ideen</h1>
         {arrays?.map((moc: Moc) => (
-          <article className={styles.card} key={moc.numberMoc}>
+          <a
+            className={styles.card}
+            key={moc.numberMoc}
+            href={moc.urlMoc}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <h3 className={styles.text}>{moc.nameMoc}</h3>
             <img className={styles.image} src={moc.imageUrlMoc} alt="" />
             <div className={styles.overlay}></div>
-          </article>
+          </a>
         ))}
       </div>
       <footer className={styles.footer}>
