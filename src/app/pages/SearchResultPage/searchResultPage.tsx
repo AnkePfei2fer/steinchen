@@ -18,21 +18,23 @@ export default function SearchResultPage({
 
   const numberSet = searchResult?.numberSet;
   const nameSet = searchResult?.nameSet;
-  const numberParts = searchResult?.numberParts;
+  const numberPartsSet = searchResult?.numberPartsSet;
   const year = searchResult?.year;
   const imageUrlSet = searchResult?.imageUrlSet;
   const nameTheme = searchResult?.nameTheme;
   const partsInventory = searchResult?.partsInventory;
+  const mocInformation = searchResult?.mocInformation;
   console.log({ imageUrlSet });
 
   const set = {
     numberSet,
     nameSet,
-    numberParts,
+    numberPartsSet,
     year,
     imageUrlSet,
     nameTheme,
     partsInventory,
+    mocInformation,
   };
 
   const postNewSet = postSet(set);
@@ -55,7 +57,7 @@ export default function SearchResultPage({
         <span className={styles.text}>{nameSet}</span>
         <img className={styles.image} src={imageUrlSet} alt="" />
         <p className={styles.theme}>{nameTheme}</p>
-        <p className={styles.parts}>{numberParts} Teile</p>
+        <p className={styles.parts}>{numberPartsSet} Teile</p>
         <div className={styles.overlay}></div>
         <button className={styles.addButton} onClick={handleClick}>
           <PlusIcon fill="var(--color-text-primary)" />

@@ -1,11 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Set } from "../../types";
+import { Set, CollectionProps } from "../../types";
 import styles from "./setsPage.module.css";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
 import PlusIcon from "../../../assets/icons/PlusIcon";
-
-type CollectionProps = { collection: Set[] };
 
 export default function SetsPage({ collection }: CollectionProps) {
   const navigate = useNavigate();

@@ -40,7 +40,7 @@ export default function DetailsPage({
       <h3 className={styles.leftColumn}>Thema:</h3>
       <span className={styles.rightColumn}>{set?.nameTheme}</span>
       <h3 className={styles.leftColumn}>Anzahl Teile:</h3>
-      <span className={styles.rightColumn}>{set?.numberParts}</span>
+      <span className={styles.rightColumn}>{set?.numberPartsSet}</span>
       <h3 className={styles.leftColumn}>Erscheinungsjahr:</h3>
       <span className={styles.rightColumn}>{set?.year}</span>
       <div className={styles.overlay}></div>

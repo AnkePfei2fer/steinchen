@@ -60,16 +60,26 @@ app.post("/api/users", async (request, response) => {
 
 type Parts = {
   quantity: number;
+  is_spare: boolean;
+  element_id: number;
   part: object;
   part_num: number;
   part_img_url: string;
+};
+
+type Moc = {
+  set_num: string;
+  name: string;
+  num_parts: number;
+  moc_img_url: string;
+  moc_url: string;
 };
 
 // Send request to Rebrickable API with set number specified by client
 app.get("/api/sets/:query", async (req, res) => {
   const { query } = req.params;
 
-  // If query conatins no "-1" add "-1" per default
+  // If query contains no "-1" add "-1" per default
   let set_num;
   if (query.match(/-1/)) {
     set_num = query;
@@ -108,12 +118,16 @@ app.get("/api/sets/:query", async (req, res) => {
   }
   const parts = await partsResponse.json();
 
-  // Extract part quantity
-  const partsQuantity = parts.results.map((parts: Parts) => {
-    return { quantity: parts.quantity };
+  // Extract part quantity, spare information and unique ID
+  const partsQuantityAndSpareAndID = parts.results.map((parts: Parts) => {
+    return {
+      quantity: parts.quantity,
+      sparePart: parts.is_spare,
+      partID: parts.element_id,
+    };
   });
 
-  // Extract part details
+  // Extract part number and image url
   const partsInformation = parts.results.map((parts: Parts) => {
     return parts.part;
   });
@@ -124,18 +138,44 @@ app.get("/api/sets/:query", async (req, res) => {
     }
   });
 
-  const partsDetails = partsQuantity.map(function (e: number, i: number) {
+  const partsDetails = partsQuantityAndSpareAndID.map(function (
+    e: number,
+    i: number
+  ) {
     return Object.assign(e, partsNumberAndImage[i]);
   });
 
+  // Fetch MOC information
+  const mocResponse = await fetch(
+    `https://rebrickable.com/api/v3/lego/sets/${set_num}/alternates/?key=${process.env.API_KEY}`
+  );
+  if (!mocResponse.ok) {
+    res.status(mocResponse.status).send();
+    return;
+  }
+  const moc = await mocResponse.json();
+
+  // Extract MOC number, name, parts number, image url and url
+  const mocInformation = moc.results.map((moc: Moc) => {
+    return {
+      numberMoc: moc.set_num,
+      nameMoc: moc.name,
+      numberPartsMoc: moc.num_parts,
+      imageUrlMoc: moc.moc_img_url,
+      urlMoc: moc.moc_url,
+    };
+  });
+
+  //  Send all information to frontend
   const combinedSet = {
     numberSet: set.set_num,
     nameSet: set.name,
     year: set.year,
-    numberParts: set.num_parts,
+    numberPartsSet: set.num_parts,
     imageUrlSet: set.set_img_url,
     nameTheme: theme.name,
     partsInventory: partsDetails,
+    mocInformation: mocInformation,
   };
   res.send(combinedSet);
 });

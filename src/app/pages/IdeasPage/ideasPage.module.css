@@ -28,9 +28,6 @@
 }
 
 .text {
-  font-family: Atma, sans-serif;
-  font-size: 1.5rem;
-  font-weight: 500;
   z-index: 3;
 }
 
@@ -70,23 +67,6 @@
 .arrowBack {
   cursor: pointer;
   fill: var(--color-brick-red-dark);
-}
-
-.addButton {
-  display: grid;
-  place-items: center;
-  width: 2.2rem;
-  height: 2.2rem;
-  border-radius: 50%;
-  background: var(--color-button);
-  border: none;
-  box-shadow: var(--shadow-outside);
-  cursor: pointer;
-  padding: 0;
-}
-
-.addButton:active {
-  box-shadow: var(--shadow-inside);
 }
 
 .homeIcon {
