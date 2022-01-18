@@ -1,34 +1,28 @@
 import { Link, useNavigate } from "react-router-dom";
-import { CollectionProps } from "../../types";
+import { CollectionProps, mocInformation } from "../../types";
 import styles from "./ideasPage.module.css";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
 
-type Moc = {
-  numberMoc: string;
-  nameMoc: string;
-  numberPartsMoc: number;
-  imageUrlMoc: string;
-  urlMoc: string;
-};
-
 export default function IdeasPage({ collection }: CollectionProps) {
   const navigate = useNavigate();
 
-  //   Extract moc information of all sets from user collection
-  console.log({ collection });
+  //   Extract MOC information of all sets from user collection
   const mocInformation = collection.map((moc) => {
     return [...moc.mocInformation];
   });
 
-  //Combine all arrays with moc information
+  //Combine all arrays with MOC information
   const arrays = mocInformation.flat();
+  console.log(arrays);
+
+  arrays?.sort((a, b) => a.nameMoc.localeCompare(b.nameMoc));
 
   return (
     <>
       <div className={styles.container}>
         <h1 className={styles.heading}>Neue Ideen</h1>
-        {arrays?.map((moc: Moc) => (
+        {arrays.map((moc: mocInformation) => (
           <a
             className={styles.card}
             key={moc.numberMoc}
