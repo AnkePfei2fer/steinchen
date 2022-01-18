@@ -15,13 +15,13 @@ type Moc = {
 export default function IdeasPage({ collection }: CollectionProps) {
   const navigate = useNavigate();
 
-  //   Extract parts information of all sets from user collection
+  //   Extract moc information of all sets from user collection
   console.log({ collection });
   const mocInformation = collection.map((moc) => {
     return [...moc.mocInformation];
   });
 
-  //Combine all arrays with parts information
+  //Combine all arrays with moc information
   const arrays = mocInformation.flat();
 
   return (
@@ -30,8 +30,9 @@ export default function IdeasPage({ collection }: CollectionProps) {
         <h1 className={styles.heading}>Neue Ideen</h1>
         {arrays?.map((moc: Moc) => (
           <article className={styles.card} key={uuidv4()}>
-            <img className={styles.image} src={moc.imageUrlMoc} alt="" />
             <h3 className={styles.text}>{moc.nameMoc}</h3>
+            <img className={styles.image} src={moc.imageUrlMoc} alt="" />
+            <div className={styles.overlay}></div>
           </article>
         ))}
       </div>
