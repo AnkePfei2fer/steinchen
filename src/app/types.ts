@@ -1,5 +1,21 @@
 import { FormEvent } from "react";
 
+export type Mocs = {
+  numberMoc: string;
+  nameMoc: string;
+  numberPartsMoc: number;
+  imageUrlMoc: string;
+  urlMoc: string;
+};
+
+export type Parts = {
+  quantity: string;
+  sparePart: boolean;
+  partID: number;
+  numberPart: string;
+  imageUrlPart: string;
+};
+
 export type SetProps = {
   numberSet: string | undefined;
   nameSet: string | undefined;
@@ -7,16 +23,8 @@ export type SetProps = {
   numberPartsSet: number | undefined;
   imageUrlSet?: string;
   nameTheme: string | undefined;
-  partsInventory: [] | undefined;
-  mocInformation: mocInformation[] | undefined;
-};
-
-export type mocInformation = {
-  numberMoc: string;
-  nameMoc: string;
-  numberPartsMoc: number;
-  imageUrlMoc: string;
-  urlMoc: string;
+  partsInventory: Parts[] | undefined;
+  mocInformation: Mocs[] | undefined;
 };
 
 export type Set = {
@@ -26,8 +34,8 @@ export type Set = {
   numberPartsSet: number;
   imageUrlSet: string;
   nameTheme: string;
-  partsInventory: [];
-  mocInformation: mocInformation[];
+  partsInventory: Parts[];
+  mocInformation: Mocs[];
 };
 
 export type SvgProps = {

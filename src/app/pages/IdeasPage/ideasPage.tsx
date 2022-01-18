@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { CollectionProps, mocInformation } from "../../types";
+import { CollectionProps, Mocs } from "../../types";
 import styles from "./ideasPage.module.css";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
@@ -22,7 +22,7 @@ export default function IdeasPage({ collection }: CollectionProps) {
     <>
       <div className={styles.container}>
         <h1 className={styles.heading}>Neue Ideen</h1>
-        {arrays.map((moc: mocInformation) => (
+        {arrays.map((moc: Mocs) => (
           <a
             className={styles.card}
             key={moc.numberMoc}

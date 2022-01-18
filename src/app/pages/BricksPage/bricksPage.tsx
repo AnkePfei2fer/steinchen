@@ -1,24 +1,27 @@
 import { Link, useNavigate } from "react-router-dom";
-import { CollectionProps } from "../../types";
+import { CollectionProps, Parts } from "../../types";
 import styles from "./bricksPage.module.css";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
 
-type Parts = { quantity: string; numberPart: string; imageUrlPart: string };
-
 export default function BricksPage({ collection }: CollectionProps) {
   const navigate = useNavigate();
 
-  //   Extract parts information of all sets from user collection
+  // Extract parts information of all sets from user collection
   console.log({ collection });
   const partsInventory = collection.map((parts) => {
     return [...parts.partsInventory];
   });
 
-  //Combine all arrays with parts information
+  // Combine all arrays with parts information
   const arrays = partsInventory.flat();
+
+  // Sort bricks by partID
+  arrays.sort(function (a, b) {
+    return a.partID - b.partID;
+  });
 
   return (
     <React.Fragment key={uuidv4()}>
