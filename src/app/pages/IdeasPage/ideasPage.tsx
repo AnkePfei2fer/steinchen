@@ -3,11 +3,11 @@ import { CollectionProps } from "../../types";
 import styles from "./ideasPage.module.css";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
-import { v4 as uuidv4 } from "uuid";
-import React from "react";
 
 type Moc = {
+  numberMoc: string;
   nameMoc: string;
+  numberPartsMoc: number;
   imageUrlMoc: string;
   urlMoc: string;
 };
@@ -25,11 +25,11 @@ export default function IdeasPage({ collection }: CollectionProps) {
   const arrays = mocInformation.flat();
 
   return (
-    <React.Fragment key={uuidv4()}>
+    <>
       <div className={styles.container}>
         <h1 className={styles.heading}>Neue Ideen</h1>
         {arrays?.map((moc: Moc) => (
-          <article className={styles.card} key={uuidv4()}>
+          <article className={styles.card} key={moc.numberMoc}>
             <h3 className={styles.text}>{moc.nameMoc}</h3>
             <img className={styles.image} src={moc.imageUrlMoc} alt="" />
             <div className={styles.overlay}></div>
@@ -44,6 +44,6 @@ export default function IdeasPage({ collection }: CollectionProps) {
           <HomeIcon className={styles.homeIcon} />
         </Link>
       </footer>
-    </React.Fragment>
+    </>
   );
 }
