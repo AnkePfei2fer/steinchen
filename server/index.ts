@@ -65,6 +65,8 @@ type Parts = {
   part: object;
   part_num: number;
   part_img_url: string;
+  color: object;
+  id: number;
 };
 
 type Moc = {
@@ -138,12 +140,25 @@ app.get("/api/sets/:query", async (req, res) => {
     }
   });
 
+  // Extract part color
+  const partsColor = parts.results.map((parts: Parts) => {
+    return parts.color;
+  });
+
+  const partsColorID = partsColor.map((parts: Parts) => {
+    {
+      return { colorID: parts.id };
+    }
+  });
+
   const partsDetails = partsQuantityAndSpareAndID.map(function (
     e: number,
     i: number
   ) {
-    return Object.assign(e, partsNumberAndImage[i]);
+    return Object.assign(e, partsNumberAndImage[i], partsColorID[i]);
   });
+
+  console.log({ partsDetails });
 
   // Fetch MOC information
   const mocResponse = await fetch(
