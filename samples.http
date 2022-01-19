@@ -1,5 +1,5 @@
 ### GET specific set information from API
-GET http://localhost:3001/api/sets/11001-1 HTTP/1.1
+GET http://localhost:3001/api/sets/6210-1  HTTP/1.1
 
 ### GET all users
 GET http://localhost:3001/api/users HTTP/1.1

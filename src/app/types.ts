@@ -6,6 +6,7 @@ export type Parts = {
   partID: number;
   numberPart: string;
   imageUrlPart: string;
+  colorID: number;
 };
 
 export type Mocs = {

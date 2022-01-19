@@ -65,6 +65,8 @@ type Parts = {
   part: object;
   part_num: number;
   part_img_url: string;
+  color: object;
+  id: number;
 };
 
 type Moc = {
@@ -108,15 +110,35 @@ app.get("/api/sets/:query", async (req, res) => {
   }
   const theme = await themeResponse.json();
 
-  // Fetch part information
+  // Fetch part information (first 1000 unique parts)
   const partsResponse = await fetch(
-    `https://rebrickable.com/api/v3/lego/sets/${set_num}/parts/?key=${process.env.API_KEY}`
+    `https://rebrickable.com/api/v3/lego/sets/${set_num}/parts/?page_size=1000&key=${process.env.API_KEY}`
   );
   if (!partsResponse.ok) {
     res.status(partsResponse.status).send();
     return;
   }
-  const parts = await partsResponse.json();
+  let parts = await partsResponse.json();
+  const partsResults = parts.results;
+  console.log(partsResults.length);
+
+  // Load one further page if necessary
+  const nextPage = parts.next;
+
+  if (nextPage) {
+    const nextResponse = await fetch(`${nextPage}&key=${process.env.API_KEY}`);
+    if (!nextResponse.ok) {
+      res.status(nextResponse.status).send();
+      return;
+    }
+    const nextParts = await nextResponse.json();
+    const nextPartsResults = nextParts.results;
+
+    Array.prototype.push.apply(partsResults, nextPartsResults);
+    console.log(nextPartsResults.length);
+    console.log(partsResults.length);
+    parts = partsResults;
+  }
 
   // Extract part quantity, spare information and unique ID
   const partsQuantityAndSpareAndID = parts.results.map((parts: Parts) => {
@@ -138,11 +160,22 @@ app.get("/api/sets/:query", async (req, res) => {
     }
   });
 
+  // Extract part color
+  const partsColor = parts.results.map((parts: Parts) => {
+    return parts.color;
+  });
+
+  const partsColorID = partsColor.map((parts: Parts) => {
+    {
+      return { colorID: parts.id };
+    }
+  });
+
   const partsDetails = partsQuantityAndSpareAndID.map(function (
     e: number,
     i: number
   ) {
-    return Object.assign(e, partsNumberAndImage[i]);
+    return Object.assign(e, partsNumberAndImage[i], partsColorID[i]);
   });
 
   // Fetch MOC information
