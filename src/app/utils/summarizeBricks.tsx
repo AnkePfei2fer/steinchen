@@ -12,7 +12,6 @@ export default function summarizeBricks() {
     const partsInventory = collection?.map((parts) => {
       return [...parts.partsInventory];
     });
-    console.log({ partsInventory });
 
     // Combine all arrays with parts information
     const arrays = partsInventory?.flat();
@@ -30,6 +29,10 @@ export default function summarizeBricks() {
     });
     setBricksList(Object.values(obj));
   };
+
+  bricksList.sort(function (a, b) {
+    return a.colorID - b.colorID;
+  });
 
   useEffect(() => {
     summarize();
