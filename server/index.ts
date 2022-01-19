@@ -110,35 +110,35 @@ app.get("/api/sets/:query", async (req, res) => {
   }
   const theme = await themeResponse.json();
 
-  // Fetch part information
+  // Fetch part information (first 1000 unique parts)
   const partsResponse = await fetch(
-    `https://rebrickable.com/api/v3/lego/sets/${set_num}/parts/?key=${process.env.API_KEY}`
+    `https://rebrickable.com/api/v3/lego/sets/${set_num}/parts/?page_size=1000&key=${process.env.API_KEY}`
   );
   if (!partsResponse.ok) {
     res.status(partsResponse.status).send();
     return;
   }
-  const parts = await partsResponse.json();
-  console.log({ parts });
+  let parts = await partsResponse.json();
   const partsResults = parts.results;
-  console.log({ partsResults });
+  console.log(partsResults.length);
 
-  // Load further pages if necessary
+  // Load one further page if necessary
   const nextPage = parts.next;
-  console.log({ nextPage });
 
-  const nextResponse = await fetch(`${nextPage}&key=${process.env.API_KEY}`);
-  if (!nextResponse.ok) {
-    res.status(nextResponse.status).send();
-    return;
+  if (nextPage) {
+    const nextResponse = await fetch(`${nextPage}&key=${process.env.API_KEY}`);
+    if (!nextResponse.ok) {
+      res.status(nextResponse.status).send();
+      return;
+    }
+    const nextParts = await nextResponse.json();
+    const nextPartsResults = nextParts.results;
+
+    Array.prototype.push.apply(partsResults, nextPartsResults);
+    console.log(nextPartsResults.length);
+    console.log(partsResults.length);
+    parts = partsResults;
   }
-  const nextParts = await nextResponse.json();
-  console.log({ nextParts });
-  const nextPartsResults = nextParts.results;
-  console.log({ nextPartsResults });
-
-  const partsList = Array.prototype.push.apply(partsResults, nextPartsResults);
-  console.log({ partsList });
 
   // Extract part quantity, spare information and unique ID
   const partsQuantityAndSpareAndID = parts.results.map((parts: Parts) => {
