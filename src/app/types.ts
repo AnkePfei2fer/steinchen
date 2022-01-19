@@ -1,19 +1,19 @@
 import { FormEvent } from "react";
 
+export type Parts = {
+  quantity: number;
+  sparePart: boolean;
+  partID: number;
+  numberPart: string;
+  imageUrlPart: string;
+};
+
 export type Mocs = {
   numberMoc: string;
   nameMoc: string;
   numberPartsMoc: number;
   imageUrlMoc: string;
   urlMoc: string;
-};
-
-export type Parts = {
-  quantity: string;
-  sparePart: boolean;
-  partID: number;
-  numberPart: string;
-  imageUrlPart: string;
 };
 
 export type SetProps = {
@@ -46,6 +46,13 @@ export type SvgProps = {
   onClick?: (event: FormEvent) => void;
 };
 
-export type RefreshPageProps = { onLoadSet: () => void };
+export type RefreshPageProps = {
+  onLoadSet: () => void;
+};
+
+export type RefresBricksProps = {
+  onLoadBricks: () => void;
+  onLoadSet: () => void;
+};
 
 export type CollectionProps = { collection: Set[] };

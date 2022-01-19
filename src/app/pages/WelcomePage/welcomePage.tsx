@@ -5,9 +5,12 @@ import ParrotSrc from "../../../assets/images/Parrot-small.png";
 import HeadIcon from "../../../assets/icons/HeadIcon";
 import LogoutIcon from "../../../assets/icons/LogoutIcon";
 import { Link } from "react-router-dom";
-import { RefreshPageProps } from "../../types";
+import { RefresBricksProps } from "../../types";
 
-export default function WelcomePage({ onLoadSet }: RefreshPageProps) {
+export default function WelcomePage(
+  // { onLoadSet }: RefreshPageProps,
+  { onLoadSet, onLoadBricks }: RefresBricksProps
+) {
   const username = localStorage.getItem("Current User");
 
   return (
@@ -24,7 +27,13 @@ export default function WelcomePage({ onLoadSet }: RefreshPageProps) {
           <img className={styles.sets} src={SetsSrc} alt="Häuschen" />
           <h2>Deine Sets</h2>
         </Link>
-        <Link className={styles.menuButton} to="/bricks">
+        <Link
+          className={styles.menuButton}
+          to="/bricks"
+          onClick={() => {
+            onLoadBricks();
+          }}
+        >
           <img className={styles.bricks} src={BricksSrc} alt="Steine" />
           <h2>Deine Steine</h2>
         </Link>

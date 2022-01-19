@@ -15,7 +15,7 @@ export default function SetsPage({ collection }: CollectionProps) {
       <div>
         <h1 className={styles.heading}>Deine Sets</h1>
         <nav className={styles.container}>
-          {collection.map((set: Set) => (
+          {collection?.map((set: Set) => (
             <Link
               className={styles.card}
               key={set.numberSet}
