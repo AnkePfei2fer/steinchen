@@ -3,8 +3,6 @@ import { Parts } from "../../types";
 import styles from "./bricksPage.module.css";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
-import { v4 as uuidv4 } from "uuid";
-import React from "react";
 import summarizeBricks from "../../utils/summarizeBricks";
 
 export default function BricksPage() {
@@ -15,12 +13,16 @@ export default function BricksPage() {
   console.log({ bricksList });
 
   return (
-    <React.Fragment key={uuidv4()}>
+    <>
       <div className={styles.container}>
         <h1 className={styles.heading}>Deine Steine</h1>
         {bricksList?.map((part: Parts) => (
-          <article className={styles.card} key={uuidv4()}>
-            <img className={styles.image} src={part.imageUrlPart} alt="" />
+          <article className={styles.card} key={part.partID}>
+            <img
+              className={styles.image}
+              src={part.imageUrlPart}
+              alt="ohne Bild"
+            />
             <h3 className={styles.quantity}>{part.quantity} x</h3>
           </article>
         ))}
@@ -33,6 +35,6 @@ export default function BricksPage() {
           <HomeIcon className={styles.homeIcon} />
         </Link>
       </footer>
-    </React.Fragment>
+    </>
   );
 }
