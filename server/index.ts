@@ -119,6 +119,26 @@ app.get("/api/sets/:query", async (req, res) => {
     return;
   }
   const parts = await partsResponse.json();
+  console.log({ parts });
+  const partsResults = parts.results;
+  console.log({ partsResults });
+
+  // Load further pages if necessary
+  const nextPage = parts.next;
+  console.log({ nextPage });
+
+  const nextResponse = await fetch(`${nextPage}&key=${process.env.API_KEY}`);
+  if (!nextResponse.ok) {
+    res.status(nextResponse.status).send();
+    return;
+  }
+  const nextParts = await nextResponse.json();
+  console.log({ nextParts });
+  const nextPartsResults = nextParts.results;
+  console.log({ nextPartsResults });
+
+  const partsList = Array.prototype.push.apply(partsResults, nextPartsResults);
+  console.log({ partsList });
 
   // Extract part quantity, spare information and unique ID
   const partsQuantityAndSpareAndID = parts.results.map((parts: Parts) => {
@@ -157,8 +177,6 @@ app.get("/api/sets/:query", async (req, res) => {
   ) {
     return Object.assign(e, partsNumberAndImage[i], partsColorID[i]);
   });
-
-  console.log({ partsDetails });
 
   // Fetch MOC information
   const mocResponse = await fetch(
