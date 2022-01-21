@@ -77,6 +77,13 @@ type Moc = {
   moc_url: string;
 };
 
+type Minifig = {
+  id: number;
+  set_name: string;
+  quantity: number;
+  set_img_url: string;
+};
+
 // Send request to Rebrickable API with set number specified by client
 app.get("/api/sets/:query", async (req, res) => {
   const { query } = req.params;
@@ -199,6 +206,26 @@ app.get("/api/sets/:query", async (req, res) => {
     };
   });
 
+  // Fetch minifig information
+  const minifigResponse = await fetch(
+    `https://rebrickable.com/api/v3/lego/sets/${set_num}/minifigs/?key=${process.env.API_KEY}`
+  );
+  if (!minifigResponse.ok) {
+    res.status(minifigResponse.status).send();
+    return;
+  }
+  const minifig = await minifigResponse.json();
+
+  // Extract minifig id, name, parts number, image url and quantity
+  const minifigInformation = minifig.results.map((minifig: Minifig) => {
+    return {
+      minifigID: minifig.id,
+      nameMinifig: minifig.set_name,
+      quantity: minifig.quantity,
+      imageUrlMinifig: minifig.set_img_url,
+    };
+  });
+
   //  Send all information to frontend
   const combinedSet = {
     numberSet: set.set_num,
@@ -208,6 +235,7 @@ app.get("/api/sets/:query", async (req, res) => {
     imageUrlSet: set.set_img_url,
     nameTheme: theme.name,
     partsInventory: partsDetails,
+    minifigInformation: minifigInformation,
     mocInformation: mocInformation,
   };
   res.send(combinedSet);

@@ -7,21 +7,28 @@ import LoginPage from "./pages/LoginPage/loginPage";
 import SearchPage from "./pages/SearchPage/searchPage";
 import SearchResultPage from "./pages/SearchResultPage/searchResultPage";
 import BricksPage from "./pages/BricksPage/bricksPage";
+import MinifigPage from "./pages/MinifigPage/minifigPage";
 import IdeasPage from "./pages/IdeasPage/ideasPage";
 import summarizeBricks from "./utils/summarizeBricks";
+import summarizeMinifigs from "./utils/summarizeMinifigs";
 
 function App() {
   const { collection, refresh } = useCollection();
-  /* tslint:disable-next-line */
-  const { bricksList, summarize } = summarizeBricks();
-  console.log({ bricksList });
+  const { sumBricks } = summarizeBricks();
+  const { sumMinifigs } = summarizeMinifigs();
 
   return (
     <Routes>
       <Route path="/" element={<LoginPage />} />
       <Route
         path="/welcome"
-        element={<WelcomePage onLoadSet={refresh} onLoadBricks={summarize} />}
+        element={
+          <WelcomePage
+            onLoadSet={refresh}
+            onLoadBricks={sumBricks}
+            onLoadMinifigs={sumMinifigs}
+          />
+        }
       />
       <Route path="/search" element={<SearchPage />} />
       <Route
@@ -34,6 +41,7 @@ function App() {
         element={<DetailsPage collection={collection} onLoadSet={refresh} />}
       />
       <Route path="/bricks" element={<BricksPage />} />
+      <Route path="/minifigs" element={<MinifigPage />} />
       <Route path="/ideas" element={<IdeasPage collection={collection} />} />
     </Routes>
   );

@@ -1,27 +1,30 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Parts } from "../../types";
-import styles from "./bricksPage.module.css";
+import { Minifigs } from "../../types";
+import styles from "./minifigPage.module.css";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
-import summarizeBricks from "../../utils/summarizeBricks";
+import summarizeMinifigs from "../../utils/summarizeMinifigs";
 
-export default function BricksPage() {
+export default function MinifgigPage() {
   const navigate = useNavigate();
 
-  const { bricksList } = summarizeBricks();
+  const { minifigsList } = summarizeMinifigs();
 
   return (
     <>
       <div className={styles.container}>
-        <h1 className={styles.heading}>Deine Steine</h1>
-        {bricksList?.map((part: Parts) => (
-          <article className={styles.card} key={part.partID}>
+        <h1 className={styles.heading}>Deine Figuren</h1>
+        {minifigsList?.map((minifig: Minifigs) => (
+          <article className={styles.card} key={minifig.minifigID}>
             <img
               className={styles.image}
-              src={part.imageUrlPart}
+              src={minifig.imageUrlMinifig}
               alt="ohne Bild"
             />
-            <h3 className={styles.quantity}>{part.quantity} x</h3>
+            <h3 className={styles.quantity}>{minifig.quantity} x</h3>
+            <span className={styles.name}>
+              {minifig.nameMinifig.split(",")[0].split("/")[0].split("(")[0]}
+            </span>
           </article>
         ))}
       </div>

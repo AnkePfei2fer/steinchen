@@ -14,7 +14,6 @@ export default function SearchResultPage({
   const query = localStorage.getItem("Search Query");
   const navigate = useNavigate();
   const { searchResult } = useSet(query);
-  console.log({ searchResult });
 
   const numberSet = searchResult?.numberSet;
   const nameSet = searchResult?.nameSet;
@@ -23,8 +22,8 @@ export default function SearchResultPage({
   const imageUrlSet = searchResult?.imageUrlSet;
   const nameTheme = searchResult?.nameTheme;
   const partsInventory = searchResult?.partsInventory;
+  const minifigInformation = searchResult?.minifigInformation;
   const mocInformation = searchResult?.mocInformation;
-  console.log({ imageUrlSet });
 
   const set = {
     numberSet,
@@ -34,6 +33,7 @@ export default function SearchResultPage({
     imageUrlSet,
     nameTheme,
     partsInventory,
+    minifigInformation,
     mocInformation,
   };
 

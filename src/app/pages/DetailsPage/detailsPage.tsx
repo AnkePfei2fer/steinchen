@@ -31,18 +31,22 @@ export default function DetailsPage({
     navigate("/sets");
   };
 
+  const numberMinifigs: number | undefined = set?.minifigInformation.length;
+
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>{set?.nameSet}</h2>
       <img className={styles.image} src={set?.imageUrlSet} alt="" />
-      <h3 className={styles.leftColumn}>Set Nummer:</h3>
+      <h3 className={styles.leftColumn}>Nummer:</h3>
       <span className={styles.rightColumn}>{set?.numberSet}</span>
       <h3 className={styles.leftColumn}>Thema:</h3>
       <span className={styles.rightColumn}>{set?.nameTheme}</span>
-      <h3 className={styles.leftColumn}>Anzahl Teile:</h3>
-      <span className={styles.rightColumn}>{set?.numberPartsSet}</span>
       <h3 className={styles.leftColumn}>Erscheinungsjahr:</h3>
       <span className={styles.rightColumn}>{set?.year}</span>
+      <h3 className={styles.leftColumn}>Steine:</h3>
+      <span className={styles.rightColumn}>{set?.numberPartsSet}</span>
+      <h3 className={styles.leftColumn}>Figuren:</h3>
+      <span className={styles.rightColumn}>{numberMinifigs}</span>
       <div className={styles.overlay}></div>
       <footer className={styles.footer}>
         <div className={styles.arrowBack} onClick={() => navigate(-1)}>
