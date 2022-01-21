@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useCollection from "./useCollection";
-import { Parts } from "../types";
+import { Parts } from "../../../types";
 
 export default function summarizeBricks() {
   const { collection } = useCollection();
