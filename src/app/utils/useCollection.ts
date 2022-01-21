@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Set } from "../types";
+import { Set } from "../../../types";
 
 export default function useCollection() {
   const [collection, setCollection] = useState<Set[]>([]);

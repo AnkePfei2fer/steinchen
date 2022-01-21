@@ -1,5 +1,5 @@
 import SetsPage from "./setsPage";
-import { Set } from "../../types";
+import { Set } from "../../../../types";
 
 type CollectionProps = { collection: Set[] };
 

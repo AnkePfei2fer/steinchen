@@ -1,4 +1,4 @@
-import { SvgProps } from "../../app/types";
+import { SvgProps } from "../../../types";
 
 export default function HomeIcon(props: SvgProps): JSX.Element {
   return (

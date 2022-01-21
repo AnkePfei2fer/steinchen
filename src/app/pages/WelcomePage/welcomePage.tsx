@@ -6,7 +6,7 @@ import ParrotSrc from "../../../assets/images/Parrot-small.png";
 import HeadIcon from "../../../assets/icons/HeadIcon";
 import LogoutIcon from "../../../assets/icons/LogoutIcon";
 import { Link } from "react-router-dom";
-import { RefresPartsProps } from "../../types";
+import { RefresPartsProps } from "../../../../types";
 
 export default function WelcomePage({
   onLoadSet,

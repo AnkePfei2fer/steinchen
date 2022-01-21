@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import { connectDatabase, getUserCollection } from "./utils/database";
+import { Part, Moc, Minifig } from "../types";
 import fetch from "node-fetch";
 dotenv.config();
 
@@ -57,32 +58,6 @@ app.post("/api/users", async (request, response) => {
     response.send(`${newUser.name} was added`);
   }
 });
-
-type Parts = {
-  quantity: number;
-  is_spare: boolean;
-  element_id: number;
-  part: object;
-  part_num: number;
-  part_img_url: string;
-  color: object;
-  id: number;
-};
-
-type Moc = {
-  set_num: string;
-  name: string;
-  num_parts: number;
-  moc_img_url: string;
-  moc_url: string;
-};
-
-type Minifig = {
-  id: number;
-  set_name: string;
-  quantity: number;
-  set_img_url: string;
-};
 
 // Send request to Rebrickable API with set number specified by client
 app.get("/api/sets/:query", async (req, res) => {
@@ -148,7 +123,7 @@ app.get("/api/sets/:query", async (req, res) => {
   }
 
   // Extract part quantity, spare information and unique ID
-  const partsQuantityAndSpareAndID = parts.results.map((parts: Parts) => {
+  const partsQuantityAndSpareAndID = parts.results.map((parts: Part) => {
     return {
       quantity: parts.quantity,
       sparePart: parts.is_spare,
@@ -157,22 +132,22 @@ app.get("/api/sets/:query", async (req, res) => {
   });
 
   // Extract part number and image url
-  const partsInformation = parts.results.map((parts: Parts) => {
+  const partsInformation = parts.results.map((parts: Part) => {
     return parts.part;
   });
 
-  const partsNumberAndImage = partsInformation.map((parts: Parts) => {
+  const partsNumberAndImage = partsInformation.map((parts: Part) => {
     {
       return { numberPart: parts.part_num, imageUrlPart: parts.part_img_url };
     }
   });
 
   // Extract part color
-  const partsColor = parts.results.map((parts: Parts) => {
+  const partsColor = parts.results.map((parts: Part) => {
     return parts.color;
   });
 
-  const partsColorID = partsColor.map((parts: Parts) => {
+  const partsColorID = partsColor.map((parts: Part) => {
     {
       return { colorID: parts.id };
     }

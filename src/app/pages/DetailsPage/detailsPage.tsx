@@ -1,6 +1,6 @@
 import { FormEvent } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Set } from "../../types";
+import { Set } from "../../../../types";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import BinIcon from "../../../assets/icons/BinIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";

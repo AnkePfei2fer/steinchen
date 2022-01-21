@@ -1,4 +1,4 @@
-import { SetProps } from "../types";
+import { SetProps } from "../../../types";
 
 export default function postSet(set: SetProps | null) {
   const username = localStorage.getItem("Current User");

@@ -1,5 +1,5 @@
 import DetailsPage from "./detailsPage";
-import { Set } from "../../types";
+import { Set } from "../../../../types";
 
 type CollectionProps = { collection: Set[]; onLoadSet: () => void };
 

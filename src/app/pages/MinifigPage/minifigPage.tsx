@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Minifigs } from "../../types";
+import { Minifigs } from "../../../../types";
 import styles from "./minifigPage.module.css";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
