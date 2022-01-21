@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage/loginPage";
 import SearchPage from "./pages/SearchPage/searchPage";
 import SearchResultPage from "./pages/SearchResultPage/searchResultPage";
 import BricksPage from "./pages/BricksPage/bricksPage";
+import MinifigPage from "./pages/MinifigPage/minifigPage";
 import IdeasPage from "./pages/IdeasPage/ideasPage";
 import summarizeBricks from "./utils/summarizeBricks";
 
@@ -34,6 +35,7 @@ function App() {
         element={<DetailsPage collection={collection} onLoadSet={refresh} />}
       />
       <Route path="/bricks" element={<BricksPage />} />
+      <Route path="/minifigs" element={<MinifigPage />} />
       <Route path="/ideas" element={<IdeasPage collection={collection} />} />
     </Routes>
   );

@@ -8,10 +8,10 @@ import LogoutIcon from "../../../assets/icons/LogoutIcon";
 import { Link } from "react-router-dom";
 import { RefresBricksProps } from "../../types";
 
-export default function WelcomePage(
-  // { onLoadSet }: RefreshPageProps,
-  { onLoadSet, onLoadBricks }: RefresBricksProps
-) {
+export default function WelcomePage({
+  onLoadSet,
+  onLoadBricks,
+}: RefresBricksProps) {
   const username = localStorage.getItem("Current User");
 
   return (
@@ -38,7 +38,7 @@ export default function WelcomePage(
           <img className={styles.bricks} src={BricksSrc} alt="Steine" />
           <h2>Deine Steine</h2>
         </Link>
-        <Link className={styles.menuButton} to="minifigs">
+        <Link className={styles.menuButton} to="/minifigs">
           <img className={styles.minifig} src={MinifigSrc} alt="Figur" />
           <h2>Deine Figuren</h2>
         </Link>
