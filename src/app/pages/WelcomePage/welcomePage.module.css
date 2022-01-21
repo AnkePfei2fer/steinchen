@@ -9,7 +9,7 @@
   grid-template-columns: 1fr 1fr;
   place-items: center;
   width: 80%;
-  height: 7.5rem;
+  height: 6rem;
   margin: 0.5em 10%;
   padding: 0.5rem;
   border-radius: 1.5rem;
@@ -21,13 +21,14 @@
 }
 
 .sets,
+.minifig,
 .ideas {
-  height: 6.5rem;
+  height: 5rem;
   object-fit: contain;
 }
 
 .bricks {
-  width: 8rem;
+  width: 7rem;
   object-fit: contain;
 }
 

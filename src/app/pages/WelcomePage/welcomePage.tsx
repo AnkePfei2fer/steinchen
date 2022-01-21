@@ -1,5 +1,6 @@
 import styles from "./welcomePage.module.css";
 import SetsSrc from "../../../assets/images/House-small.png";
+import MinifigSrc from "../../../assets/images/Minifig-small.png";
 import BricksSrc from "../../../assets/images/Bricks-small.png";
 import ParrotSrc from "../../../assets/images/Parrot-small.png";
 import HeadIcon from "../../../assets/icons/HeadIcon";
@@ -36,6 +37,10 @@ export default function WelcomePage(
         >
           <img className={styles.bricks} src={BricksSrc} alt="Steine" />
           <h2>Deine Steine</h2>
+        </Link>
+        <Link className={styles.menuButton} to="minifigs">
+          <img className={styles.minifig} src={MinifigSrc} alt="Figur" />
+          <h2>Deine Figuren</h2>
         </Link>
         <Link className={styles.menuButton} to="/ideas">
           <img className={styles.ideas} src={ParrotSrc} alt="Papagei" />
