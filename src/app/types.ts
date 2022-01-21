@@ -60,7 +60,7 @@ export type RefreshPageProps = {
   onLoadSet: () => void;
 };
 
-export type RefresBricksProps = {
+export type RefresPartsProps = {
   onLoadBricks: () => void;
   onLoadMinifigs: () => void;
   onLoadSet: () => void;

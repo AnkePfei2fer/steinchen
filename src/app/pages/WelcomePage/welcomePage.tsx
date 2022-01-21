@@ -6,13 +6,13 @@ import ParrotSrc from "../../../assets/images/Parrot-small.png";
 import HeadIcon from "../../../assets/icons/HeadIcon";
 import LogoutIcon from "../../../assets/icons/LogoutIcon";
 import { Link } from "react-router-dom";
-import { RefresBricksProps } from "../../types";
+import { RefresPartsProps } from "../../types";
 
 export default function WelcomePage({
   onLoadSet,
   onLoadBricks,
   onLoadMinifigs,
-}: RefresBricksProps) {
+}: RefresPartsProps) {
   const username = localStorage.getItem("Current User");
 
   return (

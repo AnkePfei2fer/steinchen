@@ -32,7 +32,6 @@ export default function DetailsPage({
   };
 
   const numberMinifigs: number | undefined = set?.minifigInformation.length;
-  console.log({ numberMinifigs });
 
   return (
     <div className={styles.container}>

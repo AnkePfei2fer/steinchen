@@ -6,16 +6,14 @@ export default function summarizeBricks() {
   const { collection } = useCollection();
   const [bricksList, setBricksList] = useState<Parts[]>([]);
 
-  const summarize = function () {
+  const sumBricks = function () {
     // Extract parts information of all sets from user collection
-    console.log({ collection });
     const partsInventory = collection?.map((parts) => {
       return [...parts.partsInventory];
     });
 
     // Combine all arrays with parts information
     const arrays = partsInventory?.flat();
-    console.log({ arrays });
 
     // Summarize identical bricks
     const obj: Parts[] = [];
@@ -35,8 +33,8 @@ export default function summarizeBricks() {
   });
 
   useEffect(() => {
-    summarize();
+    sumBricks();
   }, [collection]);
 
-  return { bricksList, summarize };
+  return { bricksList, sumBricks };
 }

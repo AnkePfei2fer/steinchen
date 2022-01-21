@@ -10,8 +10,6 @@ export default function BricksPage() {
 
   const { bricksList } = summarizeBricks();
 
-  console.log({ bricksList });
-
   return (
     <>
       <div className={styles.container}>

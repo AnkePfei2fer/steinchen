@@ -14,10 +14,8 @@ import summarizeMinifigs from "./utils/summarizeMinifigs";
 
 function App() {
   const { collection, refresh } = useCollection();
-  const { bricksList, summarize } = summarizeBricks();
-  const { minifigsList, summarizeMinifig } = summarizeMinifigs();
-  console.log({ bricksList });
-  console.log({ minifigsList });
+  const { sumBricks } = summarizeBricks();
+  const { sumMinifigs } = summarizeMinifigs();
 
   return (
     <Routes>
@@ -27,8 +25,8 @@ function App() {
         element={
           <WelcomePage
             onLoadSet={refresh}
-            onLoadBricks={summarize}
-            onLoadMinifigs={summarizeMinifig}
+            onLoadBricks={sumBricks}
+            onLoadMinifigs={sumMinifigs}
           />
         }
       />

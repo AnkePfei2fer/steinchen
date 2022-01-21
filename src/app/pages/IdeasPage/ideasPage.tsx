@@ -14,7 +14,6 @@ export default function IdeasPage({ collection }: CollectionProps) {
 
   //Combine all arrays with MOC information
   const arrays = mocInformation.flat();
-  console.log(arrays);
 
   arrays?.sort((a, b) => a.nameMoc.localeCompare(b.nameMoc));
 

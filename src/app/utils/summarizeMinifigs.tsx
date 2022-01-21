@@ -6,9 +6,8 @@ export default function summarizeMinifigs() {
   const { collection } = useCollection();
   const [minifigsList, setMinifigsList] = useState<Minifigs[]>([]);
 
-  const summarizeMinifig = function () {
+  const sumMinifigs = function () {
     // Extract minifig information of all sets from user collection
-    console.log({ collection });
     const minifigInformation = collection?.map((minifigs) => {
       if (minifigs.minifigInformation) {
         return [...minifigs.minifigInformation];
@@ -17,7 +16,6 @@ export default function summarizeMinifigs() {
 
     // Combine all arrays with minifigs information
     const arrays = minifigInformation?.flat();
-    console.log({ arrays });
 
     // Summarize identical minifigs
     const obj: Minifigs[] = [];
@@ -40,8 +38,8 @@ export default function summarizeMinifigs() {
   });
 
   useEffect(() => {
-    summarizeMinifig();
+    sumMinifigs();
   }, [collection]);
 
-  return { minifigsList, summarizeMinifig };
+  return { minifigsList, sumMinifigs };
 }

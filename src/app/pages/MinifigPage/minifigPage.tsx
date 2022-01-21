@@ -10,8 +10,6 @@ export default function MinifgigPage() {
 
   const { minifigsList } = summarizeMinifigs();
 
-  console.log({ minifigsList });
-
   return (
     <>
       <div className={styles.container}>
