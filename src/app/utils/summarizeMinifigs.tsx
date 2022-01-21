@@ -33,9 +33,7 @@ export default function summarizeMinifigs() {
     setMinifigsList(Object.values(obj));
   };
 
-  minifigsList.sort(function (a, b) {
-    return a.minifigID - b.minifigID;
-  });
+  minifigsList.sort((a, b) => a.nameMinifig.localeCompare(b.nameMinifig));
 
   useEffect(() => {
     sumMinifigs();
