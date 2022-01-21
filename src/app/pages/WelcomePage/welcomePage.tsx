@@ -11,6 +11,7 @@ import { RefresBricksProps } from "../../types";
 export default function WelcomePage({
   onLoadSet,
   onLoadBricks,
+  onLoadMinifigs,
 }: RefresBricksProps) {
   const username = localStorage.getItem("Current User");
 
@@ -38,12 +39,22 @@ export default function WelcomePage({
           <img className={styles.bricks} src={BricksSrc} alt="Steine" />
           <h2>Deine Steine</h2>
         </Link>
-        <Link className={styles.menuButton} to="/minifigs">
+        <Link
+          className={styles.menuButton}
+          to="/minifigs"
+          onClick={() => {
+            onLoadMinifigs();
+          }}
+        >
           <img className={styles.minifig} src={MinifigSrc} alt="Figur" />
           <h2>Deine Figuren</h2>
         </Link>
         <Link className={styles.menuButton} to="/ideas">
-          <img className={styles.ideas} src={ParrotSrc} alt="Papagei" />
+          <img
+            className={styles.ideas}
+            src={ParrotSrc}
+            alt="lustiger Papagei"
+          />
           <h2>Neue Ideen</h2>
         </Link>
       </nav>
