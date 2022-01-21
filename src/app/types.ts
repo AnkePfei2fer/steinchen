@@ -25,6 +25,7 @@ export type SetProps = {
   imageUrlSet?: string;
   nameTheme: string | undefined;
   partsInventory: Parts[] | undefined;
+  minifigInformation: Mocs[] | undefined;
   mocInformation: Mocs[] | undefined;
 };
 
