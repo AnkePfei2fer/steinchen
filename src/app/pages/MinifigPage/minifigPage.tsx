@@ -22,6 +22,9 @@ export default function MinifgigPage() {
               alt="ohne Bild"
             />
             <h3 className={styles.quantity}>{minifig.quantity} x</h3>
+            <span className={styles.name}>
+              {minifig.nameMinifig.split(",")[0].split("/")[0].split("(")[0]}
+            </span>
           </article>
         ))}
       </div>
