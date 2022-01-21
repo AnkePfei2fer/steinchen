@@ -17,6 +17,13 @@ export type Mocs = {
   urlMoc: string;
 };
 
+export type Minifigs = {
+  minifigID: number;
+  nameMinifig: string;
+  quantity: number;
+  imageUrlMinifig: string;
+};
+
 export type SetProps = {
   numberSet: string | undefined;
   nameSet: string | undefined;
@@ -25,7 +32,7 @@ export type SetProps = {
   imageUrlSet?: string;
   nameTheme: string | undefined;
   partsInventory: Parts[] | undefined;
-  minifigInformation: Mocs[] | undefined;
+  minifigInformation: Minifigs[] | undefined;
   mocInformation: Mocs[] | undefined;
 };
 
@@ -37,6 +44,7 @@ export type Set = {
   imageUrlSet: string;
   nameTheme: string;
   partsInventory: Parts[];
+  minifigInformation: Minifigs[];
   mocInformation: Mocs[];
 };
 
