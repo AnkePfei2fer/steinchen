@@ -1,6 +1,5 @@
 {
   "name": "full-stack-app-template",
-  "homepage": "https://ankepfei2fer.github.io/steinchen/",
   "version": "0.0.0",
   "scripts": {
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\" \"npm run storybook\"",
@@ -15,14 +14,11 @@
     "lint": "stylelint \"**/*.css\" && eslint . && prettier . --check",
     "lint-fix": "stylelint \"**/*.css\" --fix && eslint . --fix && prettier . --write",
     "prepare": "husky install",
-    "start": "node dist/index.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "gh-pages": "^4.0.0",
     "mongodb": "^4.2.0",
     "node-fetch": "^2.0.0",
     "react": "^17.0.0",
