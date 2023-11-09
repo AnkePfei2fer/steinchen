@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Set, CollectionProps } from "../../types";
+import { Set, CollectionProps } from "../../../../types";
 import styles from "./setsPage.module.css";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";

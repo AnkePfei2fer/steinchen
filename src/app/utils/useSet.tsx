@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SetProps } from "../types";
+import { SetProps } from "../../../types";
 
 export default function useSet(query: string | null) {
   const [searchResult, setSearchResult] = useState<SetProps | null>(null);

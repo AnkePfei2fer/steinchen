@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useCollection from "./useCollection";
-import { Minifigs } from "../types";
+import { Minifigs } from "../../../types";
 
 export default function summarizeMinifigs() {
   const { collection } = useCollection();

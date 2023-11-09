@@ -1,5 +1,5 @@
 import WelcomePage from "./welcomePage";
-import { RefresPartsProps } from "../../types";
+import { RefresPartsProps } from "../../../../types";
 
 export default { component: WelcomePage, title: "Pages/Welcome" };
 export const Default = ({

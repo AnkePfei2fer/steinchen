@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Parts } from "../../types";
+import { Parts } from "../../../../types";
 import styles from "./bricksPage.module.css";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";

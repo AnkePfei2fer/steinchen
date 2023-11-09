@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { CollectionProps, Mocs } from "../../types";
+import { CollectionProps, Mocs } from "../../../../types";
 import styles from "./ideasPage.module.css";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";

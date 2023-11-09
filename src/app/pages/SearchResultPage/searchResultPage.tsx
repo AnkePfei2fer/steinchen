@@ -6,7 +6,7 @@ import postSet from "../../utils/postSet";
 import ArrowIcon from "../../../assets/icons/ArrowIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
 import PlusIcon from "../../../assets/icons/PlusIcon";
-import { RefreshPageProps } from "../../types";
+import { RefreshPageProps } from "../../../../types";
 
 export default function SearchResultPage({
   onLoadSet,
